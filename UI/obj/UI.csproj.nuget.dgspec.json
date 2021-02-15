@@ -1,0 +1,91 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\nguyentu\\source\\repos\\MOS Checker\\UI\\UI.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\nguyentu\\source\\repos\\MOS Checker\\Checker\\Checker.csproj": {
+      "restore": {
+        "projectUniqueName": "C:\\Users\\nguyentu\\source\\repos\\MOS Checker\\Checker\\Checker.csproj",
+        "projectName": "Checker",
+        "projectPath": "C:\\Users\\nguyentu\\source\\repos\\MOS Checker\\Checker\\Checker.csproj"
+      },
+      "frameworks": {
+        "net472": {}
+      }
+    },
+    "C:\\Users\\nguyentu\\source\\repos\\MOS Checker\\UI\\UI.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\nguyentu\\source\\repos\\MOS Checker\\UI\\UI.csproj",
+        "projectName": "UI",
+        "projectPath": "C:\\Users\\nguyentu\\source\\repos\\MOS Checker\\UI\\UI.csproj",
+        "packagesPath": "C:\\Users\\nguyentu\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\nguyentu\\source\\repos\\MOS Checker\\UI\\obj\\",
+        "projectStyle": "PackageReference",
+        "skipContentFileWrite": true,
+        "configFilePaths": [
+          "C:\\Users\\nguyentu\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net472"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net472": {
+            "projectReferences": {
+              "C:\\Users\\nguyentu\\source\\repos\\MOS Checker\\Checker\\Checker.csproj": {
+                "projectPath": "C:\\Users\\nguyentu\\source\\repos\\MOS Checker\\Checker\\Checker.csproj"
+              }
+            }
+          }
+        }
+      },
+      "frameworks": {
+        "net472": {
+          "dependencies": {
+            "HtmlRenderer.Core": {
+              "target": "Package",
+              "version": "[1.5.0.6, )"
+            },
+            "HtmlRenderer.WinForms": {
+              "target": "Package",
+              "version": "[1.5.0.6, )"
+            },
+            "LiteDB": {
+              "target": "Package",
+              "version": "[5.0.10, )"
+            },
+            "NetOfficeFw.Core": {
+              "target": "Package",
+              "version": "[1.8.0, )"
+            },
+            "NetOfficeFw.Word": {
+              "target": "Package",
+              "version": "[1.8.0, )"
+            },
+            "log4net": {
+              "target": "Package",
+              "version": "[2.0.12, )"
+            }
+          }
+        }
+      },
+      "runtimes": {
+        "win": {
+          "#import": []
+        },
+        "win-x64": {
+          "#import": []
+        },
+        "win-x86": {
+          "#import": []
+        }
+      }
+    }
+  }
+}

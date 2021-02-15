@@ -1,0 +1,574 @@
+{
+  "version": 3,
+  "targets": {
+    ".NETFramework,Version=v4.7.2": {
+      "HtmlRenderer.Core/1.5.0.6": {
+        "type": "package",
+        "compile": {
+          "lib/net45/HtmlRenderer.dll": {}
+        },
+        "runtime": {
+          "lib/net45/HtmlRenderer.dll": {}
+        }
+      },
+      "HtmlRenderer.WinForms/1.5.0.6": {
+        "type": "package",
+        "dependencies": {
+          "HtmlRenderer.Core": "1.5.0.5"
+        },
+        "frameworkAssemblies": [
+          "System.Drawing",
+          "System.Windows.Forms"
+        ],
+        "compile": {
+          "lib/net45/HtmlRenderer.WinForms.dll": {}
+        },
+        "runtime": {
+          "lib/net45/HtmlRenderer.WinForms.dll": {}
+        }
+      },
+      "LiteDB/5.0.10": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "System",
+          "System.Runtime"
+        ],
+        "compile": {
+          "lib/net45/LiteDB.dll": {}
+        },
+        "runtime": {
+          "lib/net45/LiteDB.dll": {}
+        }
+      },
+      "log4net/2.0.12": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "System.Configuration",
+          "System.Web"
+        ],
+        "compile": {
+          "lib/net45/log4net.dll": {}
+        },
+        "runtime": {
+          "lib/net45/log4net.dll": {}
+        }
+      },
+      "NetOfficeFw.Core/1.8.0": {
+        "type": "package",
+        "compile": {
+          "lib/net40/NetOffice.dll": {},
+          "lib/net40/OfficeApi.dll": {},
+          "lib/net40/VBIDEApi.dll": {}
+        },
+        "runtime": {
+          "lib/net40/NetOffice.dll": {},
+          "lib/net40/OfficeApi.dll": {},
+          "lib/net40/VBIDEApi.dll": {}
+        }
+      },
+      "NetOfficeFw.Word/1.8.0": {
+        "type": "package",
+        "dependencies": {
+          "NetOfficeFw.Core": "[1.8.0]"
+        },
+        "compile": {
+          "lib/net40/WordApi.dll": {}
+        },
+        "runtime": {
+          "lib/net40/WordApi.dll": {}
+        }
+      },
+      "Checker/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/Checker.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Checker.dll": {}
+        }
+      }
+    },
+    ".NETFramework,Version=v4.7.2/win": {
+      "HtmlRenderer.Core/1.5.0.6": {
+        "type": "package",
+        "compile": {
+          "lib/net45/HtmlRenderer.dll": {}
+        },
+        "runtime": {
+          "lib/net45/HtmlRenderer.dll": {}
+        }
+      },
+      "HtmlRenderer.WinForms/1.5.0.6": {
+        "type": "package",
+        "dependencies": {
+          "HtmlRenderer.Core": "1.5.0.5"
+        },
+        "frameworkAssemblies": [
+          "System.Drawing",
+          "System.Windows.Forms"
+        ],
+        "compile": {
+          "lib/net45/HtmlRenderer.WinForms.dll": {}
+        },
+        "runtime": {
+          "lib/net45/HtmlRenderer.WinForms.dll": {}
+        }
+      },
+      "LiteDB/5.0.10": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "System",
+          "System.Runtime"
+        ],
+        "compile": {
+          "lib/net45/LiteDB.dll": {}
+        },
+        "runtime": {
+          "lib/net45/LiteDB.dll": {}
+        }
+      },
+      "log4net/2.0.12": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "System.Configuration",
+          "System.Web"
+        ],
+        "compile": {
+          "lib/net45/log4net.dll": {}
+        },
+        "runtime": {
+          "lib/net45/log4net.dll": {}
+        }
+      },
+      "NetOfficeFw.Core/1.8.0": {
+        "type": "package",
+        "compile": {
+          "lib/net40/NetOffice.dll": {},
+          "lib/net40/OfficeApi.dll": {},
+          "lib/net40/VBIDEApi.dll": {}
+        },
+        "runtime": {
+          "lib/net40/NetOffice.dll": {},
+          "lib/net40/OfficeApi.dll": {},
+          "lib/net40/VBIDEApi.dll": {}
+        }
+      },
+      "NetOfficeFw.Word/1.8.0": {
+        "type": "package",
+        "dependencies": {
+          "NetOfficeFw.Core": "[1.8.0]"
+        },
+        "compile": {
+          "lib/net40/WordApi.dll": {}
+        },
+        "runtime": {
+          "lib/net40/WordApi.dll": {}
+        }
+      },
+      "Checker/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/Checker.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Checker.dll": {}
+        }
+      }
+    },
+    ".NETFramework,Version=v4.7.2/win-x64": {
+      "HtmlRenderer.Core/1.5.0.6": {
+        "type": "package",
+        "compile": {
+          "lib/net45/HtmlRenderer.dll": {}
+        },
+        "runtime": {
+          "lib/net45/HtmlRenderer.dll": {}
+        }
+      },
+      "HtmlRenderer.WinForms/1.5.0.6": {
+        "type": "package",
+        "dependencies": {
+          "HtmlRenderer.Core": "1.5.0.5"
+        },
+        "frameworkAssemblies": [
+          "System.Drawing",
+          "System.Windows.Forms"
+        ],
+        "compile": {
+          "lib/net45/HtmlRenderer.WinForms.dll": {}
+        },
+        "runtime": {
+          "lib/net45/HtmlRenderer.WinForms.dll": {}
+        }
+      },
+      "LiteDB/5.0.10": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "System",
+          "System.Runtime"
+        ],
+        "compile": {
+          "lib/net45/LiteDB.dll": {}
+        },
+        "runtime": {
+          "lib/net45/LiteDB.dll": {}
+        }
+      },
+      "log4net/2.0.12": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "System.Configuration",
+          "System.Web"
+        ],
+        "compile": {
+          "lib/net45/log4net.dll": {}
+        },
+        "runtime": {
+          "lib/net45/log4net.dll": {}
+        }
+      },
+      "NetOfficeFw.Core/1.8.0": {
+        "type": "package",
+        "compile": {
+          "lib/net40/NetOffice.dll": {},
+          "lib/net40/OfficeApi.dll": {},
+          "lib/net40/VBIDEApi.dll": {}
+        },
+        "runtime": {
+          "lib/net40/NetOffice.dll": {},
+          "lib/net40/OfficeApi.dll": {},
+          "lib/net40/VBIDEApi.dll": {}
+        }
+      },
+      "NetOfficeFw.Word/1.8.0": {
+        "type": "package",
+        "dependencies": {
+          "NetOfficeFw.Core": "[1.8.0]"
+        },
+        "compile": {
+          "lib/net40/WordApi.dll": {}
+        },
+        "runtime": {
+          "lib/net40/WordApi.dll": {}
+        }
+      },
+      "Checker/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/Checker.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Checker.dll": {}
+        }
+      }
+    },
+    ".NETFramework,Version=v4.7.2/win-x86": {
+      "HtmlRenderer.Core/1.5.0.6": {
+        "type": "package",
+        "compile": {
+          "lib/net45/HtmlRenderer.dll": {}
+        },
+        "runtime": {
+          "lib/net45/HtmlRenderer.dll": {}
+        }
+      },
+      "HtmlRenderer.WinForms/1.5.0.6": {
+        "type": "package",
+        "dependencies": {
+          "HtmlRenderer.Core": "1.5.0.5"
+        },
+        "frameworkAssemblies": [
+          "System.Drawing",
+          "System.Windows.Forms"
+        ],
+        "compile": {
+          "lib/net45/HtmlRenderer.WinForms.dll": {}
+        },
+        "runtime": {
+          "lib/net45/HtmlRenderer.WinForms.dll": {}
+        }
+      },
+      "LiteDB/5.0.10": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "System",
+          "System.Runtime"
+        ],
+        "compile": {
+          "lib/net45/LiteDB.dll": {}
+        },
+        "runtime": {
+          "lib/net45/LiteDB.dll": {}
+        }
+      },
+      "log4net/2.0.12": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "System.Configuration",
+          "System.Web"
+        ],
+        "compile": {
+          "lib/net45/log4net.dll": {}
+        },
+        "runtime": {
+          "lib/net45/log4net.dll": {}
+        }
+      },
+      "NetOfficeFw.Core/1.8.0": {
+        "type": "package",
+        "compile": {
+          "lib/net40/NetOffice.dll": {},
+          "lib/net40/OfficeApi.dll": {},
+          "lib/net40/VBIDEApi.dll": {}
+        },
+        "runtime": {
+          "lib/net40/NetOffice.dll": {},
+          "lib/net40/OfficeApi.dll": {},
+          "lib/net40/VBIDEApi.dll": {}
+        }
+      },
+      "NetOfficeFw.Word/1.8.0": {
+        "type": "package",
+        "dependencies": {
+          "NetOfficeFw.Core": "[1.8.0]"
+        },
+        "compile": {
+          "lib/net40/WordApi.dll": {}
+        },
+        "runtime": {
+          "lib/net40/WordApi.dll": {}
+        }
+      },
+      "Checker/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/Checker.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Checker.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "HtmlRenderer.Core/1.5.0.6": {
+      "sha512": "/WPVhzNmILIOJ1vtoiQXP7y7MJirCpHn/jqFw38wU0vv1XXbSpR2bTStmaiI2Pb2JLjnPMrVGR/7T7zKlAaaHw==",
+      "type": "package",
+      "path": "htmlrenderer.core/1.5.0.6",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "htmlrenderer.core.1.5.0.6.nupkg.sha512",
+        "htmlrenderer.core.nuspec",
+        "lib/net20/HtmlRenderer.dll",
+        "lib/net20/HtmlRenderer.pdb",
+        "lib/net30/HtmlRenderer.dll",
+        "lib/net30/HtmlRenderer.pdb",
+        "lib/net35-client/HtmlRenderer.dll",
+        "lib/net35-client/HtmlRenderer.pdb",
+        "lib/net40-client/HtmlRenderer.dll",
+        "lib/net40-client/HtmlRenderer.pdb",
+        "lib/net45/HtmlRenderer.dll",
+        "lib/net45/HtmlRenderer.pdb"
+      ]
+    },
+    "HtmlRenderer.WinForms/1.5.0.6": {
+      "sha512": "yaaiNW2nMWQa9cwocR7jLy9/+3g/TomMszODWm8z9DCWxIYz6K5marKBw1YZHnpKA6xS/LQYB2YEikE1OqDQ8Q==",
+      "type": "package",
+      "path": "htmlrenderer.winforms/1.5.0.6",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "htmlrenderer.winforms.1.5.0.6.nupkg.sha512",
+        "htmlrenderer.winforms.nuspec",
+        "lib/net20/HtmlRenderer.WinForms.dll",
+        "lib/net20/HtmlRenderer.WinForms.pdb",
+        "lib/net35-client/HtmlRenderer.WinForms.dll",
+        "lib/net35-client/HtmlRenderer.WinForms.pdb",
+        "lib/net40-client/HtmlRenderer.WinForms.dll",
+        "lib/net40-client/HtmlRenderer.WinForms.pdb",
+        "lib/net45/HtmlRenderer.WinForms.dll",
+        "lib/net45/HtmlRenderer.WinForms.pdb",
+        "readme.txt"
+      ]
+    },
+    "LiteDB/5.0.10": {
+      "sha512": "x70WuqMDuP75dajqSLvO+AnI/BbwS6da+ukTO7rueV7VoXoQ5CRA9FV4r7cOS4OUr2NS1Up7LDIutjCxQycRvg==",
+      "type": "package",
+      "path": "litedb/5.0.10",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "AppVeyorSettings.json",
+        "LICENSE",
+        "icon_64x64.png",
+        "lib/net45/LiteDB.dll",
+        "lib/net45/LiteDB.xml",
+        "lib/netstandard1.3/LiteDB.dll",
+        "lib/netstandard1.3/LiteDB.xml",
+        "lib/netstandard2.0/LiteDB.dll",
+        "lib/netstandard2.0/LiteDB.xml",
+        "litedb.5.0.10.nupkg.sha512",
+        "litedb.nuspec"
+      ]
+    },
+    "log4net/2.0.12": {
+      "sha512": "9P67BCftJ7KG+B7rNOM1A9KczUwyEDed6zbAddy5Cj/73xVkzi+rEAHeOgUnW5wDqy1JFlY8+oTP0m1PgJ03Tg==",
+      "type": "package",
+      "path": "log4net/2.0.12",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net20/log4net.dll",
+        "lib/net20/log4net.xml",
+        "lib/net35-client/log4net.dll",
+        "lib/net35-client/log4net.xml",
+        "lib/net35/log4net.dll",
+        "lib/net35/log4net.xml",
+        "lib/net40-client/log4net.dll",
+        "lib/net40-client/log4net.xml",
+        "lib/net40/log4net.dll",
+        "lib/net40/log4net.xml",
+        "lib/net45/log4net.dll",
+        "lib/net45/log4net.xml",
+        "lib/netstandard1.3/log4net.dll",
+        "lib/netstandard1.3/log4net.xml",
+        "lib/netstandard2.0/log4net.dll",
+        "lib/netstandard2.0/log4net.xml",
+        "log4net.2.0.12.nupkg.sha512",
+        "log4net.nuspec",
+        "package-icon.png"
+      ]
+    },
+    "NetOfficeFw.Core/1.8.0": {
+      "sha512": "hKdgUFqUqJeCqzhrUAT65EVk+oROOlYWGsgpXa5AZzli8Qf9Jt0XfY6glHGGxyNa0BBifZr1YFagBV3PS+Hd0Q==",
+      "type": "package",
+      "path": "netofficefw.core/1.8.0",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "icon.png",
+        "lib/net40/NetOffice.dll",
+        "lib/net40/NetOffice.xml",
+        "lib/net40/OfficeApi.dll",
+        "lib/net40/OfficeApi.xml",
+        "lib/net40/VBIDEApi.dll",
+        "lib/net40/VBIDEApi.xml",
+        "netofficefw.core.1.8.0.nupkg.sha512",
+        "netofficefw.core.nuspec",
+        "tools/install.ps1"
+      ]
+    },
+    "NetOfficeFw.Word/1.8.0": {
+      "sha512": "V+HJK4817Rm/+7lPRa85VnaYDgCi5kuCouqfJ6KNVIA6PLpcThJJ8J6E+RYqvlqefu1V1/EEeZFsoqjqOv9zhQ==",
+      "type": "package",
+      "path": "netofficefw.word/1.8.0",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "icon.png",
+        "lib/net40/WordApi.dll",
+        "lib/net40/WordApi.xml",
+        "netofficefw.word.1.8.0.nupkg.sha512",
+        "netofficefw.word.nuspec",
+        "tools/install.ps1"
+      ]
+    },
+    "Checker/1.0.0": {
+      "type": "project",
+      "path": "../Checker/Checker.csproj",
+      "msbuildProject": "../Checker/Checker.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    ".NETFramework,Version=v4.7.2": [
+      "Checker >= 1.0.0",
+      "HtmlRenderer.Core >= 1.5.0.6",
+      "HtmlRenderer.WinForms >= 1.5.0.6",
+      "LiteDB >= 5.0.10",
+      "NetOfficeFw.Core >= 1.8.0",
+      "NetOfficeFw.Word >= 1.8.0",
+      "log4net >= 2.0.12"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\nguyentu\\.nuget\\packages\\": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "C:\\Users\\nguyentu\\source\\repos\\MOS Checker\\UI\\UI.csproj",
+      "projectName": "UI",
+      "projectPath": "C:\\Users\\nguyentu\\source\\repos\\MOS Checker\\UI\\UI.csproj",
+      "packagesPath": "C:\\Users\\nguyentu\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\nguyentu\\source\\repos\\MOS Checker\\UI\\obj\\",
+      "projectStyle": "PackageReference",
+      "skipContentFileWrite": true,
+      "configFilePaths": [
+        "C:\\Users\\nguyentu\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "net472"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net472": {
+          "projectReferences": {
+            "C:\\Users\\nguyentu\\source\\repos\\MOS Checker\\Checker\\Checker.csproj": {
+              "projectPath": "C:\\Users\\nguyentu\\source\\repos\\MOS Checker\\Checker\\Checker.csproj"
+            }
+          }
+        }
+      }
+    },
+    "frameworks": {
+      "net472": {
+        "dependencies": {
+          "HtmlRenderer.Core": {
+            "target": "Package",
+            "version": "[1.5.0.6, )"
+          },
+          "HtmlRenderer.WinForms": {
+            "target": "Package",
+            "version": "[1.5.0.6, )"
+          },
+          "LiteDB": {
+            "target": "Package",
+            "version": "[5.0.10, )"
+          },
+          "NetOfficeFw.Core": {
+            "target": "Package",
+            "version": "[1.8.0, )"
+          },
+          "NetOfficeFw.Word": {
+            "target": "Package",
+            "version": "[1.8.0, )"
+          },
+          "log4net": {
+            "target": "Package",
+            "version": "[2.0.12, )"
+          }
+        }
+      }
+    },
+    "runtimes": {
+      "win": {
+        "#import": []
+      },
+      "win-x64": {
+        "#import": []
+      },
+      "win-x86": {
+        "#import": []
+      }
+    }
+  }
+}
