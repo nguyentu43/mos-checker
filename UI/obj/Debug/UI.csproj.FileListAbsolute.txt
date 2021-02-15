@@ -22,3 +22,30 @@ C:\Users\nguyentu\source\repos\Clone MOS Gmetrix\UI\obj\Debug\UI.csproj.CoreComp
 C:\Users\nguyentu\source\repos\Clone MOS Gmetrix\UI\obj\Debug\UI.csproj.CopyComplete
 C:\Users\nguyentu\source\repos\Clone MOS Gmetrix\UI\obj\Debug\GUI.exe
 C:\Users\nguyentu\source\repos\Clone MOS Gmetrix\UI\obj\Debug\GUI.pdb
+C:\Users\nguyentu\source\repos\MOS Checker\UI\bin\Debug\GUI.exe.config
+C:\Users\nguyentu\source\repos\MOS Checker\UI\bin\Debug\GUI.exe
+C:\Users\nguyentu\source\repos\MOS Checker\UI\bin\Debug\GUI.pdb
+C:\Users\nguyentu\source\repos\MOS Checker\UI\bin\Debug\HtmlRenderer.dll
+C:\Users\nguyentu\source\repos\MOS Checker\UI\bin\Debug\HtmlRenderer.pdb
+C:\Users\nguyentu\source\repos\MOS Checker\UI\bin\Debug\HtmlRenderer.WinForms.dll
+C:\Users\nguyentu\source\repos\MOS Checker\UI\bin\Debug\HtmlRenderer.WinForms.pdb
+C:\Users\nguyentu\source\repos\MOS Checker\UI\bin\Debug\LiteDB.dll
+C:\Users\nguyentu\source\repos\MOS Checker\UI\bin\Debug\log4net.dll
+C:\Users\nguyentu\source\repos\MOS Checker\UI\bin\Debug\NetOffice.dll
+C:\Users\nguyentu\source\repos\MOS Checker\UI\bin\Debug\OfficeApi.dll
+C:\Users\nguyentu\source\repos\MOS Checker\UI\bin\Debug\VBIDEApi.dll
+C:\Users\nguyentu\source\repos\MOS Checker\UI\bin\Debug\WordApi.dll
+C:\Users\nguyentu\source\repos\MOS Checker\UI\bin\Debug\Checker.dll
+C:\Users\nguyentu\source\repos\MOS Checker\UI\bin\Debug\Checker.pdb
+C:\Users\nguyentu\source\repos\MOS Checker\UI\obj\Debug\UI.csprojAssemblyReference.cache
+C:\Users\nguyentu\source\repos\MOS Checker\UI\obj\Debug\GUI.frmChooseTest.resources
+C:\Users\nguyentu\source\repos\MOS Checker\UI\obj\Debug\GUI.frmRunTestOffice2013.resources
+C:\Users\nguyentu\source\repos\MOS Checker\UI\obj\Debug\GUI.frmRunTestOffice2016.resources
+C:\Users\nguyentu\source\repos\MOS Checker\UI\obj\Debug\GUI.frmTestSummary.resources
+C:\Users\nguyentu\source\repos\MOS Checker\UI\obj\Debug\GUI.Properties.Resources.resources
+C:\Users\nguyentu\source\repos\MOS Checker\UI\obj\Debug\GUI.ucTimer.resources
+C:\Users\nguyentu\source\repos\MOS Checker\UI\obj\Debug\UI.csproj.GenerateResource.cache
+C:\Users\nguyentu\source\repos\MOS Checker\UI\obj\Debug\UI.csproj.CoreCompileInputs.cache
+C:\Users\nguyentu\source\repos\MOS Checker\UI\obj\Debug\UI.csproj.CopyComplete
+C:\Users\nguyentu\source\repos\MOS Checker\UI\obj\Debug\GUI.exe
+C:\Users\nguyentu\source\repos\MOS Checker\UI\obj\Debug\GUI.pdb
