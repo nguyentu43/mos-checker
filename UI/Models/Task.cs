@@ -22,9 +22,7 @@ namespace GUI.Models
 
         public DateTime CreatedAt { get; set; }
 
-        public DateTime EndedAt { get; set; }
-
-        public int TimerCurrent { get; set; }
+        public int UsedTime { get; set; }
 
         public List<List<bool>> MarkCompletedQuestions { get; set; }
     }

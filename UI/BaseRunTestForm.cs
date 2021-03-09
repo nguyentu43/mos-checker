@@ -92,7 +92,7 @@ namespace GUI
             this.Task = new Models.Task()
             {
                 CreatedAt = DateTime.Now,
-                TimerCurrent = 0,
+                UsedTime = 0,
                 TestID = this.Test.ID,
                 TestName = $"{this.Test.Name} - {mode} ({this.Test.OfficeApp} - {this.Test.OfficeVersion})",
                 IsCompleted = false,

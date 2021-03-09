@@ -56,7 +56,7 @@ namespace GUI
 
         private void loadTask()
         {
-            this.ucTimer.Current = this.Task.TimerCurrent;
+            this.ucTimer.Current = this.Task.UsedTime;
             for(int i = 1; i<=this.Task.MarkCompletedQuestions.Count; ++i)
             {
                 (this.tablePanelInstructions.Controls["cboxQuestion" + i.ToString()] as CheckBox).Checked = this.Task.MarkCompletedQuestions[0][i - 1];
@@ -258,8 +258,7 @@ namespace GUI
                         int correctedQuestions = points.FindAll(x => x == true).Count;
 
                         this.Task.IsCompleted = true;
-                        this.Task.TimerCurrent = this.ucTimer.Current;
-                        this.Task.EndedAt = DateTime.Now;
+                        this.Task.UsedTime = this.ucTimer.Current;
                         this.Task.Points.Add(points);
                         double score = Math.Ceiling((double)(correctedQuestions * (1000 / this.Test.Questions.Count)));
                         this.Task.Score = Convert.ToInt32(score);
@@ -302,7 +301,7 @@ namespace GUI
                         application.Dispose();
 
                         this.Task.IsCompleted = false;
-                        this.Task.TimerCurrent = this.ucTimer.Current;
+                        this.Task.UsedTime = this.ucTimer.Current;
                         List<bool> markQuestions = new List<bool>();
 
                         for (int i = 1; i <= this.Test.Questions.Count; ++i)

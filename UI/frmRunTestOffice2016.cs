@@ -78,7 +78,7 @@ namespace GUI
 
         private void loadTask()
         {
-            this.ucTimer.Current = this.Task.TimerCurrent;
+            this.ucTimer.Current = this.Task.UsedTime;
         }
 
         protected override void createTask(List<List<bool>> dict = null)
@@ -320,7 +320,7 @@ namespace GUI
                         application.Dispose();
 
                         this.Task.IsCompleted = false;
-                        this.Task.TimerCurrent = this.ucTimer.Current;
+                        this.Task.UsedTime = this.ucTimer.Current;
                         Repository.updateTask(this.Task);
                         this.Close();
 
@@ -376,8 +376,7 @@ namespace GUI
                         }
 
                         this.Task.IsCompleted = true;
-                        this.Task.TimerCurrent = this.ucTimer.Current;
-                        this.Task.EndedAt = DateTime.Now;
+                        this.Task.UsedTime = this.ucTimer.Current;
 
                         this.Task.Score = Convert.ToInt32(Math.Ceiling(score));
                         Repository.updateTask(this.Task);

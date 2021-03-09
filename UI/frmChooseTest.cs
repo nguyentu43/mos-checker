@@ -113,7 +113,7 @@ namespace GUI
             this.dataGridTasks.DataSource = tasks;
             this.dataGridTasks.Columns.Remove("TestID");
             this.dataGridTasks.Columns.Remove("Mode");
-            this.dataGridTasks.Columns["TimerCurrent"].HeaderText = "Duration";
+            this.dataGridTasks.Columns["UsedTime"].HeaderText = "Duration";
             this.dataGridTasks.AutoResizeColumns();
         }
 
