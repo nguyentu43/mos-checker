@@ -9,7 +9,7 @@ namespace Models
     public class Repository
     {
         public static string DbPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "data.db");
-        public static string TaskDbPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "task.db");
+        public static string TaskDbPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "user.db");
         public static List<Test> getTests()
         {
             using (var db = new LiteDatabase(Repository.DbPath))

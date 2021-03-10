@@ -17,6 +17,7 @@ namespace GUI
         public new Form ParentForm { get; }
         public object Application { get; set; }
         public Models.Task Task { get; set; }
+        public string UserName { get; set; }
         public string CurrentDirPath
         {
             get
@@ -43,11 +44,12 @@ namespace GUI
             return Path.Combine(this.WorkingDirPath, this.Test.Resources[index]);
         }
 
-        public BaseRunTestForm(Form parent, Test test, Models.Enums.TestMode mode, Models.Task resumeTask = null)
+        public BaseRunTestForm(Form parent, string userName, Test test, Models.Enums.TestMode mode, Models.Task resumeTask = null)
         {
             this.Test = test;
             this.Mode = mode;
             this.ParentForm = parent;
+            this.UserName = userName;
         }
 
         protected virtual void resizeForm()
@@ -94,7 +96,8 @@ namespace GUI
                 IsCompleted = false,
                 Mode = (int)this.Mode,
                 Points = new List<List<bool>>(),
-                MarkCompletedQuestions = dict ?? new List<List<bool>>()
+                MarkCompletedQuestions = dict ?? new List<List<bool>>(),
+                UserName = this.UserName
             };
 
             if (!Repository.createTask(this.Task))
@@ -137,6 +140,78 @@ namespace GUI
             {
                 File.Copy(path, path.Replace(Path.Combine(this.AppResourcesPath, dirTemp), resourceDocumentsPath), true);
             }
+        }
+
+        protected void loadApp()
+        {
+            switch (this.Test.OfficeApp)
+            {
+                case "Word":
+                    Word.Application application = new Word.Application();
+                    application.Visible = true;
+                    this.Application = application;
+                    break;
+                case "Excel":
+                    break;
+                case "PowerPoint":
+                    break;
+            }
+
+            resizeOfficeWindow();
+        }
+
+        protected void resetProject(int indexProject)
+        {
+            File.Copy(Path.Combine(this.AppResourcesPath, this.Test.Resources[indexProject]), this.WorkingFilePaths(indexProject), true);
+
+            try
+            {
+                switch (this.Test.OfficeApp)
+                {
+                    case "Word":
+                        Word.Application application = this.Application as Word.Application;
+                        if (application.Documents.Count > 0)
+                        {
+                            application.ActiveDocument.Close(Word.Enums.WdSaveOptions.wdDoNotSaveChanges);
+                        }
+                        application.Documents.Open(this.WorkingFilePaths(indexProject));
+
+                        break;
+                    case "Excel":
+                        break;
+                    case "PowerPoint":
+                        break;
+                }
+            }
+            catch (Exception)
+            { }
+        }
+
+        protected void formClosed()
+        {
+            this.ParentForm.Show();
+            (this.ParentForm as frmChooseTest).LoadTasks();
+            try
+            {
+                switch (this.Test.OfficeApp)
+                {
+                    case "Word":
+                        Word.Application application = this.Application as Word.Application;
+
+                        if (application != null)
+                        {
+                            application.Quit(Word.Enums.WdSaveOptions.wdDoNotSaveChanges);
+                            application.Dispose();
+                        }
+                        break;
+                    case "Excel":
+                        break;
+                    case "PowerPoint":
+                        break;
+                }
+            }
+            catch (Exception)
+            { }
         }
     }
 }

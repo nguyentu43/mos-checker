@@ -42,6 +42,8 @@ namespace GUI
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dataGridTasks = new System.Windows.Forms.DataGridView();
             this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtUserName = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridTasks)).BeginInit();
             this.SuspendLayout();
@@ -140,7 +142,7 @@ namespace GUI
             // 
             this.btnPracticeMode.AutoSize = true;
             this.btnPracticeMode.Font = new System.Drawing.Font("Segoe UI", 11.25F);
-            this.btnPracticeMode.Location = new System.Drawing.Point(28, 206);
+            this.btnPracticeMode.Location = new System.Drawing.Point(28, 274);
             this.btnPracticeMode.Name = "btnPracticeMode";
             this.btnPracticeMode.Size = new System.Drawing.Size(115, 30);
             this.btnPracticeMode.TabIndex = 9;
@@ -152,7 +154,7 @@ namespace GUI
             // 
             this.btnTestingMode.AutoSize = true;
             this.btnTestingMode.Font = new System.Drawing.Font("Segoe UI", 11.25F);
-            this.btnTestingMode.Location = new System.Drawing.Point(151, 206);
+            this.btnTestingMode.Location = new System.Drawing.Point(151, 274);
             this.btnTestingMode.Name = "btnTestingMode";
             this.btnTestingMode.Size = new System.Drawing.Size(117, 30);
             this.btnTestingMode.TabIndex = 10;
@@ -166,7 +168,7 @@ namespace GUI
             this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(312, 30);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(454, 206);
+            this.groupBox1.Size = new System.Drawing.Size(454, 256);
             this.groupBox1.TabIndex = 11;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Saved/Completed Tests";
@@ -178,7 +180,7 @@ namespace GUI
             this.dataGridTasks.Location = new System.Drawing.Point(3, 23);
             this.dataGridTasks.Name = "dataGridTasks";
             this.dataGridTasks.ReadOnly = true;
-            this.dataGridTasks.Size = new System.Drawing.Size(448, 180);
+            this.dataGridTasks.Size = new System.Drawing.Size(448, 230);
             this.dataGridTasks.TabIndex = 0;
             this.dataGridTasks.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridTasks_CellDoubleClick);
             // 
@@ -186,17 +188,38 @@ namespace GUI
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(312, 239);
+            this.label6.Location = new System.Drawing.Point(312, 289);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(245, 15);
             this.label6.TabIndex = 12;
             this.label6.Text = "(*) Double click the row to resume the test";
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(25, 203);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(91, 21);
+            this.label7.TabIndex = 13;
+            this.label7.Text = "User Name:";
+            // 
+            // txtUserName
+            // 
+            this.txtUserName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtUserName.Location = new System.Drawing.Point(28, 231);
+            this.txtUserName.Name = "txtUserName";
+            this.txtUserName.Size = new System.Drawing.Size(240, 26);
+            this.txtUserName.TabIndex = 14;
+            this.txtUserName.Text = "guest";
+            // 
             // frmChooseTest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(794, 273);
+            this.ClientSize = new System.Drawing.Size(794, 328);
+            this.Controls.Add(this.txtUserName);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnTestingMode);
@@ -235,6 +258,8 @@ namespace GUI
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView dataGridTasks;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txtUserName;
     }
 }
 

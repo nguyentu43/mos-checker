@@ -14,7 +14,7 @@ namespace GUI
 {
     public partial class frmRunTestOffice2013 : BaseRunTestForm
     {
-        public frmRunTestOffice2013(Form parent, Test test, Models.Enums.TestMode mode, Task resumeTask = null) : base(parent, test, mode)
+        public frmRunTestOffice2013(Form parent, string userName, Test test, Models.Enums.TestMode mode, Task resumeTask = null) : base(parent, userName, test, mode)
         {
             InitializeComponent();
 
@@ -32,6 +32,7 @@ namespace GUI
             }
 
             this.loadApp();
+            this.loadFileOffice();
             this.resizeForm();
             this.createDirTemp();
 
@@ -69,42 +70,16 @@ namespace GUI
         {
             this.ucTimer.Current = 0;
             this.ucTimer.Stop();
-            this.ParentForm.Show();
-            (this.ParentForm as frmChooseTest).LoadTasks();
-            try
-            {
-                switch (this.Test.OfficeApp)
-                {
-                    case "Word":
-                        Word.Application application = this.Application as Word.Application;
-
-                        if (application != null)
-                        {
-                            application.Quit(Word.Enums.WdSaveOptions.wdDoNotSaveChanges);
-                            application.Dispose();
-                        }
-                        break;
-                    case "Excel":
-                        break;
-                    case "PowerPoint":
-                        break;
-                }
-            }
-            catch (Exception)
-            { }
+            base.formClosed();
         }
 
-        private void loadApp()
+        private void loadFileOffice()
         {
             switch (this.Test.OfficeApp)
             {
                 case "Word":
-                    Word.Application application = new Word.Application();
+                    Word.Application application = this.Application as Word.Application;
                     application.Documents.Open(this.WorkingFilePaths());
-                    application.Visible = true;
-                    this.Application = application;
-                    resizeOfficeWindow();
-
                     break;
                 case "Excel":
                     break;
@@ -239,6 +214,9 @@ namespace GUI
 
             try
             {
+                List<bool> points = null;
+                string className = ("Checker." + this.Test.OfficeApp + "." + this.Test.Name + "_" + this.Test.OfficeVersion).Replace(" ", "_");
+                        BaseTest testChecker = this.createTestChecker(className);
                 switch (this.Test.OfficeApp)
                 {
                     case "Word":
@@ -246,26 +224,11 @@ namespace GUI
                         Word.Document document = application.ActiveDocument;
                         document.Save();
 
-                        string className = ("Checker." + this.Test.OfficeApp + "." + this.Test.Name + "_" + this.Test.OfficeVersion).Replace(" ", "_");
-                        BaseTest testChecker = this.createTestChecker(className);
-
                         testChecker.Document = document;
-                        List<bool> points = testChecker.Points;
-                        int correctedQuestions = points.FindAll(x => x == true).Count;
-
-                        this.Task.IsCompleted = true;
-                        this.Task.UsedTime = this.ucTimer.Current;
-                        this.Task.Points.Add(points);
-                        double score = Math.Ceiling((double)(correctedQuestions * (1000 / this.Test.Questions.Count)));
-                        this.Task.Score = Convert.ToInt32(score);
-                        Repository.updateTask(this.Task);
+                        points = testChecker.Points;
 
                         application.Quit(Word.Enums.WdSaveOptions.wdDoNotSaveChanges);
                         application.Dispose();
-
-                        MessageBox.Show($"Your Score: {this.Task.Score}\nCorrected Tasks: {correctedQuestions}/{points.Count}", "Your Result", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                        this.Close();
 
                         break;
                     case "Excel":
@@ -273,6 +236,17 @@ namespace GUI
                     case "PowerPoint":
                         break;
                 }
+
+                int correctedQuestions = points.FindAll(x => x == true).Count;
+                this.Task.IsCompleted = true;
+                this.Task.UsedTime = this.ucTimer.Current;
+                this.Task.Points.Add(points);
+                double score = Math.Min(Math.Ceiling((double)(correctedQuestions * (1000f / this.Test.Questions.Count))), 1000f);
+                this.Task.Score = Convert.ToInt32(score);
+                Repository.updateTask(this.Task);
+
+                MessageBox.Show($"Your Score: {this.Task.Score}\nCorrected Tasks: {correctedQuestions}/{points.Count}", "Your Result", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Close();
             }
             catch (Exception)
             { }
@@ -289,16 +263,14 @@ namespace GUI
             this.ucTimer.Stop();
             try
             {
+                List<bool> markQuestions = new List<bool>();
+
                 switch (this.Test.OfficeApp)
                 {
                     case "Word":
                         Word.Application application = this.Application as Word.Application;
                         application.Quit(Word.Enums.WdSaveOptions.wdSaveChanges);
                         application.Dispose();
-
-                        this.Task.IsCompleted = false;
-                        this.Task.UsedTime = this.ucTimer.Current;
-                        List<bool> markQuestions = new List<bool>();
 
                         for (int i = 1; i <= this.Test.Questions.Count; ++i)
                         {
@@ -312,16 +284,18 @@ namespace GUI
                             }
                         }
 
-                        this.Task.MarkCompletedQuestions.Add(markQuestions);
-                        Repository.updateTask(this.Task);
-                        this.Close();
-
                         break;
                     case "Excel":
                         break;
                     case "PowerPoint":
                         break;
                 }
+
+                this.Task.IsCompleted = false;
+                this.Task.UsedTime = this.ucTimer.Current;
+                this.Task.MarkCompletedQuestions.Add(markQuestions);
+                Repository.updateTask(this.Task);
+                this.Close();
             }
             catch (Exception)
             { }
@@ -329,22 +303,7 @@ namespace GUI
 
         private void btnResetProject_Click(object sender, EventArgs e)
         {
-            switch (this.Test.OfficeApp)
-            {
-                case "Word":
-                    Word.Application application = this.Application as Word.Application;
-                    if (application.Documents.Count > 0)
-                    {
-                        application.ActiveDocument.Close(Word.Enums.WdSaveOptions.wdDoNotSaveChanges);
-                    }
-                    File.Copy(Path.Combine(this.AppResourcesPath, this.Test.Resources[0]), this.WorkingFilePaths(), true);
-                    application.Documents.Open(this.WorkingFilePaths());
-                    break;
-                case "Excel":
-                    break;
-                case "PowerPoint":
-                    break;
-            }
+            base.resetProject(0);
         }
 
         private void btnResize_Click(object sender, EventArgs e)

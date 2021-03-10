@@ -6,3 +6,4 @@ C:\Users\nguyentu\source\repos\MOS Checker\Models\obj\Debug\Models.pdb
 C:\Users\nguyentu\source\repos\MOS Checker\Models\bin\Debug\LiteDB.dll
 C:\Users\nguyentu\source\repos\MOS Checker\Models\bin\Debug\LiteDB.xml
 C:\Users\nguyentu\source\repos\MOS Checker\Models\obj\Debug\Models.csproj.CopyComplete
+C:\Users\nguyentu\source\repos\MOS Checker\Models\obj\Debug\Models.csprojAssemblyReference.cache
