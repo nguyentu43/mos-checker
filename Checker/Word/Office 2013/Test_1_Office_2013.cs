@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Checker.Base;
+﻿using Checker.Base;
 using NetOffice.OfficeApi;
 using NetOffice.OfficeApi.Enums;
 using NetOffice.WordApi;
 using NetOffice.WordApi.Enums;
+using System;
+using System.Collections.Generic;
 
 namespace Checker.Word
 {
@@ -31,7 +28,7 @@ namespace Checker.Word
         public bool Q3()
         {
             bool borderCheck = false;
-            foreach(Section section in this.Document.Sections)
+            foreach (Section section in this.Document.Sections)
             {
                 Borders borders = section.Borders;
                 borderCheck = borders.DistanceFromTop == 24 &&
@@ -54,8 +51,8 @@ namespace Checker.Word
                 "Question & Answer with Dr. Nelson*^m*Question: I have a serious pain in my shoulder after swimming across the Atlantic",
                 "Pet health is as important as ours. I hope these household remedies will reduce your veterinarian bill and increase the lifespan of our furry friends*^m*Question & Answer with Dr. Nelson"
             };
-            
-            foreach(string str in findStrList)
+
+            foreach (string str in findStrList)
             {
                 Range range = this.Document.Content;
                 Find find = range.Find;
@@ -68,7 +65,7 @@ namespace Checker.Word
         {
             bool orientCheck = false;
             bool pageOneCheck = false;
-            foreach(Section section in this.Document.Sections)
+            foreach (Section section in this.Document.Sections)
             {
                 if (Convert.ToInt32(section.Range.Information(WdInformation.wdActiveEndPageNumber)) == 1)
                 {
@@ -88,7 +85,7 @@ namespace Checker.Word
         public bool Q6()
         {
             Range range = this.Document.Content;
-            if(range.Find.Execute("Dry mouth*Addictive personality", null, null, true))
+            if (range.Find.Execute("Dry mouth*Addictive personality", null, null, true))
             {
                 return range.ListFormat.ListLevelNumber == 1 &&
                        range.ListFormat.ListString != "" &&
@@ -101,9 +98,9 @@ namespace Checker.Word
 
         public bool Q7()
         {
-            foreach(NetOffice.WordApi.Shape shape in this.Document.Shapes)
+            foreach (NetOffice.WordApi.Shape shape in this.Document.Shapes)
             {
-                if (shape.Type == MsoShapeType.msoPicture && 
+                if (shape.Type == MsoShapeType.msoPicture &&
                     Convert.ToInt32(shape.Anchor.Information(WdInformation.wdActiveEndPageNumber)) == 1)
                 {
                     return shape.WrapFormat.Type == WdWrapType.wdWrapSquare &&
@@ -119,7 +116,7 @@ namespace Checker.Word
         {
             foreach (NetOffice.WordApi.Shape shape in this.Document.Shapes)
             {
-                if (shape.Type == MsoShapeType.msoAutoShape && 
+                if (shape.Type == MsoShapeType.msoAutoShape &&
                     Convert.ToInt32(shape.Anchor.Information(WdInformation.wdActiveEndPageNumber)) == 1 &&
                     shape.AutoShapeType == MsoAutoShapeType.msoShapeSmileyFace)
                 {
@@ -174,7 +171,7 @@ namespace Checker.Word
             Row row = table.Rows[1];
             bool alignCheck = false;
 
-            foreach(Cell cell in row.Cells)
+            foreach (Cell cell in row.Cells)
             {
                 alignCheck = cell.Range.Paragraphs.Alignment == WdParagraphAlignment.wdAlignParagraphCenter;
                 if (!alignCheck) return false;
@@ -185,11 +182,11 @@ namespace Checker.Word
 
         public bool Q14()
         {
-            foreach(Style style in this.Document.Styles)
+            foreach (Style style in this.Document.Styles)
             {
-                if(style.NameLocal == "Intense Emphasis")
+                if (style.NameLocal == "Intense Emphasis")
                 {
-                    return style.Font.Size == 12 && (int) style.Font.Color == -587137063;
+                    return style.Font.Size == 12 && (int)style.Font.Color == -587137063;
                 }
             }
             return false;
@@ -204,7 +201,7 @@ namespace Checker.Word
                 ("What about our pets?", "Intense Emphasis")
             };
 
-            foreach((string content, string style) in findStrList)
+            foreach ((string content, string style) in findStrList)
             {
                 Range range = this.Document.Content;
                 if (range.Find.Execute(content))
@@ -220,14 +217,14 @@ namespace Checker.Word
             }
 
             return styleCheck;
-            
+
         }
 
         public bool Q16()
         {
-            foreach(NetOffice.WordApi.Shape shape in this.Document.Shapes)
+            foreach (NetOffice.WordApi.Shape shape in this.Document.Shapes)
             {
-                if(shape.Type == MsoShapeType.msoPicture && 
+                if (shape.Type == MsoShapeType.msoPicture &&
                     Convert.ToInt32(shape.Anchor.Information(WdInformation.wdActiveEndPageNumber)) == 3)
                 {
                     return shape.Height == 187.2f &&
@@ -245,7 +242,7 @@ namespace Checker.Word
         public bool Q17()
         {
             Range range = this.Document.Content;
-            if(range.Find.Execute("how would we survive?*re you okay", null, null, true))
+            if (range.Find.Execute("how would we survive?*re you okay", null, null, true))
             {
                 NetOffice.WordApi.ShapeRange wordArt = range.ShapeRange;
                 if (wordArt.Count == 0) return false;
@@ -273,7 +270,7 @@ namespace Checker.Word
         public bool Q18()
         {
             Range range = this.Document.Content;
-            if(range.Find.Execute("lukewarm water"))
+            if (range.Find.Execute("lukewarm water"))
             {
                 return range.Font.Underline == WdUnderline.wdUnderlineDouble;
             }
@@ -294,7 +291,7 @@ namespace Checker.Word
         {
             Section last = this.Document.Sections.Last;
             return last.PageSetup.BottomMargin == 72f && last.PageSetup.TopMargin == 72f &&
-                last.PageSetup.LeftMargin == 144f && last.PageSetup.RightMargin == 144f ;
+                last.PageSetup.LeftMargin == 144f && last.PageSetup.RightMargin == 144f;
         }
 
         public bool Q21()
@@ -321,17 +318,17 @@ namespace Checker.Word
 
         public bool Q23()
         {
-            if(this.Document.HasVBProject)
+            if (this.Document.HasVBProject)
             {
                 try
                 {
                     this.Document.Application.Run("Emphasis");
                     return true;
                 }
-                catch(Exception)
+                catch (Exception)
                 {
                     return false;
-                } 
+                }
             }
             return false;
         }
@@ -341,9 +338,9 @@ namespace Checker.Word
             Range range = this.Document.Content;
             List<string> t = new List<string>();
             int matchCount = 0;
-            for(int i = 0; i<5; i++)
+            for (int i = 0; i < 5; i++)
             {
-                if(range.Find.Execute("toxins"))
+                if (range.Find.Execute("toxins"))
                 {
                     if (range.Font.Bold != 0 && range.Font.Underline == WdUnderline.wdUnderlineSingle)
                     {
@@ -363,7 +360,7 @@ namespace Checker.Word
         public bool Q26()
         {
             bool footerCheck = false;
-            foreach(Section section in this.Document.Sections)
+            foreach (Section section in this.Document.Sections)
             {
                 HeadersFooters headersFooters = section.Footers;
                 HeaderFooter headerFooter = headersFooters[WdHeaderFooterIndex.wdHeaderFooterPrimary];
@@ -389,7 +386,7 @@ namespace Checker.Word
 
         public bool Q28()
         {
-            if(this.Document.ProtectionType == WdProtectionType.wdAllowOnlyRevisions && this.Document.TrackMoves == true)
+            if (this.Document.ProtectionType == WdProtectionType.wdAllowOnlyRevisions && this.Document.TrackMoves == true)
             {
                 this.Document.Unprotect("GMetrix");
                 return this.Document.ProtectionType == WdProtectionType.wdNoProtection;

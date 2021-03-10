@@ -1,15 +1,11 @@
 ﻿using Checker.Base;
-using GUI.Enums;
-using GUI.Models;
+using Models;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Word = NetOffice.WordApi;
 
@@ -19,7 +15,7 @@ namespace GUI
     {
         public int SelectedProject { get; set; }
         public List<List<Question>> Projects { get; set; }
-        public frmRunTestOffice2016(Form parent, Test test, TestMode mode, Models.Task resumeTask = null):base(parent, test, mode)
+        public frmRunTestOffice2016(Form parent, Test test, Models.Enums.TestMode mode, Models.Task resumeTask = null) : base(parent, test, mode)
         {
             InitializeComponent();
 
@@ -34,10 +30,10 @@ namespace GUI
             else
             {
                 List<List<bool>> dict = new List<List<bool>>();
-                foreach(var p in this.Projects)
+                foreach (var p in this.Projects)
                 {
                     List<bool> l = new List<bool>();
-                    for(int j=0; j<p.Count-1; ++j)
+                    for (int j = 0; j < p.Count - 1; ++j)
                     {
                         l.Add(false);
                     }
@@ -51,7 +47,7 @@ namespace GUI
             this.createDirTemp();
             this.resizeForm();
 
-            if (mode == TestMode.Testing)
+            if (mode == Models.Enums.TestMode.Testing)
             {
                 this.ucTimer.Max = 50 * 60;
                 this.ucTimer.EndEvent += this.TimerEnd;
@@ -113,7 +109,7 @@ namespace GUI
                         break;
                 }
             }
-            catch(Exception)
+            catch (Exception)
             {
 
             }
@@ -140,11 +136,11 @@ namespace GUI
         private void loadMarkQuestions()
         {
             List<bool> markQuestions = this.Task.MarkCompletedQuestions[this.SelectedProject];
-                
+
             foreach (Control control in this.panelQuestionTitle.Controls)
             {
                 int index = Convert.ToInt32(control.Name.Replace("btnQuestion", ""));
-                if(index > 0 && markQuestions[index - 1])
+                if (index > 0 && markQuestions[index - 1])
                 {
                     control.BackColor = Color.Orange;
                 }
@@ -176,11 +172,11 @@ namespace GUI
             Question question = this.Projects[this.SelectedProject][index];
             this.htmlPanelQuestionContent.Text = question.Content;
 
-            if(btnHelp.ForeColor == Color.Red)
+            if (btnHelp.ForeColor == Color.Red)
             {
                 this.htmlPanelQuestionContent.Text += "<h3>HELP</h3>" + question.Help?.Replace("\n", "<br>");
             }
-            foreach(Control button in this.panelQuestionTitle.Controls)
+            foreach (Control button in this.panelQuestionTitle.Controls)
             {
                 button.ForeColor = Color.Black;
             }
@@ -207,7 +203,7 @@ namespace GUI
                         break;
                 }
             }
-            catch(Exception)
+            catch (Exception)
             { }
         }
 
@@ -256,7 +252,7 @@ namespace GUI
 
         private void btnHelp_Click(object sender, EventArgs e)
         {
-            if(this.btnHelp.ForeColor == Color.Red)
+            if (this.btnHelp.ForeColor == Color.Red)
             {
                 this.btnHelp.ForeColor = Color.Black;
             }
@@ -286,7 +282,7 @@ namespace GUI
             Control button = this.getSelectedQuestionButton();
             int index = Convert.ToInt32(button.Name.Replace("btnQuestion", ""));
             if (index == 0) return;
-            if(button.BackColor == Color.Orange)
+            if (button.BackColor == Color.Orange)
             {
                 button.BackColor = SystemColors.Control;
                 this.Task.MarkCompletedQuestions[this.SelectedProject][index - 1] = false;
@@ -296,7 +292,7 @@ namespace GUI
                 button.BackColor = Color.Orange;
                 this.Task.MarkCompletedQuestions[this.SelectedProject][index - 1] = true;
             }
-            
+
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -360,8 +356,8 @@ namespace GUI
                         float scorePerProject = 1000 / 7;
                         float score = 0;
                         string correctedTasksPerProject = "";
-                        
-                        for(int i = 1; i<=this.Projects.Count; ++i)
+
+                        for (int i = 1; i <= this.Projects.Count; ++i)
                         {
                             float scorePerTask = scorePerProject / this.Projects[i - 1].Count;
                             string className = ("Checker." + this.Test.OfficeApp + "." + "Project_" + i.ToString() + "_" + this.Test.Name + "_" + this.Test.OfficeVersion).Replace(" ", "_");

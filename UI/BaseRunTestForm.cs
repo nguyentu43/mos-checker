@@ -1,23 +1,19 @@
 ﻿using Checker.Base;
-using GUI.Enums;
-using GUI.Models;
+using Models;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Word = NetOffice.WordApi;
 
 namespace GUI
 {
-    public abstract class BaseRunTestForm: Form
+    public abstract class BaseRunTestForm : Form
     {
         protected const string dirTemp = "GMetrixTemplates";
         public Test Test { get; }
-        public TestMode Mode { get; }
+        public Models.Enums.TestMode Mode { get; }
         public new Form ParentForm { get; }
         public object Application { get; set; }
         public Models.Task Task { get; set; }
@@ -47,7 +43,7 @@ namespace GUI
             return Path.Combine(this.WorkingDirPath, this.Test.Resources[index]);
         }
 
-        public BaseRunTestForm(Form parent, Test test, TestMode mode, Models.Task resumeTask = null)
+        public BaseRunTestForm(Form parent, Test test, Models.Enums.TestMode mode, Models.Task resumeTask = null)
         {
             this.Test = test;
             this.Mode = mode;
@@ -88,7 +84,7 @@ namespace GUI
 
         protected virtual void createTask(List<List<bool>> dict = null)
         {
-            string mode = (this.Mode == TestMode.Practice ? "Practice" : "Testing") + " Mode";
+            string mode = (this.Mode == Models.Enums.TestMode.Practice ? "Practice" : "Testing") + " Mode";
             this.Task = new Models.Task()
             {
                 CreatedAt = DateTime.Now,
@@ -108,11 +104,11 @@ namespace GUI
             }
 
             Directory.CreateDirectory(this.WorkingDirPath);
-            for(int i = 0; i<this.Test.Resources.Count; ++i)
+            for (int i = 0; i < this.Test.Resources.Count; ++i)
             {
                 File.Copy(Path.Combine(this.AppResourcesPath, this.Test.Resources[i]), this.WorkingFilePaths(i), true);
             }
-            
+
         }
 
         protected virtual BaseTest createTestChecker(string className)

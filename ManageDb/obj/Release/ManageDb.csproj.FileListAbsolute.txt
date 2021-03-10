@@ -1,0 +1,11 @@
+C:\Users\nguyentu\source\repos\MOS Checker\UI\bin\Release\ManageDb.exe.config
+C:\Users\nguyentu\source\repos\MOS Checker\UI\bin\Release\ManageDb.exe
+C:\Users\nguyentu\source\repos\MOS Checker\UI\bin\Release\ManageDb.pdb
+C:\Users\nguyentu\source\repos\MOS Checker\ManageDb\obj\Release\ManageDb.csprojAssemblyReference.cache
+C:\Users\nguyentu\source\repos\MOS Checker\ManageDb\obj\Release\ManageDb.frmManageDb.resources
+C:\Users\nguyentu\source\repos\MOS Checker\ManageDb\obj\Release\ManageDb.Properties.Resources.resources
+C:\Users\nguyentu\source\repos\MOS Checker\ManageDb\obj\Release\ManageDb.csproj.GenerateResource.cache
+C:\Users\nguyentu\source\repos\MOS Checker\ManageDb\obj\Release\ManageDb.csproj.CoreCompileInputs.cache
+C:\Users\nguyentu\source\repos\MOS Checker\ManageDb\obj\Release\ManageDb.csproj.CopyComplete
+C:\Users\nguyentu\source\repos\MOS Checker\ManageDb\obj\Release\ManageDb.exe
+C:\Users\nguyentu\source\repos\MOS Checker\ManageDb\obj\Release\ManageDb.pdb

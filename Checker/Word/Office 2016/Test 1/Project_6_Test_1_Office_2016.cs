@@ -1,9 +1,5 @@
 ﻿using Checker.Base;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using OWord = NetOffice.WordApi;
 
 namespace Checker.Word
@@ -30,7 +26,7 @@ namespace Checker.Word
 
         public bool Q3()
         {
-            foreach(var shape in this.Document.Shapes)
+            foreach (var shape in this.Document.Shapes)
             {
                 if ((int)shape.Anchor.Information(OWord.Enums.WdInformation.wdActiveEndPageNumber) == 3)
                 {
@@ -47,8 +43,8 @@ namespace Checker.Word
                 "Vision", "Reliability", "Adaptability",
                 "Family"
             };
-        
-            foreach(var item in list)
+
+            foreach (var item in list)
             {
                 var find = this.Document.Content.Find;
                 find.Style = OWord.Enums.WdBuiltinStyle.wdStyleStrong;

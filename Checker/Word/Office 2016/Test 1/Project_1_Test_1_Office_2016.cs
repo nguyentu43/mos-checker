@@ -1,9 +1,5 @@
 ﻿using Checker.Base;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using OWord = NetOffice.WordApi;
 
 namespace Checker.Word
@@ -21,7 +17,7 @@ namespace Checker.Word
         public bool Q1()
         {
             OWord.Range range = this.Document.Content;
-            if(range.Find.Execute("Affordable Pricing*Contact Us", null, null, true))
+            if (range.Find.Execute("Affordable Pricing*Contact Us", null, null, true))
             {
                 OWord.InlineShapes inlineShapes = range.InlineShapes;
                 if (inlineShapes.Count == 0) return false;
@@ -34,9 +30,9 @@ namespace Checker.Word
         public bool Q2()
         {
             OWord.Range range = this.Document.Content;
-            if(range.Find.Execute("Bicycle Advantages"))
+            if (range.Find.Execute("Bicycle Advantages"))
             {
-                foreach(OWord.Hyperlink hyperlink in range.Hyperlinks)
+                foreach (OWord.Hyperlink hyperlink in range.Hyperlinks)
                 {
                     return hyperlink.Address == "http://wikipedia.org/wiki/Bicycle" &&
                         hyperlink.Type == NetOffice.OfficeApi.Enums.MsoHyperlinkType.msoHyperlinkRange;

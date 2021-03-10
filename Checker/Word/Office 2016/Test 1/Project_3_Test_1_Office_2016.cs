@@ -1,9 +1,6 @@
 ﻿using Checker.Base;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using OWord = NetOffice.WordApi;
 
 namespace Checker.Word
@@ -22,7 +19,7 @@ namespace Checker.Word
         {
             bool check = false;
             OWord.Range range = this.Document.Content;
-            if(range.Find.Execute("Our Most Popular Flavors*Contact Us", null, null, true))
+            if (range.Find.Execute("Our Most Popular Flavors*Contact Us", null, null, true))
             {
                 OWord.Table table = range.TopLevelTables[1];
                 List<string> list = new List<string>()
@@ -68,7 +65,7 @@ namespace Checker.Word
                         return shape.TextFrame.TextRange.Text == "We specialize in custom flavors!\r" &&
                                prevRow.Text == "Ice Cream Shop\r\a\r\a";
                     }
-                    catch(Exception)
+                    catch (Exception)
                     {
                         return false;
                     }
@@ -79,7 +76,7 @@ namespace Checker.Word
 
         public bool Q4()
         {
-            foreach(OWord.InlineShape shape in this.Document.InlineShapes)
+            foreach (OWord.InlineShape shape in this.Document.InlineShapes)
             {
                 OWord.ShadowFormat shadow = shape.Shadow;
                 return shadow.Blur == 5 &&
@@ -96,7 +93,7 @@ namespace Checker.Word
         {
             foreach (OWord.Shape shape in this.Document.Shapes)
             {
-                if(shape.Type == NetOffice.OfficeApi.Enums.MsoShapeType.msoPicture)
+                if (shape.Type == NetOffice.OfficeApi.Enums.MsoShapeType.msoPicture)
                 {
                     OWord.ThreeDFormat threeDFormat = shape.ThreeD;
                     return threeDFormat.PresetCamera == NetOffice.OfficeApi.Enums.MsoPresetCamera.msoCameraIsometricOffAxis1Right &&

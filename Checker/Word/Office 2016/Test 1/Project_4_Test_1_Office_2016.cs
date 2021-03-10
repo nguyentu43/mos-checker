@@ -1,9 +1,5 @@
 ﻿using Checker.Base;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using OWord = NetOffice.WordApi;
 
 namespace Checker.Word
@@ -23,7 +19,7 @@ namespace Checker.Word
             OWord.Range range = this.Document.Content;
             range.Find.Format = true;
             range.Find.Style = OWord.Enums.WdBuiltinStyle.wdStyleHeading2;
-            if(range.Find.Execute("Moab, Utah") && range.Bookmarks.Count > 0)
+            if (range.Find.Execute("Moab, Utah") && range.Bookmarks.Count > 0)
             {
                 var bookmark = range.Bookmarks[1];
                 return bookmark.Name == "Moab";
@@ -41,7 +37,7 @@ namespace Checker.Word
         {
             if (this.Document.Tables.Count == 0) return false;
             OWord.Table table = this.Document.Tables[1];
-            if(table.Rows.Count == 4 && table.Columns.Count == 2)
+            if (table.Rows.Count == 4 && table.Columns.Count == 2)
             {
                 List<string> list = new List<string>()
                 {
@@ -50,7 +46,7 @@ namespace Checker.Word
                     "Battle Rock Off Road Park, Cortez CO\r\aUnkown\r\a\r\a",
                     "Ram Off Road Park, Colorado Springs, CO\r\aStarting at $10 (Depending on equipment)\r\a\r\a"
                 };
-                foreach(var row in table.Rows)
+                foreach (var row in table.Rows)
                 {
                     if (row.Range.Text != list[row.Index - 1])
                     {
@@ -65,7 +61,7 @@ namespace Checker.Word
         public bool Q4()
         {
             OWord.Range range = this.Document.Content;
-            if(range.Find.Execute("Jeep and varients*Mercedes Unimog", null, null, true))
+            if (range.Find.Execute("Jeep and varients*Mercedes Unimog", null, null, true))
             {
                 var listFormat = range.ListFormat;
                 return listFormat.ListType == OWord.Enums.WdListType.wdListBullet &&
@@ -76,9 +72,9 @@ namespace Checker.Word
 
         public bool Q5()
         {
-            foreach(var paragraph in this.Document.Paragraphs)
+            foreach (var paragraph in this.Document.Paragraphs)
             {
-                return (bool) paragraph.Range.Information(OWord.Enums.WdInformation.wdInCoverPage);
+                return (bool)paragraph.Range.Information(OWord.Enums.WdInformation.wdInCoverPage);
             }
             return false;
         }

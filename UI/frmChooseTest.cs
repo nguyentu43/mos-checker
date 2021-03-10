@@ -1,17 +1,8 @@
-﻿using GUI.Models;
+﻿using Models;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using LiteDB;
-using GUI;
-using GUI.Enums;
 using System.Diagnostics;
+using System.Windows.Forms;
 
 namespace GUI
 {
@@ -24,7 +15,7 @@ namespace GUI
 
         private void RunTest(
             Test test,
-            TestMode testMode = TestMode.Practice, Models.Task resumeTask = null)
+            Models.Enums.TestMode testMode = Models.Enums.TestMode.Practice, Models.Task resumeTask = null)
         {
 
             Dictionary<string, string> appProcesses = new Dictionary<string, string>();
@@ -66,7 +57,7 @@ namespace GUI
         }
         private void LoadTestsIntoCmb()
         {
-            if(this.cmbOfficeVersion.SelectedIndex >= 0 && this.cmbOfficeApp.SelectedIndex >= 0)
+            if (this.cmbOfficeVersion.SelectedIndex >= 0 && this.cmbOfficeApp.SelectedIndex >= 0)
             {
                 this.cmbTestName.Text = "";
                 string officeVersion = this.cmbOfficeVersion.SelectedItem.ToString();
@@ -88,9 +79,9 @@ namespace GUI
         private void btnPracticeMode_Click(object sender, EventArgs e)
         {
             Test test = this.cmbTestName.SelectedItem as Test;
-            if(test != null)
+            if (test != null)
             {
-                this.RunTest(test, TestMode.Practice);
+                this.RunTest(test, Models.Enums.TestMode.Practice);
             }
             else
             {
@@ -126,12 +117,12 @@ namespace GUI
                 return;
             }
             Test test = Repository.getTestById(task.TestID);
-            if(test == null)
+            if (test == null)
             {
                 MessageBox.Show("Test not found");
                 return;
             }
-            this.RunTest(test, (TestMode)task.Mode, task);
+            this.RunTest(test, (Models.Enums.TestMode)task.Mode, task);
         }
 
         private void btnTestingMode_Click(object sender, EventArgs e)
@@ -139,7 +130,7 @@ namespace GUI
             Test test = this.cmbTestName.SelectedItem as Test;
             if (test != null)
             {
-                this.RunTest(test, TestMode.Testing);
+                this.RunTest(test, Models.Enums.TestMode.Testing);
             }
             else
             {

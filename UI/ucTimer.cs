@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GUI
@@ -32,7 +26,7 @@ namespace GUI
         {
             this.Current++;
             this.label.Text = secToStr(this.Current);
-            if(Max != -1 && Current >= Max)
+            if (Max != -1 && Current >= Max)
             {
                 this.timer1.Enabled = false;
                 this.Timer_End(this, null);

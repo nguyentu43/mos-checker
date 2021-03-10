@@ -1,28 +1,24 @@
-﻿using System;
+﻿using Checker.Base;
+using Models;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
-using GUI.Models;
-using GUI.Enums;
+using System.IO;
 using System.Linq;
+using System.Windows.Forms;
 using TheArtOfDev.HtmlRenderer.WinForms;
 using Word = NetOffice.WordApi;
-using NetOffice.OfficeApi.Enums;
-using System.IO;
-using Checker.Base;
 
 namespace GUI
 {
     public partial class frmRunTestOffice2013 : BaseRunTestForm
     {
-        public frmRunTestOffice2013(Form parent, Test test, TestMode mode, Task resumeTask = null):base(parent, test, mode)
+        public frmRunTestOffice2013(Form parent, Test test, Models.Enums.TestMode mode, Task resumeTask = null) : base(parent, test, mode)
         {
             InitializeComponent();
 
-            this.labelHelpInfo.Visible = mode == TestMode.Practice;
+            this.labelHelpInfo.Visible = mode == Models.Enums.TestMode.Practice;
             this.loadQuestions();
 
             if (resumeTask != null)
@@ -41,7 +37,7 @@ namespace GUI
 
             this.labelTestName.Text = this.Test.Name + " - " + this.Mode.ToString() + " Mode";
 
-            if (mode == TestMode.Testing)
+            if (mode == Models.Enums.TestMode.Testing)
             {
                 this.ucTimer.Max = 50 * 60;
                 this.ucTimer.EndEvent += this.TimerEnd;
@@ -57,7 +53,7 @@ namespace GUI
         private void loadTask()
         {
             this.ucTimer.Current = this.Task.UsedTime;
-            for(int i = 1; i<=this.Task.MarkCompletedQuestions.Count; ++i)
+            for (int i = 1; i <= this.Task.MarkCompletedQuestions.Count; ++i)
             {
                 (this.tablePanelInstructions.Controls["cboxQuestion" + i.ToString()] as CheckBox).Checked = this.Task.MarkCompletedQuestions[0][i - 1];
             }
@@ -81,12 +77,12 @@ namespace GUI
                 {
                     case "Word":
                         Word.Application application = this.Application as Word.Application;
-                    
-                            if(application != null)
-                            {
-                                application.Quit(Word.Enums.WdSaveOptions.wdDoNotSaveChanges);
-                                application.Dispose();
-                            }
+
+                        if (application != null)
+                        {
+                            application.Quit(Word.Enums.WdSaveOptions.wdDoNotSaveChanges);
+                            application.Dispose();
+                        }
                         break;
                     case "Excel":
                         break;
@@ -94,7 +90,7 @@ namespace GUI
                         break;
                 }
             }
-            catch(Exception)
+            catch (Exception)
             { }
         }
 
@@ -120,14 +116,14 @@ namespace GUI
         private void loadQuestions()
         {
             string refImagesPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, this.Test.ResourcesPath, "RefImages");
-            foreach(string path in Directory.GetFiles(refImagesPath, "*.png"))
+            foreach (string path in Directory.GetFiles(refImagesPath, "*.png"))
             {
                 Image image = Image.FromFile(path);
                 this.panelRefImages.Controls.Add(new PictureBox()
                 {
                     Image = image,
                     SizeMode = PictureBoxSizeMode.AutoSize
-                }) ;
+                });
             }
 
             this.tablePanelInstructions.ColumnStyles.Clear();
@@ -138,10 +134,10 @@ namespace GUI
 
             this.tablePanelQuestionTitle.RowStyles.Clear();
 
-            string baseStyleSheet = ".titleRow{padding: 5px;background-color:#96cbc7}.posRow{padding: 5px 5px 5px 30px; background-color: gray}.listRow{padding: 5px 5px 5px 50px; background-color: white}";
+            string baseStyleSheet = ".title{padding: 5px;background-color:#96cbc7}.position{padding: 5px 5px 5px 30px; background-color: gray}.list{padding: 5px 5px 5px 50px; background-color: white}";
 
             int row = 0;
-            foreach(IGrouping<string, Question> group in this.Test.Questions.GroupBy(x => x.Group).OrderBy(x => x.Key))
+            foreach (IGrouping<string, Question> group in this.Test.Questions.GroupBy(x => x.Group).OrderBy(x => x.Key))
             {
                 this.tablePanelQuestionTitle.RowStyles.Add(new RowStyle(SizeType.AutoSize));
                 this.tablePanelQuestionTitle.Controls.Add(new Label()
@@ -150,7 +146,7 @@ namespace GUI
                     Dock = DockStyle.Fill,
                     TextAlign = ContentAlignment.MiddleCenter,
                     Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-                }, 0, row) ;
+                }, 0, row);
 
                 this.tablePanelInstructions.RowStyles.Add(new RowStyle(SizeType.Absolute, 50));
                 Label groupLabel = new Label()
@@ -176,7 +172,7 @@ namespace GUI
                         Name = "labelQuestion" + question.Index,
                         Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.GraphicsUnit.Point)
                     };
-                    
+
                     label.Click += new System.EventHandler(this.labelQuestion_Click);
                     this.tablePanelQuestionTitle.Controls.Add(label, 0, row);
 
@@ -200,7 +196,7 @@ namespace GUI
                     };
                     htmlLabel.DoubleClick += delegate
                     {
-                        if (this.Mode == TestMode.Testing) return;
+                        if (this.Mode == Models.Enums.TestMode.Testing) return;
                         MessageBox.Show(question.Help, "Help: Task " + question.Index.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
                     };
 
@@ -250,7 +246,7 @@ namespace GUI
                         Word.Document document = application.ActiveDocument;
                         document.Save();
 
-                        string className = ("Checker." + this.Test.OfficeApp + "." +    this.Test.Name + "_" + this.Test.OfficeVersion).Replace(" ", "_");
+                        string className = ("Checker." + this.Test.OfficeApp + "." + this.Test.Name + "_" + this.Test.OfficeVersion).Replace(" ", "_");
                         BaseTest testChecker = this.createTestChecker(className);
 
                         testChecker.Document = document;
@@ -278,7 +274,7 @@ namespace GUI
                         break;
                 }
             }
-            catch(Exception)
+            catch (Exception)
             { }
         }
 
@@ -327,7 +323,7 @@ namespace GUI
                         break;
                 }
             }
-            catch(Exception)
+            catch (Exception)
             { }
         }
 

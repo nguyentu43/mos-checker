@@ -1,9 +1,4 @@
 ﻿using Checker.Base;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using OWord = NetOffice.WordApi;
 
 namespace Checker.Word
@@ -22,7 +17,7 @@ namespace Checker.Word
         {
             OWord.Range range = this.Document.Content;
             range.Find.MatchWildcards = true;
-            if(range.Find.Execute("Fishing Derby a Success*local fish enhancement"))
+            if (range.Find.Execute("Fishing Derby a Success*local fish enhancement"))
             {
                 var section = range.Sections.First;
                 var cols = section.PageSetup.TextColumns;
@@ -42,7 +37,7 @@ namespace Checker.Word
         {
             var range = this.Document.Content;
             range.Find.MatchWildcards = true;
-            if(range.Find.Execute("fabulous all year??") && range.Endnotes.Count > 0)
+            if (range.Find.Execute("fabulous all year??") && range.Endnotes.Count > 0)
             {
                 var endnote = range.Endnotes[1];
                 return endnote.Range.Text == "Oregon fishing license required" &&
@@ -54,9 +49,9 @@ namespace Checker.Word
 
         public bool Q4()
         {
-            foreach(var shape in this.Document.Shapes)
+            foreach (var shape in this.Document.Shapes)
             {
-                if(shape.Type == NetOffice.OfficeApi.Enums.MsoShapeType.msoSmartArt)
+                if (shape.Type == NetOffice.OfficeApi.Enums.MsoShapeType.msoSmartArt)
                 {
                     return shape.SmartArt.Color.Description == "Colorful Range - Accent Colors 5 to 6";
                 }

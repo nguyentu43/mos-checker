@@ -1,12 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "a82LJlpBrijVB8lC5r2JfBWOJesd+ycEEi+0EhyE3pyh3I0m+DVmumyeXYOulD7BpBfPKtKnvI0WF7222mDFKg==",
+  "dgSpecHash": "wRF5da2TANvWtnoQfdZqovFRjwfLcUOAdBpeAwbVgEKRNfoeu79G32BppsasMO3ponDe5Kp5hz79zATtTkB7Sw==",
   "success": true,
   "projectFilePath": "C:\\Users\\nguyentu\\source\\repos\\MOS Checker\\UI\\UI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\nguyentu\\.nuget\\packages\\htmlrenderer.core\\1.5.0.6\\htmlrenderer.core.1.5.0.6.nupkg.sha512",
     "C:\\Users\\nguyentu\\.nuget\\packages\\htmlrenderer.winforms\\1.5.0.6\\htmlrenderer.winforms.1.5.0.6.nupkg.sha512",
-    "C:\\Users\\nguyentu\\.nuget\\packages\\litedb\\5.0.10\\litedb.5.0.10.nupkg.sha512",
     "C:\\Users\\nguyentu\\.nuget\\packages\\log4net\\2.0.12\\log4net.2.0.12.nupkg.sha512",
     "C:\\Users\\nguyentu\\.nuget\\packages\\netofficefw.core\\1.8.0\\netofficefw.core.1.8.0.nupkg.sha512",
     "C:\\Users\\nguyentu\\.nuget\\packages\\netofficefw.word\\1.8.0\\netofficefw.word.1.8.0.nupkg.sha512"

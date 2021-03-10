@@ -166,7 +166,7 @@ namespace GUI
             this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(312, 30);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(387, 206);
+            this.groupBox1.Size = new System.Drawing.Size(454, 206);
             this.groupBox1.TabIndex = 11;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Saved/Completed Tests";
@@ -178,7 +178,7 @@ namespace GUI
             this.dataGridTasks.Location = new System.Drawing.Point(3, 23);
             this.dataGridTasks.Name = "dataGridTasks";
             this.dataGridTasks.ReadOnly = true;
-            this.dataGridTasks.Size = new System.Drawing.Size(381, 180);
+            this.dataGridTasks.Size = new System.Drawing.Size(448, 180);
             this.dataGridTasks.TabIndex = 0;
             this.dataGridTasks.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridTasks_CellDoubleClick);
             // 
@@ -196,7 +196,7 @@ namespace GUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(729, 273);
+            this.ClientSize = new System.Drawing.Size(794, 273);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnTestingMode);

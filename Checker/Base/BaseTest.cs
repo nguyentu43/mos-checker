@@ -1,11 +1,7 @@
-﻿using System;
+﻿using NetOffice.WordApi;
+using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using NetOffice.WordApi;
-using NetOffice.WordApi.Enums;
 
 namespace Checker.Base
 {
@@ -18,7 +14,7 @@ namespace Checker.Base
             {
                 if (this.Document == null) throw new Exception("Document not found");
                 List<bool> points = new List<bool>();
-                for(int i = 1; i<=this.QuestionCount; ++i)
+                for (int i = 1; i <= this.QuestionCount; ++i)
                 {
                     MethodInfo methodInfo = this.GetType().GetMethod("Q" + i.ToString());
                     bool result = false;
@@ -37,9 +33,8 @@ namespace Checker.Base
                 }
                 return points;
             }
-            
-        }
 
+        }
         public abstract int QuestionCount { get; }
     }
 }

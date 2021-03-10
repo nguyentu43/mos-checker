@@ -27,19 +27,6 @@
           "lib/net45/HtmlRenderer.WinForms.dll": {}
         }
       },
-      "LiteDB/5.0.10": {
-        "type": "package",
-        "frameworkAssemblies": [
-          "System",
-          "System.Runtime"
-        ],
-        "compile": {
-          "lib/net45/LiteDB.dll": {}
-        },
-        "runtime": {
-          "lib/net45/LiteDB.dll": {}
-        }
-      },
       "log4net/2.0.12": {
         "type": "package",
         "frameworkAssemblies": [
@@ -85,6 +72,15 @@
         },
         "runtime": {
           "bin/placeholder/Checker.dll": {}
+        }
+      },
+      "Models/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/Models.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Models.dll": {}
         }
       }
     },
@@ -114,19 +110,6 @@
           "lib/net45/HtmlRenderer.WinForms.dll": {}
         }
       },
-      "LiteDB/5.0.10": {
-        "type": "package",
-        "frameworkAssemblies": [
-          "System",
-          "System.Runtime"
-        ],
-        "compile": {
-          "lib/net45/LiteDB.dll": {}
-        },
-        "runtime": {
-          "lib/net45/LiteDB.dll": {}
-        }
-      },
       "log4net/2.0.12": {
         "type": "package",
         "frameworkAssemblies": [
@@ -172,6 +155,15 @@
         },
         "runtime": {
           "bin/placeholder/Checker.dll": {}
+        }
+      },
+      "Models/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/Models.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Models.dll": {}
         }
       }
     },
@@ -201,19 +193,6 @@
           "lib/net45/HtmlRenderer.WinForms.dll": {}
         }
       },
-      "LiteDB/5.0.10": {
-        "type": "package",
-        "frameworkAssemblies": [
-          "System",
-          "System.Runtime"
-        ],
-        "compile": {
-          "lib/net45/LiteDB.dll": {}
-        },
-        "runtime": {
-          "lib/net45/LiteDB.dll": {}
-        }
-      },
       "log4net/2.0.12": {
         "type": "package",
         "frameworkAssemblies": [
@@ -259,6 +238,15 @@
         },
         "runtime": {
           "bin/placeholder/Checker.dll": {}
+        }
+      },
+      "Models/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/Models.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Models.dll": {}
         }
       }
     },
@@ -288,19 +276,6 @@
           "lib/net45/HtmlRenderer.WinForms.dll": {}
         }
       },
-      "LiteDB/5.0.10": {
-        "type": "package",
-        "frameworkAssemblies": [
-          "System",
-          "System.Runtime"
-        ],
-        "compile": {
-          "lib/net45/LiteDB.dll": {}
-        },
-        "runtime": {
-          "lib/net45/LiteDB.dll": {}
-        }
-      },
       "log4net/2.0.12": {
         "type": "package",
         "frameworkAssemblies": [
@@ -346,6 +321,15 @@
         },
         "runtime": {
           "bin/placeholder/Checker.dll": {}
+        }
+      },
+      "Models/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/Models.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Models.dll": {}
         }
       }
     }
@@ -390,26 +374,6 @@
         "lib/net45/HtmlRenderer.WinForms.dll",
         "lib/net45/HtmlRenderer.WinForms.pdb",
         "readme.txt"
-      ]
-    },
-    "LiteDB/5.0.10": {
-      "sha512": "x70WuqMDuP75dajqSLvO+AnI/BbwS6da+ukTO7rueV7VoXoQ5CRA9FV4r7cOS4OUr2NS1Up7LDIutjCxQycRvg==",
-      "type": "package",
-      "path": "litedb/5.0.10",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "AppVeyorSettings.json",
-        "LICENSE",
-        "icon_64x64.png",
-        "lib/net45/LiteDB.dll",
-        "lib/net45/LiteDB.xml",
-        "lib/netstandard1.3/LiteDB.dll",
-        "lib/netstandard1.3/LiteDB.xml",
-        "lib/netstandard2.0/LiteDB.dll",
-        "lib/netstandard2.0/LiteDB.xml",
-        "litedb.5.0.10.nupkg.sha512",
-        "litedb.nuspec"
       ]
     },
     "log4net/2.0.12": {
@@ -482,6 +446,11 @@
       "type": "project",
       "path": "../Checker/Checker.csproj",
       "msbuildProject": "../Checker/Checker.csproj"
+    },
+    "Models/1.0.0": {
+      "type": "project",
+      "path": "../Models/Models.csproj",
+      "msbuildProject": "../Models/Models.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -489,7 +458,7 @@
       "Checker >= 1.0.0",
       "HtmlRenderer.Core >= 1.5.0.6",
       "HtmlRenderer.WinForms >= 1.5.0.6",
-      "LiteDB >= 5.0.10",
+      "Models >= 1.0.0",
       "NetOfficeFw.Core >= 1.8.0",
       "NetOfficeFw.Word >= 1.8.0",
       "log4net >= 2.0.12"
@@ -524,6 +493,9 @@
           "projectReferences": {
             "C:\\Users\\nguyentu\\source\\repos\\MOS Checker\\Checker\\Checker.csproj": {
               "projectPath": "C:\\Users\\nguyentu\\source\\repos\\MOS Checker\\Checker\\Checker.csproj"
+            },
+            "C:\\Users\\nguyentu\\source\\repos\\MOS Checker\\Models\\Models.csproj": {
+              "projectPath": "C:\\Users\\nguyentu\\source\\repos\\MOS Checker\\Models\\Models.csproj"
             }
           }
         }
@@ -539,10 +511,6 @@
           "HtmlRenderer.WinForms": {
             "target": "Package",
             "version": "[1.5.0.6, )"
-          },
-          "LiteDB": {
-            "target": "Package",
-            "version": "[5.0.10, )"
           },
           "NetOfficeFw.Core": {
             "target": "Package",

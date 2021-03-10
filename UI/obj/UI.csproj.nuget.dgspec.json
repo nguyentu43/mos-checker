@@ -14,6 +14,16 @@
         "net472": {}
       }
     },
+    "C:\\Users\\nguyentu\\source\\repos\\MOS Checker\\Models\\Models.csproj": {
+      "restore": {
+        "projectUniqueName": "C:\\Users\\nguyentu\\source\\repos\\MOS Checker\\Models\\Models.csproj",
+        "projectName": "Models",
+        "projectPath": "C:\\Users\\nguyentu\\source\\repos\\MOS Checker\\Models\\Models.csproj"
+      },
+      "frameworks": {
+        "net472": {}
+      }
+    },
     "C:\\Users\\nguyentu\\source\\repos\\MOS Checker\\UI\\UI.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -40,6 +50,9 @@
             "projectReferences": {
               "C:\\Users\\nguyentu\\source\\repos\\MOS Checker\\Checker\\Checker.csproj": {
                 "projectPath": "C:\\Users\\nguyentu\\source\\repos\\MOS Checker\\Checker\\Checker.csproj"
+              },
+              "C:\\Users\\nguyentu\\source\\repos\\MOS Checker\\Models\\Models.csproj": {
+                "projectPath": "C:\\Users\\nguyentu\\source\\repos\\MOS Checker\\Models\\Models.csproj"
               }
             }
           }
@@ -55,10 +68,6 @@
             "HtmlRenderer.WinForms": {
               "target": "Package",
               "version": "[1.5.0.6, )"
-            },
-            "LiteDB": {
-              "target": "Package",
-              "version": "[5.0.10, )"
             },
             "NetOfficeFw.Core": {
               "target": "Package",

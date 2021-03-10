@@ -1,9 +1,4 @@
 ﻿using Checker.Base;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using OWord = NetOffice.WordApi;
 
 namespace Checker.Word
@@ -47,9 +42,9 @@ namespace Checker.Word
 
         public bool Q5()
         {
-            foreach(var shape in this.Document.Shapes)
+            foreach (var shape in this.Document.Shapes)
             {
-                if(shape.Type == NetOffice.OfficeApi.Enums.MsoShapeType.msoTextBox && shape.TextFrame.TextRange.Text == "Discover Scuba\r")
+                if (shape.Type == NetOffice.OfficeApi.Enums.MsoShapeType.msoTextBox && shape.TextFrame.TextRange.Text == "Discover Scuba\r")
                 {
                     var font = shape.TextFrame.TextRange.Font;
                     return font.ColorIndex == OWord.Enums.WdColorIndex.wdTurquoise &&

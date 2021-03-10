@@ -1,9 +1,5 @@
 ﻿using Checker.Base;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using OWord = NetOffice.WordApi;
 
 namespace Checker.Word
@@ -60,7 +56,7 @@ namespace Checker.Word
             return shape.WrapFormat.Type == OWord.Enums.WdWrapType.wdWrapTight &&
                 shape.Type == NetOffice.OfficeApi.Enums.MsoShapeType.msoPicture &&
                 shape.Top <= maxTop && shape.Left <= 0;
-                ;
+            ;
 
         }
     }
