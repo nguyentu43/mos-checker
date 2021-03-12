@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
+using System.Threading;
 using System.Windows.Forms;
 using Word = NetOffice.WordApi;
 
@@ -18,6 +19,8 @@ namespace GUI
         public object Application { get; set; }
         public Models.Task Task { get; set; }
         public string UserName { get; set; }
+
+        protected Thread threadLoading;
         public string CurrentDirPath
         {
             get
@@ -114,6 +117,25 @@ namespace GUI
 
         }
 
+        protected void showLoading()
+        {
+            if (threadLoading != null)
+            {
+                threadLoading.Abort();
+            }
+
+            threadLoading = new Thread(delegate () {
+                (new frmLoading()).ShowDialog();
+            });
+            threadLoading.Start();
+        }
+        protected void closeLoading()
+        {
+            if(threadLoading != null)
+            {
+                threadLoading.Abort();
+            }    
+        }
         protected virtual BaseTest createTestChecker(string className)
         {
             List<BaseTest> list = new List<BaseTest>();

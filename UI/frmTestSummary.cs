@@ -13,8 +13,6 @@ namespace GUI
             InitializeComponent();
         }
 
-
-
         private void btnProject_Click(object sender, EventArgs e)
         {
             int index = Convert.ToInt32((sender as Control).Name.Replace("btnProject", ""));

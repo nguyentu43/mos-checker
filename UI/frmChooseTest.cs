@@ -2,12 +2,14 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace GUI
 {
     public partial class frmChooseTest : Form
     {
+        protected Thread threadLoading;
         public frmChooseTest()
         {
             InitializeComponent();
@@ -41,19 +43,25 @@ namespace GUI
                 }
             }
 
+            threadLoading = new Thread(delegate ()
+            {
+                (new frmLoading()).ShowDialog();
+            });
+            threadLoading.Start();
+
             switch (test.OfficeVersion)
             {
                 case "Office 2013":
                     (new frmRunTestOffice2013(this, this.txtUserName.Text, test, testMode, resumeTask)).Show();
-                    this.Hide();
                     break;
                 case "Office 2016":
                     (new frmRunTestOffice2016(this, this.txtUserName.Text, test, testMode, resumeTask)).Show();
-                    this.Hide();
                     break;
                 default:
                     throw new Exception("Error");
             }
+
+            this.Hide();
         }
         private void LoadTestsIntoCmb()
         {
@@ -91,7 +99,6 @@ namespace GUI
 
         private void frmChooseTest_Load(object sender, EventArgs e)
         {
-            //Db.initDb();
             this.cmbTestName.DisplayMember = "Name";
             this.cmbTestName.ValueMember = "ID";
             this.cmbOfficeVersion.SelectedIndex = 0;
@@ -104,7 +111,7 @@ namespace GUI
             this.dataGridTasks.DataSource = tasks;
             this.dataGridTasks.Columns.Remove("TestID");
             this.dataGridTasks.Columns.Remove("Mode");
-            this.dataGridTasks.Columns["UsedTime"].HeaderText = "Duration";
+            this.dataGridTasks.Columns["UsedTime"].HeaderText = "Duration (s)";
             this.dataGridTasks.AutoResizeColumns();
         }
 
@@ -135,6 +142,15 @@ namespace GUI
             else
             {
                 MessageBox.Show("Please choose a test");
+            }
+        }
+
+        private void frmChooseTest_VisibleChanged(object sender, EventArgs e)
+        {
+            if (!this.Visible)
+            {
+                threadLoading.Abort();
+                threadLoading = null;
             }
         }
     }

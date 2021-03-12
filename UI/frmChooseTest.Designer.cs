@@ -236,6 +236,7 @@ namespace GUI
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MOS Test";
             this.Load += new System.EventHandler(this.frmChooseTest_Load);
+            this.VisibleChanged += new System.EventHandler(this.frmChooseTest_VisibleChanged);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridTasks)).EndInit();
             this.ResumeLayout(false);

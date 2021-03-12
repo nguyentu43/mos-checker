@@ -211,7 +211,7 @@ namespace GUI
                     return;
                 }
             }
-
+            showLoading();
             try
             {
                 List<bool> points = null;
@@ -244,7 +244,7 @@ namespace GUI
                 double score = Math.Min(Math.Ceiling((double)(correctedQuestions * (1000f / this.Test.Questions.Count))), 1000f);
                 this.Task.Score = Convert.ToInt32(score);
                 Repository.updateTask(this.Task);
-
+                closeLoading();
                 MessageBox.Show($"Your Score: {this.Task.Score}\nCorrected Tasks: {correctedQuestions}/{points.Count}", "Your Result", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
             }
@@ -261,6 +261,7 @@ namespace GUI
             }
 
             this.ucTimer.Stop();
+            showLoading();
             try
             {
                 List<bool> markQuestions = new List<bool>();
@@ -295,6 +296,7 @@ namespace GUI
                 this.Task.UsedTime = this.ucTimer.Current;
                 this.Task.MarkCompletedQuestions.Add(markQuestions);
                 Repository.updateTask(this.Task);
+                closeLoading();
                 this.Close();
             }
             catch (Exception)

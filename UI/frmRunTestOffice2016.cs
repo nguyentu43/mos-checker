@@ -246,11 +246,11 @@ namespace GUI
             {
                 return;
             }
-
+            
+            this.ucTimer.Stop();
+            showLoading();
             try
             {
-                this.ucTimer.Stop();
-
                 switch (this.Test.OfficeApp)
                 {
                     case "Word":
@@ -267,6 +267,7 @@ namespace GUI
                 this.Task.IsCompleted = false;
                 this.Task.UsedTime = this.ucTimer.Current;
                 Repository.updateTask(this.Task);
+                closeLoading();
                 this.Close();
             }
             catch (Exception)
@@ -284,8 +285,8 @@ namespace GUI
                 }
             }
 
+            showLoading();
             string correctedTasksPerProject = "";
-
             try
             {
                 switch (this.Test.OfficeApp)
@@ -333,6 +334,7 @@ namespace GUI
                 this.Task.UsedTime = this.ucTimer.Current;
 
                 Repository.updateTask(this.Task);
+                closeLoading();
 
                 MessageBox.Show($"Your Score: {this.Task.Score}\n" + correctedTasksPerProject, "Your Result", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
