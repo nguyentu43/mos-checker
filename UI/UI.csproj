@@ -50,7 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaseRunTestForm.cs">
+    <Compile Include="fromBaseRunTest.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmChooseTest.cs">

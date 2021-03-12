@@ -107,7 +107,7 @@ III.
                     Group = "2-Page 1",
                     Help = @"1. Place your cursor at the beginning of the document.
 2. In the INSERT tab, Illustrations group, click Pictures.
-3. Browse to your GMetrixTemplates folder, select the image doctor.png.
+3. Browse to your MyTemplates folder, select the image doctor.png.
 4. Click Insert.
 5. Select the image. In the PICTURE TOOLS/FORMAT tab, Arrange group, select the Position drop-down.
 6. Click Position in Top Right with Square Text Wrapping.
@@ -226,7 +226,7 @@ II.
                     Group = "3-Page 2",
                     Help = @"1. On the second page, position your cursor under the subheading, What about our pets?
 2. In the INSERT tab, Illustrations group, select Pictures.
-3. Browse to your GMetrixTemplates folder, select the image kitty.jpg.
+3. Browse to your MyTemplates folder, select the image kitty.jpg.
 4. Click Insert.
 5. In the PICTURE TOOLS/FORMAT tab, Size group, select the dialogue box launcher for Size.
 6. Under Scale, for both Height and Width, type or navigate to ""50%"". Click OK.
@@ -425,7 +425,7 @@ The bicycle sales and rental store Bellows Bicycle Barn has asked you to update 
                 new Question()
                 {
                     Title = "TASK 1",
-                    Content = @"On <b>page 2</b> between the sections <b>Affordable Pricing</b> and <b>Contact Us</b>, insert the file <b>Bicycle_Pricing.xlsx</b> located in the <b>GmetrixTemplates</b> folder. (Accept all defaults)",
+                    Content = @"On <b>page 2</b> between the sections <b>Affordable Pricing</b> and <b>Contact Us</b>, insert the file <b>Bicycle_Pricing.xlsx</b> located in the <b>MyTemplates</b> folder. (Accept all defaults)",
                     Index = 1,
                     Group = "1",
                     Help = @"1.	On Page 2, place your cursor in the empty space between the sections Affordable Pricing and Contact Us. 
@@ -433,7 +433,7 @@ The bicycle sales and rental store Bellows Bicycle Barn has asked you to update 
 3.	In the Text group, click Object and select Object ...
 4.	In the Object pop-up window, click the Create from File tab.
 5.	On the Create from File tab, click the Browse button.
-6.	Browse to the GMetrixTemplates folder and select Bicycle_Pricing.xlsx and click Insert.
+6.	Browse to the MyTemplates folder and select Bicycle_Pricing.xlsx and click Insert.
 In the Object pop-up window, click OK."
                 },
                 new Question()
@@ -462,13 +462,13 @@ In the Object pop-up window, click OK."
                 new Question()
                 {
                     Title = "TASK 4",
-                    Content = @"In the first list, replace the bullets for all of the points below the <b>Bicycle Advantages</b> heading with the graphic <b>Bike Rider.png</b> located in the <b>GMetrixTemplates</b> folder.",
+                    Content = @"In the first list, replace the bullets for all of the points below the <b>Bicycle Advantages</b> heading with the graphic <b>Bike Rider.png</b> located in the <b>MyTemplates</b> folder.",
                     Index = 4,
                     Group = "1",
                     Help = @"1. Select all of the text below the heading Bicycle Advantages, beginning with the text Low maintenance...and ending with store.
 2. On the HOME tab, in the Paragraph group, click the Bullets down-arrow and select Define New Bullet…
 3. In the Define New Bullet pop-up box, under Bullet character, click Picture…
-4. In the Insert Pictures pop-up box, to the right of From a file, click Browse and locate the GMetrixTemplates folder. Select the file, Bike Rider.png and click Insert. Notice the sample of the new bullet displayed in the Preview window.
+4. In the Insert Pictures pop-up box, to the right of From a file, click Browse and locate the MyTemplates folder. Select the file, Bike Rider.png and click Insert. Notice the sample of the new bullet displayed in the Preview window.
 5. On the Define New Bullet pop-up box, click OK."
                 },
                 new Question()
@@ -491,13 +491,13 @@ In the Object pop-up window, click OK."
                 new Question()
                 {
                     Title = "TASK 1",
-                    Content = @"After the <b>last paragraph</b>, insert the text from the file <b>WirelessNetworks.docx</b> located in the <b>GmetrixTemplates</b> folder. (Accept all defaults)",
+                    Content = @"After the <b>last paragraph</b>, insert the text from the file <b>WirelessNetworks.docx</b> located in the <b>MyTemplates</b> folder. (Accept all defaults)",
                     Index = 1,
                     Group = "2",
                     Help = @"1. Place your cursor in the empty space below the last paragraph.
 2. Click the INSERT tab.
 3. In the Text group, click Object and select Text from File …
-4. Browse to the GMetrixTemplates folder and select WirelessNetworks.docx and click Insert."
+4. Browse to the MyTemplates folder and select WirelessNetworks.docx and click Insert."
                 },
                 new Question()
                 {
@@ -543,13 +543,13 @@ Apply to: Whole document
                 new Question()
                 {
                     Title = "TASK 5",
-                    Content = @"Insert the <b>networking.jpg</b> photo, located in the <b>GMetrixTemplates</b> folder, to the left of the first paragraph. Apply <b>Tight text wrapping.</b>",
+                    Content = @"Insert the <b>networking.jpg</b> photo, located in the <b>MyTemplates</b> folder, to the left of the first paragraph. Apply <b>Tight text wrapping.</b>",
                     Index = 5,
                     Group = "2",
                     Help = @"1. Place your cursor before the first sentence, A computer network...
 2. Click the INSERT tab.
 3. In the Illustrations group, click Pictures,
-4. Browse to the GmetrixTemplates folder and select networking.jpg. Click Insert.
+4. Browse to the MyTemplates folder and select networking.jpg. Click Insert.
 5. To the right of the inserted photo, click the Layout Options icon. Beneath With Text Wrapping click Tight. Accept all other defaults."
                 },
                 new Question()

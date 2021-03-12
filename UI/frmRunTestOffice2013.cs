@@ -12,7 +12,7 @@ using Word = NetOffice.WordApi;
 
 namespace GUI
 {
-    public partial class frmRunTestOffice2013 : BaseRunTestForm
+    public partial class frmRunTestOffice2013 : fromBaseRunTest
     {
         public frmRunTestOffice2013(Form parent, string userName, Test test, Models.Enums.TestMode mode, Task resumeTask = null) : base(parent, userName, test, mode)
         {

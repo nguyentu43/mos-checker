@@ -9,9 +9,9 @@ using Word = NetOffice.WordApi;
 
 namespace GUI
 {
-    public abstract class BaseRunTestForm : Form
+    public abstract class fromBaseRunTest : Form
     {
-        protected const string dirTemp = "GMetrixTemplates";
+        protected const string dirTemp = "MyTemplates";
         public Test Test { get; }
         public Models.Enums.TestMode Mode { get; }
         public new Form ParentForm { get; }
@@ -44,7 +44,7 @@ namespace GUI
             return Path.Combine(this.WorkingDirPath, this.Test.Resources[index]);
         }
 
-        public BaseRunTestForm(Form parent, string userName, Test test, Models.Enums.TestMode mode, Models.Task resumeTask = null)
+        public fromBaseRunTest(Form parent, string userName, Test test, Models.Enums.TestMode mode, Models.Task resumeTask = null)
         {
             this.Test = test;
             this.Mode = mode;

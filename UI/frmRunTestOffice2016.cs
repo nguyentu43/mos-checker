@@ -11,7 +11,7 @@ using Word = NetOffice.WordApi;
 
 namespace GUI
 {
-    public partial class frmRunTestOffice2016 : BaseRunTestForm
+    public partial class frmRunTestOffice2016 : fromBaseRunTest
     {
         public int SelectedProject { get; set; }
         public List<List<Question>> Projects { get; set; }
