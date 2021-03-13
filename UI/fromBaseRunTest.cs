@@ -122,11 +122,13 @@ namespace GUI
             if (threadLoading != null)
             {
                 threadLoading.Abort();
+                threadLoading = null;
             }
 
             threadLoading = new Thread(delegate () {
                 (new frmLoading()).ShowDialog();
             });
+
             threadLoading.Start();
         }
         protected void closeLoading()
@@ -136,15 +138,15 @@ namespace GUI
                 threadLoading.Abort();
             }    
         }
-        protected virtual BaseTest createTestChecker(string className)
+        protected virtual BaseWordTest createTestChecker(string className)
         {
-            List<BaseTest> list = new List<BaseTest>();
-            Checker.Base.BaseTest testChecker = null;
+            List<BaseWordTest> list = new List<BaseWordTest>();
+            Checker.Base.BaseWordTest testChecker = null;
             foreach (var asm in AppDomain.CurrentDomain.GetAssemblies())
             {
                 Type type = asm.GetType(className);
                 if (type != null)
-                    testChecker = Activator.CreateInstance(type) as Checker.Base.BaseTest;
+                    testChecker = Activator.CreateInstance(type) as Checker.Base.BaseWordTest;
             }
             return testChecker;
         }

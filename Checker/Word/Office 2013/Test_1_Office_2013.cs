@@ -8,7 +8,7 @@ using System.Collections.Generic;
 
 namespace Checker.Word
 {
-    public class Test_1_Office_2013 : BaseTest
+    public class Test_1_Office_2013 : BaseWordTest
     {
         public override int QuestionCount { get { return 29; } }
 

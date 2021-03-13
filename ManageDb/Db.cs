@@ -886,7 +886,6 @@ You own a small SCUBA diving concession in the Caribbean. You are creating a fly
             {
                 db.DropCollection("tests");
                 ILiteCollection<Test> collection = db.GetCollection<Test>("tests");
-                collection.EnsureIndex("Name");
                 collection.Insert(test_1_office_2013);
                 collection.Insert(test_1_office_2016);
             }

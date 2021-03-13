@@ -40,7 +40,7 @@ namespace GUI
 
             if (mode == Models.Enums.TestMode.Testing)
             {
-                this.ucTimer.Max = 50 * 60;
+                this.ucTimer.Max = this.Test.LimitTime * 60;
                 this.ucTimer.EndEvent += this.TimerEnd;
             }
             this.ucTimer.Start();
@@ -216,7 +216,7 @@ namespace GUI
             {
                 List<bool> points = null;
                 string className = ("Checker." + this.Test.OfficeApp + "." + this.Test.Name + "_" + this.Test.OfficeVersion).Replace(" ", "_");
-                        BaseTest testChecker = this.createTestChecker(className);
+                        BaseWordTest testChecker = this.createTestChecker(className);
                 switch (this.Test.OfficeApp)
                 {
                     case "Word":

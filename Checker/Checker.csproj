@@ -31,6 +31,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ExcelApi, Version=1.8.0.0, Culture=neutral, PublicKeyToken=9084b9221296229e, processorArchitecture=MSIL">
+      <HintPath>..\packages\NetOfficeFw.Excel.1.8.0\lib\net40\ExcelApi.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
     <Reference Include="NetOffice, Version=1.8.0.0, Culture=neutral, PublicKeyToken=297f57b43ae7c1de, processorArchitecture=MSIL">
       <HintPath>..\packages\NetOfficeFw.Core.1.8.0\lib\net40\NetOffice.dll</HintPath>
       <EmbedInteropTypes>False</EmbedInteropTypes>
@@ -57,9 +61,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Base\BaseExcelTest.cs" />
+    <Compile Include="Base\BaseTest.cs" />
+    <Compile Include="Excel\Office 2013\Mini_Test_1_Office_2013.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils.cs" />
-    <Compile Include="Base\BaseTest.cs" />
+    <Compile Include="Base\BaseWordTest.cs" />
     <Compile Include="Word\Office 2013\Test_1_Office_2013.cs" />
     <Compile Include="Word\Office 2016\Test 1\Project_7_Test_1_Office_2016.cs" />
     <Compile Include="Word\Office 2016\Test 1\Project_6_Test_1_Office_2016.cs" />

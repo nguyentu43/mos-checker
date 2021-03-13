@@ -4,7 +4,7 @@ using OWord = NetOffice.WordApi;
 
 namespace Checker.Word
 {
-    public class Project_2_Test_1_Office_2016 : BaseTest
+    public class Project_2_Test_1_Office_2016 : BaseWordTest
     {
         public override int QuestionCount
         {

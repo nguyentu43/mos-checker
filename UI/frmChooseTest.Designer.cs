@@ -44,8 +44,12 @@ namespace GUI
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.txtUserName = new System.Windows.Forms.TextBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.lblLimitTime = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridTasks)).BeginInit();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -137,16 +141,17 @@ namespace GUI
             this.cmbTestName.Name = "cmbTestName";
             this.cmbTestName.Size = new System.Drawing.Size(104, 29);
             this.cmbTestName.TabIndex = 8;
+            this.cmbTestName.SelectedIndexChanged += new System.EventHandler(this.cmbTestName_SelectedIndexChanged);
             // 
             // btnPracticeMode
             // 
             this.btnPracticeMode.AutoSize = true;
             this.btnPracticeMode.Font = new System.Drawing.Font("Segoe UI", 11.25F);
-            this.btnPracticeMode.Location = new System.Drawing.Point(28, 274);
+            this.btnPracticeMode.Location = new System.Drawing.Point(15, 96);
             this.btnPracticeMode.Name = "btnPracticeMode";
-            this.btnPracticeMode.Size = new System.Drawing.Size(115, 30);
+            this.btnPracticeMode.Size = new System.Drawing.Size(96, 30);
             this.btnPracticeMode.TabIndex = 9;
-            this.btnPracticeMode.Text = "Practice Mode";
+            this.btnPracticeMode.Text = "Practice";
             this.btnPracticeMode.UseVisualStyleBackColor = true;
             this.btnPracticeMode.Click += new System.EventHandler(this.btnPracticeMode_Click);
             // 
@@ -154,11 +159,11 @@ namespace GUI
             // 
             this.btnTestingMode.AutoSize = true;
             this.btnTestingMode.Font = new System.Drawing.Font("Segoe UI", 11.25F);
-            this.btnTestingMode.Location = new System.Drawing.Point(151, 274);
+            this.btnTestingMode.Location = new System.Drawing.Point(131, 96);
             this.btnTestingMode.Name = "btnTestingMode";
-            this.btnTestingMode.Size = new System.Drawing.Size(117, 30);
+            this.btnTestingMode.Size = new System.Drawing.Size(92, 30);
             this.btnTestingMode.TabIndex = 10;
-            this.btnTestingMode.Text = "Testing Mode";
+            this.btnTestingMode.Text = "Testing";
             this.btnTestingMode.UseVisualStyleBackColor = true;
             this.btnTestingMode.Click += new System.EventHandler(this.btnTestingMode_Click);
             // 
@@ -198,7 +203,7 @@ namespace GUI
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(25, 203);
+            this.label7.Location = new System.Drawing.Point(11, 56);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(91, 21);
             this.label7.TabIndex = 13;
@@ -207,23 +212,56 @@ namespace GUI
             // txtUserName
             // 
             this.txtUserName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUserName.Location = new System.Drawing.Point(28, 231);
+            this.txtUserName.Location = new System.Drawing.Point(108, 55);
             this.txtUserName.Name = "txtUserName";
-            this.txtUserName.Size = new System.Drawing.Size(240, 26);
+            this.txtUserName.Size = new System.Drawing.Size(115, 26);
             this.txtUserName.TabIndex = 14;
             this.txtUserName.Text = "guest";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.lblLimitTime);
+            this.groupBox2.Controls.Add(this.label8);
+            this.groupBox2.Controls.Add(this.btnPracticeMode);
+            this.groupBox2.Controls.Add(this.label7);
+            this.groupBox2.Controls.Add(this.txtUserName);
+            this.groupBox2.Controls.Add(this.btnTestingMode);
+            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.Location = new System.Drawing.Point(23, 202);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(240, 141);
+            this.groupBox2.TabIndex = 15;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Test";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(11, 22);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(86, 21);
+            this.label8.TabIndex = 15;
+            this.label8.Text = "Limit Time:";
+            // 
+            // lblLimitTime
+            // 
+            this.lblLimitTime.AutoSize = true;
+            this.lblLimitTime.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLimitTime.Location = new System.Drawing.Point(106, 22);
+            this.lblLimitTime.Name = "lblLimitTime";
+            this.lblLimitTime.Size = new System.Drawing.Size(36, 21);
+            this.lblLimitTime.TabIndex = 16;
+            this.lblLimitTime.Text = "N/a";
             // 
             // frmChooseTest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(794, 328);
-            this.Controls.Add(this.txtUserName);
-            this.Controls.Add(this.label7);
+            this.ClientSize = new System.Drawing.Size(794, 362);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.btnTestingMode);
-            this.Controls.Add(this.btnPracticeMode);
             this.Controls.Add(this.cmbTestName);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.cmbOfficeApp);
@@ -239,6 +277,8 @@ namespace GUI
             this.VisibleChanged += new System.EventHandler(this.frmChooseTest_VisibleChanged);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridTasks)).EndInit();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -261,6 +301,9 @@ namespace GUI
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtUserName;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Label lblLimitTime;
+        private System.Windows.Forms.Label label8;
     }
 }
 

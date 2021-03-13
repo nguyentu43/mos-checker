@@ -1,18 +1,20 @@
-﻿using NetOffice.WordApi;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Checker.Base
 {
     abstract public class BaseTest
     {
-        public Document Document { get; set; }
+        public abstract int QuestionCount { get; }
+
         public virtual List<bool> Points
         {
             get
             {
-                if (this.Document == null) throw new Exception("Document not found");
                 List<bool> points = new List<bool>();
                 for (int i = 1; i <= this.QuestionCount; ++i)
                 {
@@ -33,8 +35,6 @@ namespace Checker.Base
                 }
                 return points;
             }
-
         }
-        public abstract int QuestionCount { get; }
     }
 }

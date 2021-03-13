@@ -49,7 +49,7 @@ namespace GUI
 
             if (mode == Models.Enums.TestMode.Testing)
             {
-                this.ucTimer.Max = 50 * 60;
+                this.ucTimer.Max = this.Test.LimitTime * 60;
                 this.ucTimer.EndEvent += this.TimerEnd;
             }
             this.ucTimer.Start();
@@ -306,7 +306,7 @@ namespace GUI
                             float scorePerTask = scorePerProject / (this.Projects[i - 1].Count - 1);
 
                             string className = ("Checker." + this.Test.OfficeApp + "." + "Project_" + i.ToString() + "_" + this.Test.Name + "_" + this.Test.OfficeVersion).Replace(" ", "_");
-                            BaseTest testChecker = this.createTestChecker(className);
+                            BaseWordTest testChecker = this.createTestChecker(className);
 
                             Word.Document document = application.Documents.Open(this.WorkingFilePaths(i - 1));
                             testChecker.Document = document;

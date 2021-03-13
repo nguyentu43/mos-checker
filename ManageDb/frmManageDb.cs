@@ -17,6 +17,7 @@ namespace ManageDb
         private void button1_Click(object sender, System.EventArgs e)
         {
             Db.initDb();
+            loadData();
             MessageBox.Show("OK");
         }
 
@@ -66,11 +67,6 @@ namespace ManageDb
             if (MessageBox.Show("Bạn có muốn xóa?", "Xóa", MessageBoxButtons.YesNo) == DialogResult.No) return;
             Repository.removeTest(Convert.ToInt32(iDTextBox.Text));
             loadData();
-        }
-
-        private void contentTextBox_TextChanged(object sender, EventArgs e)
-        {
-            htmlPanel.Text = contentTextBox.Text;
         }
 
         private void btnQAdd_Click(object sender, EventArgs e)
@@ -149,7 +145,7 @@ namespace ManageDb
         private void testBindingSource_CurrentChanged(object sender, EventArgs e)
         {
             Test test = getCurrentTest();
-            if (test == null) return;
+            if (test == null || test.Resources == null) return;
             txtResources.Text = string.Join(",", test.Resources);
         }
 
@@ -163,6 +159,17 @@ namespace ManageDb
         private void button1_Click_1(object sender, EventArgs e)
         {
             loadData();
+        }
+
+        private void contentTextBox_Leave(object sender, EventArgs e)
+        {
+            htmlPanel.Text = contentTextBox.Text;
+        }
+
+        private void questionsBindingSource_CurrentItemChanged(object sender, EventArgs e)
+        {
+            Question question = questionsBindingSource.Current as Question;
+            htmlPanel.Text = question.Content;
         }
     }
 }

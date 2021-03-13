@@ -68,6 +68,7 @@ namespace GUI
             if (this.cmbOfficeVersion.SelectedIndex >= 0 && this.cmbOfficeApp.SelectedIndex >= 0)
             {
                 this.cmbTestName.Text = "";
+                this.lblLimitTime.Text = "N/a";
                 string officeVersion = this.cmbOfficeVersion.SelectedItem.ToString();
                 string officeApp = this.cmbOfficeApp.SelectedItem.ToString();
                 this.cmbTestName.DataSource = Repository.getTestsBy(officeApp, officeVersion);
@@ -151,6 +152,19 @@ namespace GUI
             {
                 threadLoading.Abort();
                 threadLoading = null;
+            }
+        }
+
+        private void cmbTestName_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(this.cmbTestName.SelectedItem == null)
+            {
+                this.lblLimitTime.Text = "N/a";
+            }
+            else
+            {
+                Test test = this.cmbTestName.SelectedItem as Test;
+                this.lblLimitTime.Text = test.LimitTime.ToString() + " mins";
             }
         }
     }
