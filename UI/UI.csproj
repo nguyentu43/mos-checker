@@ -56,7 +56,13 @@
     <Compile Include="frmLoading.Designer.cs">
       <DependentUpon>frmLoading.cs</DependentUpon>
     </Compile>
-    <Compile Include="fromBaseRunTest.cs">
+    <Compile Include="frmShowResult.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmShowResult.Designer.cs">
+      <DependentUpon>frmShowResult.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmBaseRunTest.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmChooseTest.cs">
@@ -102,6 +108,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmRunTestOffice2016.resx">
       <DependentUpon>frmRunTestOffice2016.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmShowResult.resx">
+      <DependentUpon>frmShowResult.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmTestSummary.resx">
       <DependentUpon>frmTestSummary.cs</DependentUpon>

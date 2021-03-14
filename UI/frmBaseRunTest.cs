@@ -10,7 +10,7 @@ using Word = NetOffice.WordApi;
 
 namespace GUI
 {
-    public abstract class fromBaseRunTest : Form
+    public abstract class frmBaseRunTest : Form
     {
         protected const string dirTemp = "MyTemplates";
         public Test Test { get; }
@@ -47,7 +47,7 @@ namespace GUI
             return Path.Combine(this.WorkingDirPath, this.Test.Resources[index]);
         }
 
-        public fromBaseRunTest(Form parent, string userName, Test test, Models.Enums.TestMode mode, Models.Task resumeTask = null)
+        public frmBaseRunTest(Form parent, string userName, Test test, Models.Enums.TestMode mode, Models.Task resumeTask = null)
         {
             this.Test = test;
             this.Mode = mode;
@@ -58,6 +58,7 @@ namespace GUI
         protected virtual void resizeForm()
         {
             Rectangle workingArea = Screen.PrimaryScreen.WorkingArea;
+            this.WindowState = FormWindowState.Normal;
             this.Left = 0;
             this.Top = Convert.ToInt32(workingArea.Height * 0.66);
             this.Height = Convert.ToInt32(workingArea.Height * 0.35);
@@ -67,7 +68,8 @@ namespace GUI
         protected virtual void resizeOfficeWindow()
         {
             Rectangle workingArea = Screen.PrimaryScreen.WorkingArea;
-
+            int height = Convert.ToInt32(workingArea.Height * 0.49f);
+            int width = Convert.ToInt32(workingArea.Width * 0.75f);
             switch (this.Test.OfficeApp)
             {
                 case "Word":
@@ -75,9 +77,8 @@ namespace GUI
                     application.WindowState = Word.Enums.WdWindowState.wdWindowStateNormal;
                     application.Top = 0;
                     application.Left = 0;
-                    application.Height = Convert.ToInt32(workingArea.Height * 0.49f);
-                    application.Width = Convert.ToInt32(workingArea.Width * 0.75f);
-
+                    application.Height = height;
+                    application.Width = width;
                     break;
                 case "Excel":
                     break;
@@ -99,7 +100,7 @@ namespace GUI
                 IsCompleted = false,
                 Mode = (int)this.Mode,
                 Points = new List<List<bool>>(),
-                MarkCompletedQuestions = dict ?? new List<List<bool>>(),
+                MarkCompletedQuestions = dict ?? new List<List<bool>> { new List<bool>() },
                 UserName = this.UserName
             };
 
@@ -125,7 +126,8 @@ namespace GUI
                 threadLoading = null;
             }
 
-            threadLoading = new Thread(delegate () {
+            threadLoading = new Thread(delegate ()
+            {
                 (new frmLoading()).ShowDialog();
             });
 
@@ -133,10 +135,10 @@ namespace GUI
         }
         protected void closeLoading()
         {
-            if(threadLoading != null)
+            if (threadLoading != null)
             {
                 threadLoading.Abort();
-            }    
+            }
         }
         protected virtual BaseWordTest createTestChecker(string className)
         {

@@ -119,12 +119,13 @@ namespace GUI
         private void dataGridTasks_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             Models.Task task = this.dataGridTasks.Rows[e.RowIndex].DataBoundItem as Models.Task;
+            Test test = Repository.getTestById(task.TestID);
             if (task.IsCompleted)
             {
-                MessageBox.Show("This task had completed");
+                (new frmShowResult(task, test)).ShowDialog();
                 return;
             }
-            Test test = Repository.getTestById(task.TestID);
+
             if (test == null)
             {
                 MessageBox.Show("Test not found");
@@ -157,7 +158,7 @@ namespace GUI
 
         private void cmbTestName_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(this.cmbTestName.SelectedItem == null)
+            if (this.cmbTestName.SelectedItem == null)
             {
                 this.lblLimitTime.Text = "N/a";
             }

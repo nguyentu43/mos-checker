@@ -4,14 +4,13 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
-using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using Word = NetOffice.WordApi;
 
 namespace GUI
 {
-    public partial class frmRunTestOffice2016 : fromBaseRunTest
+    public partial class frmRunTestOffice2016 : frmBaseRunTest
     {
         public int SelectedProject { get; set; }
         public List<List<Question>> Projects { get; set; }
@@ -64,10 +63,9 @@ namespace GUI
         private void groupQuestions()
         {
             List<List<Question>> projects = new List<List<Question>>();
-            foreach (IGrouping<string, Question> group in this.Test.Questions.GroupBy(x => x.Group).OrderBy(x => x.Key))
+            foreach (var group in this.Test.Questions.OrderBy(x => x.Key))
             {
-                List<Question> questions = group.ToList<Question>().OrderBy(x => x.Index).ToList<Question>();
-                projects.Add(questions);
+                projects.Add(group.Value);
             }
             this.Projects = projects;
         }
@@ -86,6 +84,11 @@ namespace GUI
         private void btnResize_Click(object sender, EventArgs e)
         {
             this.resizeForm();
+            if (this.Application == null)
+            {
+                this.loadApp();
+                this.loadFileOffice();
+            }
             this.resizeOfficeWindow();
         }
 
@@ -109,12 +112,12 @@ namespace GUI
             int index = this.SelectedProject;
             this.lblSelectedProject.Text = $"Project {index + 1} of {this.Projects.Count}";
             this.loadFileOffice();
-            this.loadProjectQuestions();
+            this.buildControlQuestions();
             this.btnQuestion_Click(this.panelQuestionTitle.Controls["btnQuestion0"], null);
-            this.loadMarkQuestions();
+            this.loadMarkQuestionFromSave();
         }
 
-        private void loadMarkQuestions()
+        private void loadMarkQuestionFromSave()
         {
             List<bool> markQuestions = this.Task.MarkCompletedQuestions[this.SelectedProject];
 
@@ -128,10 +131,11 @@ namespace GUI
             }
         }
 
-        private void loadProjectQuestions()
+        private void buildControlQuestions()
         {
             this.panelQuestionTitle.Controls.Clear();
             List<Question> questions = this.Projects[this.SelectedProject].Reverse<Question>().ToList<Question>();
+            int row = questions.Count - 1;
             foreach (Question question in questions)
             {
                 Button button = new Button()
@@ -139,10 +143,11 @@ namespace GUI
                     Text = question.Title,
                     Dock = DockStyle.Left,
                     AutoSize = true,
-                    Name = "btnQuestion" + question.Index
+                    Name = "btnQuestion" + row.ToString()
                 };
                 button.Click += this.btnQuestion_Click;
                 this.panelQuestionTitle.Controls.Add(button);
+                row--;
             }
         }
 
@@ -235,7 +240,6 @@ namespace GUI
                 button.BackColor = Color.Orange;
                 this.Task.MarkCompletedQuestions[this.SelectedProject][index - 1] = true;
             }
-
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -246,7 +250,7 @@ namespace GUI
             {
                 return;
             }
-            
+
             this.ucTimer.Stop();
             showLoading();
             try

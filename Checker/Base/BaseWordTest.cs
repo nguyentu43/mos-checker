@@ -1,11 +1,10 @@
 ﻿using NetOffice.WordApi;
 using System;
 using System.Collections.Generic;
-using System.Reflection;
 
 namespace Checker.Base
 {
-    abstract public class BaseWordTest: BaseTest
+    abstract public class BaseWordTest : BaseTest
     {
         public Document Document { get; set; }
         public override List<bool> Points

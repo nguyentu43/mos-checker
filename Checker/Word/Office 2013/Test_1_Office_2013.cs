@@ -5,6 +5,7 @@ using NetOffice.WordApi;
 using NetOffice.WordApi.Enums;
 using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 namespace Checker.Word
 {
@@ -14,7 +15,8 @@ namespace Checker.Word
 
         public bool Q1()
         {
-            return this.Document.WordOpenXML.Contains("<a:theme xmlns:a=\"http://schemas.openxmlformats.org/drawingml/2006/main\" name=\"Ion\">");
+            Regex regex = new Regex("a:theme.*name=\"Ion\"");
+            return regex.IsMatch(this.Document.WordOpenXML);
         }
 
         public bool Q2()

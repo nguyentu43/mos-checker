@@ -55,3 +55,4 @@ C:\Users\nguyentu\source\repos\MOS Checker\UI\bin\Debug\LiteDB.xml
 C:\Users\nguyentu\source\repos\MOS Checker\UI\obj\Debug\GUI.frmLoading.resources
 C:\Users\nguyentu\source\repos\MOS Checker\UI\bin\Debug\ExcelApi.dll
 C:\Users\nguyentu\source\repos\MOS Checker\UI\bin\Debug\ExcelApi.xml
+C:\Users\nguyentu\source\repos\MOS Checker\UI\obj\Debug\GUI.frmShowResult.resources

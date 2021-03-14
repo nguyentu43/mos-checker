@@ -12,7 +12,7 @@ using Word = NetOffice.WordApi;
 
 namespace GUI
 {
-    public partial class frmRunTestOffice2013 : fromBaseRunTest
+    public partial class frmRunTestOffice2013 : frmBaseRunTest
     {
         public frmRunTestOffice2013(Form parent, string userName, Test test, Models.Enums.TestMode mode, Task resumeTask = null) : base(parent, userName, test, mode)
         {
@@ -54,7 +54,7 @@ namespace GUI
         private void loadTask()
         {
             this.ucTimer.Current = this.Task.UsedTime;
-            for (int i = 1; i <= this.Task.MarkCompletedQuestions.Count; ++i)
+            for (int i = 1; i <= this.Task.MarkCompletedQuestions[0].Count; ++i)
             {
                 (this.tablePanelInstructions.Controls["cboxQuestion" + i.ToString()] as CheckBox).Checked = this.Task.MarkCompletedQuestions[0][i - 1];
             }
@@ -90,16 +90,7 @@ namespace GUI
 
         private void loadQuestions()
         {
-            string refImagesPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, this.Test.ResourcesPath, "RefImages");
-            foreach (string path in Directory.GetFiles(refImagesPath, "*.png"))
-            {
-                Image image = Image.FromFile(path);
-                this.panelRefImages.Controls.Add(new PictureBox()
-                {
-                    Image = image,
-                    SizeMode = PictureBoxSizeMode.AutoSize
-                });
-            }
+            loadRefImages();
 
             this.tablePanelInstructions.ColumnStyles.Clear();
             this.tablePanelInstructions.RowStyles.Clear();
@@ -111,8 +102,9 @@ namespace GUI
 
             string baseStyleSheet = ".title{padding: 5px;background-color:#96cbc7}.position{padding: 5px 5px 5px 30px; background-color: gray}.list{padding: 5px 5px 5px 50px; background-color: white}";
 
-            int row = 0;
-            foreach (IGrouping<string, Question> group in this.Test.Questions.GroupBy(x => x.Group).OrderBy(x => x.Key))
+            int row = 1;
+            int indexQuestion = 1;
+            foreach (KeyValuePair<string, List<Question>> group in this.Test.Questions.OrderBy(x => x.Key))
             {
                 this.tablePanelQuestionTitle.RowStyles.Add(new RowStyle(SizeType.AutoSize));
                 this.tablePanelQuestionTitle.Controls.Add(new Label()
@@ -136,15 +128,15 @@ namespace GUI
                 this.tablePanelInstructions.SetColumnSpan(groupLabel, 2);
                 row++;
 
-                foreach (Question question in group.ToList<Question>().OrderBy(x => x.Index))
+                foreach (Question question in group.Value)
                 {
                     this.tablePanelQuestionTitle.RowStyles.Add(new RowStyle(SizeType.AutoSize));
                     Label label = new Label()
                     {
-                        Text = question.Index.ToString() + ". " + question.Title,
+                        Text = indexQuestion.ToString() + ". " + question.Title,
                         BorderStyle = BorderStyle.FixedSingle,
                         Dock = DockStyle.Fill,
-                        Name = "labelQuestion" + question.Index,
+                        Name = "labelQuestion" + indexQuestion.ToString(),
                         Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.GraphicsUnit.Point)
                     };
 
@@ -154,8 +146,8 @@ namespace GUI
                     this.tablePanelInstructions.RowStyles.Add(new RowStyle(SizeType.AutoSize));
                     CheckBox cbox = new CheckBox()
                     {
-                        Text = question.Index.ToString() + ". " + question.Title,
-                        Name = "cboxQuestion" + question.Index,
+                        Text = indexQuestion.ToString() + ". " + question.Title,
+                        Name = "cboxQuestion" + indexQuestion.ToString(),
                         Dock = DockStyle.Top,
                         AutoSize = false,
                         Font = new System.Drawing.Font("Segoe UI", 11F, FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
@@ -172,7 +164,7 @@ namespace GUI
                     htmlLabel.DoubleClick += delegate
                     {
                         if (this.Mode == Models.Enums.TestMode.Testing) return;
-                        MessageBox.Show(question.Help, "Help: Task " + question.Index.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show(question.Help, "Help: Task " + indexQuestion.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
                     };
 
                     this.tablePanelInstructions.RowStyles.Add(new RowStyle(SizeType.AutoSize));
@@ -182,11 +174,27 @@ namespace GUI
                     htmlLabel.AutoSize = false;
 
                     row++;
+                    indexQuestion++;
                 }
             }
 
-            tablePanelInstructions.RowCount = row;
+            tablePanelInstructions.RowCount = row - 1;
         }
+
+        private void loadRefImages()
+        {
+            string refImagesPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, this.Test.ResourcesPath, "RefImages");
+            foreach (string path in Directory.GetFiles(refImagesPath, "*.png"))
+            {
+                Image image = Image.FromFile(path);
+                this.panelRefImages.Controls.Add(new PictureBox()
+                {
+                    Image = image,
+                    SizeMode = PictureBoxSizeMode.AutoSize
+                });
+            }
+        }
+
         private void cboxQuestion_CheckedChanged(object sender, EventArgs e)
         {
             CheckBox cbox = sender as CheckBox;
@@ -216,7 +224,7 @@ namespace GUI
             {
                 List<bool> points = null;
                 string className = ("Checker." + this.Test.OfficeApp + "." + this.Test.Name + "_" + this.Test.OfficeVersion).Replace(" ", "_");
-                        BaseWordTest testChecker = this.createTestChecker(className);
+                BaseWordTest testChecker = this.createTestChecker(className);
                 switch (this.Test.OfficeApp)
                 {
                     case "Word":
@@ -241,7 +249,7 @@ namespace GUI
                 this.Task.IsCompleted = true;
                 this.Task.UsedTime = this.ucTimer.Current;
                 this.Task.Points.Add(points);
-                double score = Math.Min(Math.Ceiling((double)(correctedQuestions * (1000f / this.Test.Questions.Count))), 1000f);
+                double score = Math.Min(Math.Ceiling((double)(correctedQuestions * (1000f / points.Count))), 1000f);
                 this.Task.Score = Convert.ToInt32(score);
                 Repository.updateTask(this.Task);
                 closeLoading();
@@ -273,17 +281,21 @@ namespace GUI
                         application.Quit(Word.Enums.WdSaveOptions.wdSaveChanges);
                         application.Dispose();
 
-                        for (int i = 1; i <= this.Test.Questions.Count; ++i)
-                        {
-                            if (((this.tablePanelQuestionTitle.Controls["labelQuestion" + i.ToString()]) as Label).ForeColor == Color.Blue)
+                        int indexQuestion = 1;
+                        foreach (var group in this.Test.Questions)
+                            foreach (var question in group.Value)
                             {
-                                markQuestions.Add(true);
+                                if (((this.tablePanelQuestionTitle.Controls["labelQuestion" + indexQuestion.ToString()]) as Label).ForeColor == Color.Blue)
+                                {
+                                    markQuestions.Add(true);
+                                }
+                                else
+                                {
+                                    markQuestions.Add(false);
+                                }
+
+                                indexQuestion++;
                             }
-                            else
-                            {
-                                markQuestions.Add(false);
-                            }
-                        }
 
                         break;
                     case "Excel":
@@ -294,6 +306,7 @@ namespace GUI
 
                 this.Task.IsCompleted = false;
                 this.Task.UsedTime = this.ucTimer.Current;
+                this.Task.MarkCompletedQuestions.Clear();
                 this.Task.MarkCompletedQuestions.Add(markQuestions);
                 Repository.updateTask(this.Task);
                 closeLoading();
@@ -311,7 +324,15 @@ namespace GUI
         private void btnResize_Click(object sender, EventArgs e)
         {
             this.resizeForm();
-            this.resizeOfficeWindow();
+            if ((this.Application as NetOffice.COMObject).UnderlyingTypeName == "")
+            {
+                loadApp();
+                loadFileOffice();
+            }
+            else
+            {
+                this.resizeOfficeWindow();
+            }
         }
     }
 }

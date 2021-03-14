@@ -45,8 +45,8 @@ namespace GUI
             this.label7 = new System.Windows.Forms.Label();
             this.txtUserName = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label8 = new System.Windows.Forms.Label();
             this.lblLimitTime = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridTasks)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -173,7 +173,7 @@ namespace GUI
             this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(312, 30);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(454, 256);
+            this.groupBox1.Size = new System.Drawing.Size(454, 295);
             this.groupBox1.TabIndex = 11;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Saved/Completed Tests";
@@ -185,7 +185,7 @@ namespace GUI
             this.dataGridTasks.Location = new System.Drawing.Point(3, 23);
             this.dataGridTasks.Name = "dataGridTasks";
             this.dataGridTasks.ReadOnly = true;
-            this.dataGridTasks.Size = new System.Drawing.Size(448, 230);
+            this.dataGridTasks.Size = new System.Drawing.Size(448, 269);
             this.dataGridTasks.TabIndex = 0;
             this.dataGridTasks.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridTasks_CellDoubleClick);
             // 
@@ -193,7 +193,7 @@ namespace GUI
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(312, 289);
+            this.label6.Location = new System.Drawing.Point(312, 328);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(245, 15);
             this.label6.TabIndex = 12;
@@ -234,16 +234,6 @@ namespace GUI
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Test";
             // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(11, 22);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(86, 21);
-            this.label8.TabIndex = 15;
-            this.label8.Text = "Limit Time:";
-            // 
             // lblLimitTime
             // 
             this.lblLimitTime.AutoSize = true;
@@ -253,6 +243,16 @@ namespace GUI
             this.lblLimitTime.Size = new System.Drawing.Size(36, 21);
             this.lblLimitTime.TabIndex = 16;
             this.lblLimitTime.Text = "N/a";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(11, 22);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(86, 21);
+            this.label8.TabIndex = 15;
+            this.label8.Text = "Limit Time:";
             // 
             // frmChooseTest
             // 

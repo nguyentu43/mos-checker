@@ -1,13 +1,10 @@
-﻿using System;
+﻿using NetOffice.ExcelApi;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using NetOffice.ExcelApi;
 
 namespace Checker.Base
 {
-    public abstract class BaseExcelTest: BaseTest
+    public abstract class BaseExcelTest : BaseTest
     {
         public Workbook Workbook { get; set; }
 
