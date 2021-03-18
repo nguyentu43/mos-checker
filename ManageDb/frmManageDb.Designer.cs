@@ -61,6 +61,7 @@ namespace ManageDb
             this.dataGridQuestions = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.keyComboBox = new System.Windows.Forms.ComboBox();
             this.btnGDel = new System.Windows.Forms.Button();
             this.btnGAdd = new System.Windows.Forms.Button();
             this.contentTextBox = new System.Windows.Forms.TextBox();
@@ -72,7 +73,6 @@ namespace ManageDb
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.btnRefresherDb = new System.Windows.Forms.Button();
-            this.keyComboBox = new System.Windows.Forms.ComboBox();
             iDLabel = new System.Windows.Forms.Label();
             nameLabel = new System.Windows.Forms.Label();
             officeAppLabel = new System.Windows.Forms.Label();
@@ -336,8 +336,8 @@ namespace ManageDb
             this.officeVersionComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.officeVersionComboBox.FormattingEnabled = true;
             this.officeVersionComboBox.Items.AddRange(new object[] {
-            "Office 2013",
-            "Office 2016"});
+            "2013",
+            "2016"});
             this.officeVersionComboBox.Location = new System.Drawing.Point(100, 88);
             this.officeVersionComboBox.Name = "officeVersionComboBox";
             this.officeVersionComboBox.Size = new System.Drawing.Size(128, 21);
@@ -447,6 +447,15 @@ namespace ManageDb
             this.groupBox1.TabIndex = 22;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Group";
+            // 
+            // keyComboBox
+            // 
+            this.keyComboBox.FormattingEnabled = true;
+            this.keyComboBox.Location = new System.Drawing.Point(12, 22);
+            this.keyComboBox.Name = "keyComboBox";
+            this.keyComboBox.Size = new System.Drawing.Size(139, 21);
+            this.keyComboBox.TabIndex = 3;
+            this.keyComboBox.SelectedIndexChanged += new System.EventHandler(this.keyComboBox_SelectedIndexChanged);
             // 
             // btnGDel
             // 
@@ -564,15 +573,6 @@ namespace ManageDb
             this.btnRefresherDb.Text = "Làm mới Db";
             this.btnRefresherDb.UseVisualStyleBackColor = true;
             this.btnRefresherDb.Click += new System.EventHandler(this.btnRefreshDb_Click);
-            // 
-            // keyComboBox
-            // 
-            this.keyComboBox.FormattingEnabled = true;
-            this.keyComboBox.Location = new System.Drawing.Point(12, 22);
-            this.keyComboBox.Name = "keyComboBox";
-            this.keyComboBox.Size = new System.Drawing.Size(139, 21);
-            this.keyComboBox.TabIndex = 3;
-            this.keyComboBox.SelectedIndexChanged += new System.EventHandler(this.keyComboBox_SelectedIndexChanged);
             // 
             // frmManageDb
             // 

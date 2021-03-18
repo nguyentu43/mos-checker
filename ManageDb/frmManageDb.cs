@@ -41,13 +41,14 @@ namespace ManageDb
         {
             if (testBindingSource.Current is Test test)
             {
+                test.Resources = new List<string>(txtResources.Text.Split(','));
                 Repository.updateTest(test);
             }
         }
 
         private void btnAdd_Click(object sender, System.EventArgs e)
         {
-            Repository.createTest(new Test() { Name = "New Test", OfficeApp = "Word", OfficeVersion = "Office 2013", Questions = new Dictionary<string, List<Question>>(), Resources = new List<string>() });
+            Repository.createTest(new Test() { Name = "New Test", OfficeApp = "Word", OfficeVersion = "2013", Questions = new Dictionary<string, List<Question>>(), Resources = new List<string>() });
             loadData();
             dataGridTests.FirstDisplayedScrollingRowIndex = dataGridTests.RowCount - 1;
         }
@@ -65,7 +66,7 @@ namespace ManageDb
             if (testBindingSource.Current is Test currentTest)
             {
                 string content = "";
-                if (currentTest.OfficeVersion == "Office 2013")
+                if (currentTest.OfficeVersion == "2013")
                 {
                     content = @"<div class='title'>Title</div>
 <div class='position'>Position</div>
@@ -95,7 +96,10 @@ namespace ManageDb
 
                 Repository.updateTest(currentTest);
                 loadData();
-                dataGridQuestions.FirstDisplayedScrollingRowIndex = dataGridQuestions.RowCount - 1;
+                if (dataGridQuestions.RowCount > 0)
+                {
+                    dataGridQuestions.FirstDisplayedScrollingRowIndex = dataGridQuestions.RowCount - 1;
+                }
             }
         }
 
@@ -139,14 +143,6 @@ namespace ManageDb
             }
         }
 
-        private void txtResources_Leave(object sender, EventArgs e)
-        {
-            if (testBindingSource.Current is Test test)
-            {
-                test.Resources = new List<string>(txtResources.Text.Split(','));
-            }
-        }
-
         private void btnRefreshDb_Click(object sender, EventArgs e)
         {
             loadData();
@@ -165,6 +161,7 @@ namespace ManageDb
                 question.Title = titleTextBox.Text;
                 question.Content = contentTextBox.Text;
                 question.Help = helpTextBox.Text;
+                Repository.updateTest(testBindingSource.Current as Test);
                 dataGridQuestions.Refresh();
             }
         }
@@ -173,6 +170,7 @@ namespace ManageDb
         {
             if (testBindingSource.Current is Test test)
             {
+                dataGridQuestions.DataSource = null;
                 if (keyComboBox.SelectedItem is string key)
                 {
                     dataGridQuestions.DataSource = test.Questions[key];
@@ -182,7 +180,12 @@ namespace ManageDb
 
         private void btnGAdd_Click(object sender, EventArgs e)
         {
-            if (testBindingSource.Current is Test test && keyComboBox.Text != null)
+            if(keyComboBox.Text.Trim() == "")
+            {
+                MessageBox.Show("Group Name not empty!");
+                return;
+            }    
+            if (testBindingSource.Current is Test test)
             {
                 if (test.Questions.ContainsKey(keyComboBox.Text))
                 {

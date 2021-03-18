@@ -56,3 +56,4 @@ C:\Users\nguyentu\source\repos\MOS Checker\UI\obj\Debug\UI.csproj.CoreCompileInp
 C:\Users\nguyentu\source\repos\MOS Checker\UI\obj\Debug\UI.csproj.CopyComplete
 C:\Users\nguyentu\source\repos\MOS Checker\UI\obj\Debug\GUI.exe
 C:\Users\nguyentu\source\repos\MOS Checker\UI\obj\Debug\GUI.pdb
+C:\Users\nguyentu\source\repos\MOS Checker\UI\obj\Debug\GUI.frmBaseRunTest.resources

@@ -51,10 +51,10 @@ namespace GUI
 
             switch (test.OfficeVersion)
             {
-                case "Office 2013":
+                case "2013":
                     (new frmRunTestOffice2013(this, this.txtUserName.Text, test, testMode, resumeTask)).Show();
                     break;
-                case "Office 2016":
+                case "2016":
                     (new frmRunTestOffice2016(this, this.txtUserName.Text, test, testMode, resumeTask)).Show();
                     break;
                 default:

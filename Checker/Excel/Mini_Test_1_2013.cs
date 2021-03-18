@@ -1,8 +1,8 @@
 ﻿using Checker.Base;
 
-namespace Checker.Excel.Office_2013
+namespace Checker.Excel
 {
-    class Mini_Test_1_Office_2013 : BaseExcelTest
+    class Mini_Test_1_2013 : BaseExcelTest
     {
         public override int QuestionCount => 5;
 

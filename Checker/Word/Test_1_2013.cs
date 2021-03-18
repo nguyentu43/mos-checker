@@ -9,7 +9,7 @@ using System.Text.RegularExpressions;
 
 namespace Checker.Word
 {
-    public class Test_1_Office_2013 : BaseWordTest
+    public class Test_1_2013 : BaseWordTest
     {
         public override int QuestionCount { get { return 29; } }
 

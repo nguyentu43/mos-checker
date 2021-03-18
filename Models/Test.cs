@@ -22,7 +22,7 @@ namespace Models
         {
             get
             {
-                return System.IO.Path.Combine("Resources", this.OfficeVersion, this.OfficeApp, this.Name);
+                return System.IO.Path.Combine("Resources", this.OfficeApp, this.Name.Replace(' ', '_') + "_" + this.OfficeVersion);
             }
         }
     }

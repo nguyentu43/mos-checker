@@ -3,7 +3,7 @@ using OWord = NetOffice.WordApi;
 
 namespace Checker.Word
 {
-    public class Project_7_Test_1_Office_2016 : BaseWordTest
+    public class Project_7_Test_1_2016 : BaseWordTest
     {
         public override int QuestionCount
         {

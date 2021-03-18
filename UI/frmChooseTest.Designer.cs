@@ -77,7 +77,7 @@ namespace GUI
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(24, 104);
+            this.label3.Location = new System.Drawing.Point(24, 137);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(110, 21);
             this.label3.TabIndex = 3;
@@ -87,7 +87,7 @@ namespace GUI
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(24, 137);
+            this.label4.Location = new System.Drawing.Point(24, 105);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(86, 21);
             this.label4.TabIndex = 4;
@@ -99,9 +99,9 @@ namespace GUI
             this.cmbOfficeVersion.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.cmbOfficeVersion.FormattingEnabled = true;
             this.cmbOfficeVersion.Items.AddRange(new object[] {
-            "Office 2013",
-            "Office 2016"});
-            this.cmbOfficeVersion.Location = new System.Drawing.Point(164, 101);
+            "2013",
+            "2016"});
+            this.cmbOfficeVersion.Location = new System.Drawing.Point(164, 134);
             this.cmbOfficeVersion.Name = "cmbOfficeVersion";
             this.cmbOfficeVersion.Size = new System.Drawing.Size(104, 29);
             this.cmbOfficeVersion.TabIndex = 5;
@@ -116,7 +116,7 @@ namespace GUI
             "Word",
             "Excel",
             "PowerPoint"});
-            this.cmbOfficeApp.Location = new System.Drawing.Point(164, 134);
+            this.cmbOfficeApp.Location = new System.Drawing.Point(164, 102);
             this.cmbOfficeApp.Name = "cmbOfficeApp";
             this.cmbOfficeApp.Size = new System.Drawing.Size(104, 29);
             this.cmbOfficeApp.TabIndex = 6;

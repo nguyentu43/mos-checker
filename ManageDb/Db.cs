@@ -825,7 +825,7 @@ You own a small SCUBA diving concession in the Caribbean. You are creating a fly
             };
             test_1_office_2016.Questions.Add("7", project7);
 
-            using (var db = new LiteDatabase(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "data.db")))
+            using (var db = new LiteDatabase(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data.db")))
             {
                 db.DropCollection("tests");
                 ILiteCollection<Test> collection = db.GetCollection<Test>("tests");
