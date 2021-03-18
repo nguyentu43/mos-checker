@@ -16,19 +16,18 @@ C:\Users\nguyentu\source\repos\Clone MOS Gmetrix\Checker\obj\Debug\Checker.dll
 C:\Users\nguyentu\source\repos\Clone MOS Gmetrix\Checker\obj\Debug\Checker.pdb
 C:\Users\nguyentu\source\repos\MOS Checker\Checker\bin\Debug\Checker.dll
 C:\Users\nguyentu\source\repos\MOS Checker\Checker\bin\Debug\Checker.pdb
+C:\Users\nguyentu\source\repos\MOS Checker\Checker\bin\Debug\ExcelApi.dll
 C:\Users\nguyentu\source\repos\MOS Checker\Checker\bin\Debug\NetOffice.dll
 C:\Users\nguyentu\source\repos\MOS Checker\Checker\bin\Debug\OfficeApi.dll
 C:\Users\nguyentu\source\repos\MOS Checker\Checker\bin\Debug\VBIDEApi.dll
 C:\Users\nguyentu\source\repos\MOS Checker\Checker\bin\Debug\WordApi.dll
 C:\Users\nguyentu\source\repos\MOS Checker\Checker\bin\Debug\stdole.dll
+C:\Users\nguyentu\source\repos\MOS Checker\Checker\bin\Debug\ExcelApi.xml
 C:\Users\nguyentu\source\repos\MOS Checker\Checker\bin\Debug\NetOffice.xml
 C:\Users\nguyentu\source\repos\MOS Checker\Checker\bin\Debug\OfficeApi.xml
 C:\Users\nguyentu\source\repos\MOS Checker\Checker\bin\Debug\VBIDEApi.xml
 C:\Users\nguyentu\source\repos\MOS Checker\Checker\bin\Debug\WordApi.xml
-C:\Users\nguyentu\source\repos\MOS Checker\Checker\obj\Debug\Checker.csprojAssemblyReference.cache
 C:\Users\nguyentu\source\repos\MOS Checker\Checker\obj\Debug\Checker.csproj.CoreCompileInputs.cache
 C:\Users\nguyentu\source\repos\MOS Checker\Checker\obj\Debug\Checker.csproj.CopyComplete
 C:\Users\nguyentu\source\repos\MOS Checker\Checker\obj\Debug\Checker.dll
 C:\Users\nguyentu\source\repos\MOS Checker\Checker\obj\Debug\Checker.pdb
-C:\Users\nguyentu\source\repos\MOS Checker\Checker\bin\Debug\ExcelApi.dll
-C:\Users\nguyentu\source\repos\MOS Checker\Checker\bin\Debug\ExcelApi.xml

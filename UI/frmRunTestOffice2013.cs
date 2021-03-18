@@ -9,6 +9,7 @@ using System.Linq;
 using System.Windows.Forms;
 using TheArtOfDev.HtmlRenderer.WinForms;
 using Word = NetOffice.WordApi;
+using System.Text.RegularExpressions;
 
 namespace GUI
 {
@@ -73,21 +74,6 @@ namespace GUI
             base.formClosed();
         }
 
-        private void loadFileOffice()
-        {
-            switch (this.Test.OfficeApp)
-            {
-                case "Word":
-                    Word.Application application = this.Application as Word.Application;
-                    application.Documents.Open(this.WorkingFilePaths());
-                    break;
-                case "Excel":
-                    break;
-                case "PowerPoint":
-                    break;
-            }
-        }
-
         private void loadQuestions()
         {
             loadRefImages();
@@ -115,7 +101,7 @@ namespace GUI
                     Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
                 }, 0, row);
 
-                this.tablePanelInstructions.RowStyles.Add(new RowStyle(SizeType.Absolute, 50));
+                this.tablePanelInstructions.RowStyles.Add(new RowStyle(SizeType.AutoSize));
                 Label groupLabel = new Label()
                 {
                     Text = group.Key,
@@ -184,7 +170,8 @@ namespace GUI
         private void loadRefImages()
         {
             string refImagesPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, this.Test.ResourcesPath, "RefImages");
-            foreach (string path in Directory.GetFiles(refImagesPath, "*.png"))
+            Regex regex = new Regex(".*.[png|jpg]");
+            foreach (string path in Directory.GetFiles(refImagesPath, "*.*").Where(file => regex.IsMatch(file)))
             {
                 Image image = Image.FromFile(path);
                 this.panelRefImages.Controls.Add(new PictureBox()

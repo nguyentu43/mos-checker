@@ -50,6 +50,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmBaseRunTest.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmLoading.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -61,9 +64,6 @@
     </Compile>
     <Compile Include="frmShowResult.Designer.cs">
       <DependentUpon>frmShowResult.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmBaseRunTest.cs">
-      <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmChooseTest.cs">
       <SubType>Form</SubType>
@@ -97,6 +97,9 @@
     <Compile Include="ucTimer.Designer.cs">
       <DependentUpon>ucTimer.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="frmBaseRunTest.resx">
+      <DependentUpon>frmBaseRunTest.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmChooseTest.resx">
       <DependentUpon>frmChooseTest.cs</DependentUpon>
     </EmbeddedResource>

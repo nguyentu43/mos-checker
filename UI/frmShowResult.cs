@@ -50,7 +50,7 @@ namespace GUI
                             {
                                 list.Add(new RowResult
                                 {
-                                    Title = "Project " + group.Key,
+                                    Title = "PROJECT " + group.Key,
                                     IsCorrected = "---"
                                 });
                             }

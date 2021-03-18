@@ -87,7 +87,7 @@ namespace GUI
             if (this.Application == null)
             {
                 this.loadApp();
-                this.loadFileOffice();
+                this.loadFileOffice(this.SelectedProject);
             }
             this.resizeOfficeWindow();
         }
@@ -111,7 +111,7 @@ namespace GUI
         {
             int index = this.SelectedProject;
             this.lblSelectedProject.Text = $"Project {index + 1} of {this.Projects.Count}";
-            this.loadFileOffice();
+            this.loadFileOffice(this.SelectedProject);
             this.buildControlQuestions();
             this.btnQuestion_Click(this.panelQuestionTitle.Controls["btnQuestion0"], null);
             this.loadMarkQuestionFromSave();
@@ -167,30 +167,6 @@ namespace GUI
                 button.ForeColor = Color.Black;
             }
             selectedButton.ForeColor = Color.Blue;
-        }
-
-        private void loadFileOffice()
-        {
-            try
-            {
-                switch (this.Test.OfficeApp)
-                {
-                    case "Word":
-                        Word.Application application = this.Application as Word.Application;
-                        if (application.Documents.Count > 0)
-                        {
-                            application.ActiveDocument.Close(Word.Enums.WdSaveOptions.wdSaveChanges);
-                        }
-                        application.Documents.Open(this.WorkingFilePaths(this.SelectedProject));
-                        break;
-                    case "Excel":
-                        break;
-                    case "PowerPoint":
-                        break;
-                }
-            }
-            catch (Exception)
-            { }
         }
 
         private void btnReset_Click(object sender, EventArgs e)

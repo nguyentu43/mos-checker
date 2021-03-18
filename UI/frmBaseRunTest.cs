@@ -10,7 +10,7 @@ using Word = NetOffice.WordApi;
 
 namespace GUI
 {
-    public abstract class frmBaseRunTest : Form
+    public abstract class frmBaseRunTest: Form
     {
         protected const string dirTemp = "MyTemplates";
         public Test Test { get; }
@@ -186,6 +186,30 @@ namespace GUI
             resizeOfficeWindow();
         }
 
+        protected void loadFileOffice(int indexProject = 0)
+        {
+            try
+            {
+                switch (this.Test.OfficeApp)
+                {
+                    case "Word":
+                        Word.Application application = this.Application as Word.Application;
+                        if (application.Documents.Count > 0)
+                        {
+                            application.ActiveDocument.Close(Word.Enums.WdSaveOptions.wdSaveChanges);
+                        }
+                        application.Documents.Open(this.WorkingFilePaths(indexProject));
+                        break;
+                    case "Excel":
+                        break;
+                    case "PowerPoint":
+                        break;
+                }
+            }
+            catch (Exception)
+            { }
+        }
+
         protected void resetProject(int indexProject)
         {
             File.Copy(Path.Combine(this.AppResourcesPath, this.Test.Resources[indexProject]), this.WorkingFilePaths(indexProject), true);
@@ -238,6 +262,18 @@ namespace GUI
             }
             catch (Exception)
             { }
+        }
+
+        private void InitializeComponent()
+        {
+            this.SuspendLayout();
+            // 
+            // frmBaseRunTest
+            // 
+            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.Name = "frmBaseRunTest";
+            this.ResumeLayout(false);
+
         }
     }
 }
