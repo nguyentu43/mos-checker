@@ -14,7 +14,8 @@ namespace GUI
         public frmChooseTest()
         {
             InitializeComponent();
-            AutoUpdater.Start("https://raw.githubusercontent.com/nguyentu43/mos-checker-updater/master/updater.xml");
+            string updaterUrl = System.Configuration.ConfigurationManager.AppSettings["updater-url"];
+            AutoUpdater.Start(updaterUrl);
 
             string ver = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
             lblVer.Text = string.Format("Version: {0}", ver);

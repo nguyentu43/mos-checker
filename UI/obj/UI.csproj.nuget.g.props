@@ -15,6 +15,9 @@
   <PropertyGroup>
     <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
   </PropertyGroup>
+  <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <Import Project="$(NuGetPackageRoot)costura.fody\5.3.0\build\Costura.Fody.props" Condition="Exists('$(NuGetPackageRoot)costura.fody\5.3.0\build\Costura.Fody.props')" />
+  </ImportGroup>
   <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
     <PkgNetOfficeFw_Core Condition=" '$(PkgNetOfficeFw_Core)' == '' ">C:\Users\nguyentu\.nuget\packages\netofficefw.core\1.8.1</PkgNetOfficeFw_Core>
     <PkgNetOfficeFw_Word Condition=" '$(PkgNetOfficeFw_Word)' == '' ">C:\Users\nguyentu\.nuget\packages\netofficefw.word\1.8.1</PkgNetOfficeFw_Word>
