@@ -7,6 +7,7 @@ using System.IO;
 using System.Threading;
 using System.Windows.Forms;
 using Word = NetOffice.WordApi;
+using Excel = NetOffice.ExcelApi;
 
 namespace GUI
 {
@@ -20,7 +21,7 @@ namespace GUI
         public Models.Task Task { get; set; }
         public string UserName { get; set; }
 
-        protected Thread threadLoading;
+        private Form frmLoading = new frmLoading();
         public string CurrentDirPath
         {
             get
@@ -55,7 +56,7 @@ namespace GUI
             this.UserName = userName;
         }
 
-        protected virtual void resizeForm()
+        protected virtual void ResizeForm()
         {
             Rectangle workingArea = Screen.PrimaryScreen.WorkingArea;
             this.WindowState = FormWindowState.Normal;
@@ -65,7 +66,7 @@ namespace GUI
             this.Width = workingArea.Width;
         }
 
-        protected virtual void resizeOfficeWindow()
+        protected virtual void ResizeOfficeWindow()
         {
             Rectangle workingArea = Screen.PrimaryScreen.WorkingArea;
             int height = Convert.ToInt32(workingArea.Height * 0.49f);
@@ -73,14 +74,20 @@ namespace GUI
             switch (this.Test.OfficeApp)
             {
                 case "Word":
-                    Word.Application application = this.Application as Word.Application;
-                    application.WindowState = Word.Enums.WdWindowState.wdWindowStateNormal;
-                    application.Top = 0;
-                    application.Left = 0;
-                    application.Height = height;
-                    application.Width = width;
+                    Word.Application wordApp = this.Application as Word.Application;
+                    wordApp.WindowState = Word.Enums.WdWindowState.wdWindowStateNormal;
+                    wordApp.Top = 0;
+                    wordApp.Left = 0;
+                    wordApp.Height = height;
+                    wordApp.Width = width;
                     break;
                 case "Excel":
+                    Excel.Application excelApp = this.Application as Excel.Application;
+                    excelApp.WindowState = Excel.Enums.XlWindowState.xlNormal;
+                    excelApp.Top = 0;
+                    excelApp.Left = 0;
+                    excelApp.Height = height;
+                    excelApp.Width = width;
                     break;
                 case "PowerPoint":
                     break;
@@ -88,7 +95,7 @@ namespace GUI
 
         }
 
-        protected virtual void createTask(List<List<bool>> dict = null)
+        protected virtual void CreateTask(List<List<bool>> dict = null)
         {
             string mode = (this.Mode == Models.Enums.TestMode.Practice ? "Practice" : "Testing") + " Mode";
             this.Task = new Models.Task()
@@ -118,41 +125,26 @@ namespace GUI
 
         }
 
-        protected void showLoading()
+        protected void ShowLoading()
         {
-            if (threadLoading != null)
-            {
-                threadLoading.Abort();
-                threadLoading = null;
-            }
-
-            threadLoading = new Thread(delegate ()
-            {
-                (new frmLoading()).ShowDialog();
-            });
-
-            threadLoading.Start();
+            frmLoading.Show(this);
         }
-        protected void closeLoading()
+        protected void CloseLoading()
         {
-            if (threadLoading != null)
-            {
-                threadLoading.Abort();
-            }
+            frmLoading.Close();
         }
-        protected virtual BaseWordTest createTestChecker(string className)
+        protected virtual BaseTest CreateTestChecker(string className)
         {
-            List<BaseWordTest> list = new List<BaseWordTest>();
-            Checker.Base.BaseWordTest testChecker = null;
+            BaseTest testChecker = null;
             foreach (var asm in AppDomain.CurrentDomain.GetAssemblies())
             {
                 Type type = asm.GetType(className);
                 if (type != null)
-                    testChecker = Activator.CreateInstance(type) as Checker.Base.BaseWordTest;
+                    testChecker = Activator.CreateInstance(type) as BaseTest;
             }
             return testChecker;
         }
-        protected virtual void createDirTemp()
+        protected virtual void CreateDirTemp()
         {
             string documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             string resourceDocumentsPath = Path.Combine(documentsPath, dirTemp);
@@ -168,39 +160,52 @@ namespace GUI
             }
         }
 
-        protected void loadApp()
+        protected void LoadApp()
         {
             switch (this.Test.OfficeApp)
             {
                 case "Word":
-                    Word.Application application = new Word.Application();
-                    application.Visible = true;
-                    this.Application = application;
+                    Word.Application wordApp = new Word.Application
+                    {
+                        Visible = true
+                    };
+                    this.Application = wordApp;
                     break;
                 case "Excel":
+                    Excel.Application excelApp = new Excel.Application
+                    {
+                        Visible = true
+                    };
+                    this.Application = excelApp;
                     break;
                 case "PowerPoint":
                     break;
             }
 
-            resizeOfficeWindow();
+            ResizeOfficeWindow();
         }
 
-        protected void loadFileOffice(int indexProject = 0)
+        protected void LoadFileOffice(int indexProject = 0)
         {
             try
             {
                 switch (this.Test.OfficeApp)
                 {
                     case "Word":
-                        Word.Application application = this.Application as Word.Application;
-                        if (application.Documents.Count > 0)
+                        Word.Application wordApp = this.Application as Word.Application;
+                        if (wordApp.Documents.Count > 0)
                         {
-                            application.ActiveDocument.Close(Word.Enums.WdSaveOptions.wdSaveChanges);
+                            wordApp.ActiveDocument.Close(Word.Enums.WdSaveOptions.wdSaveChanges);
                         }
-                        application.Documents.Open(this.WorkingFilePaths(indexProject));
+                        wordApp.Documents.Open(this.WorkingFilePaths(indexProject));
                         break;
                     case "Excel":
+                        Excel.Application excelApp = this.Application as Excel.Application;
+                        if(excelApp.Workbooks.Count > 0)
+                        {
+                            excelApp.ActiveWorkbook.Close(true);
+                        }
+                        excelApp.Workbooks.Open(this.WorkingFilePaths(indexProject));
                         break;
                     case "PowerPoint":
                         break;
@@ -210,7 +215,7 @@ namespace GUI
             { }
         }
 
-        protected void resetProject(int indexProject)
+        protected void ResetProject(int indexProject)
         {
             File.Copy(Path.Combine(this.AppResourcesPath, this.Test.Resources[indexProject]), this.WorkingFilePaths(indexProject), true);
 
@@ -219,15 +224,20 @@ namespace GUI
                 switch (this.Test.OfficeApp)
                 {
                     case "Word":
-                        Word.Application application = this.Application as Word.Application;
-                        if (application.Documents.Count > 0)
+                        Word.Application wordApp = this.Application as Word.Application;
+                        if (wordApp.Documents.Count > 0)
                         {
-                            application.ActiveDocument.Close(Word.Enums.WdSaveOptions.wdDoNotSaveChanges);
+                            wordApp.ActiveDocument.Close(Word.Enums.WdSaveOptions.wdDoNotSaveChanges);
                         }
-                        application.Documents.Open(this.WorkingFilePaths(indexProject));
-
+                        wordApp.Documents.Open(this.WorkingFilePaths(indexProject));
                         break;
                     case "Excel":
+                        Excel.Application excelApp = this.Application as Excel.Application;
+                        if (excelApp.Workbooks.Count > 0)
+                        {
+                            excelApp.ActiveWorkbook.Close(false);
+                        }
+                        excelApp.Workbooks.Open(this.WorkingFilePaths(indexProject));
                         break;
                     case "PowerPoint":
                         break;
@@ -237,7 +247,7 @@ namespace GUI
             { }
         }
 
-        protected void formClosed()
+        protected void FrmClosed()
         {
             this.ParentForm.Show();
             (this.ParentForm as frmChooseTest).LoadTasks();
@@ -246,15 +256,14 @@ namespace GUI
                 switch (this.Test.OfficeApp)
                 {
                     case "Word":
-                        Word.Application application = this.Application as Word.Application;
-
-                        if (application != null)
-                        {
-                            application.Quit(Word.Enums.WdSaveOptions.wdDoNotSaveChanges);
-                            application.Dispose();
-                        }
+                        Word.Application wordApp = this.Application as Word.Application;
+                        wordApp?.Quit(Word.Enums.WdSaveOptions.wdDoNotSaveChanges);
+                        wordApp?.Dispose();
                         break;
                     case "Excel":
+                        Excel.Application excelApp = this.Application as Excel.Application;
+                        excelApp?.Quit();
+                        excelApp?.Dispose();
                         break;
                     case "PowerPoint":
                         break;

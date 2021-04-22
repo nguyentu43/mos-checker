@@ -9,12 +9,14 @@ using System.Linq;
 using System.Windows.Forms;
 using TheArtOfDev.HtmlRenderer.WinForms;
 using Word = NetOffice.WordApi;
+using Excel = NetOffice.ExcelApi;
 using System.Text.RegularExpressions;
 
 namespace GUI
 {
     public partial class frmRunTestOffice2013 : frmBaseRunTest
     {
+        private string baseStyleSheet = ".title{padding: 5px;background-color:#96cbc7}.position{padding: 5px 5px 5px 30px; background-color: #dadada}.list{padding: 5px 5px 5px 50px; background-color: white}.sublist{padding-left: 30px}";
         public frmRunTestOffice2013(Form parent, string userName, Test test, Models.Enums.TestMode mode, Task resumeTask = null) : base(parent, userName, test, mode)
         {
             InitializeComponent();
@@ -29,13 +31,13 @@ namespace GUI
             }
             else
             {
-                this.createTask();
+                this.CreateTask();
             }
 
-            this.loadApp();
-            this.loadFileOffice();
-            this.resizeForm();
-            this.createDirTemp();
+            this.LoadApp();
+            this.LoadFileOffice();
+            this.ResizeForm();
+            this.CreateDirTemp();
 
             this.labelTestName.Text = this.Test.Name + " - " + this.Mode.ToString() + " Mode";
 
@@ -61,9 +63,9 @@ namespace GUI
             }
         }
 
-        protected override void createTask(List<List<bool>> dict = null)
+        protected override void CreateTask(List<List<bool>> dict = null)
         {
-            base.createTask();
+            base.CreateTask();
             this.ucTimer.Current = 0;
         }
 
@@ -71,7 +73,7 @@ namespace GUI
         {
             this.ucTimer.Current = 0;
             this.ucTimer.Stop();
-            base.formClosed();
+            base.FrmClosed();
         }
 
         private void loadQuestions()
@@ -85,8 +87,6 @@ namespace GUI
             this.tablePanelInstructions.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 75));
 
             this.tablePanelQuestionTitle.RowStyles.Clear();
-
-            string baseStyleSheet = ".title{padding: 5px;background-color:#96cbc7}.position{padding: 5px 5px 5px 30px; background-color: gray}.list{padding: 5px 5px 5px 50px; background-color: white}";
 
             int row = 1;
             int indexQuestion = 1;
@@ -145,7 +145,7 @@ namespace GUI
                         Dock = DockStyle.Fill,
                         Text = question.Content,
                         BackColor = Color.Transparent,
-                        BaseStylesheet = baseStyleSheet
+                        BaseStylesheet = this.baseStyleSheet
                     };
                     htmlLabel.DoubleClick += delegate
                     {
@@ -206,27 +206,32 @@ namespace GUI
                     return;
                 }
             }
-            showLoading();
+            ShowLoading();
             try
             {
                 List<bool> points = null;
                 string className = ("Checker." + this.Test.OfficeApp + "." + this.Test.Name + "_" + this.Test.OfficeVersion).Replace(" ", "_");
-                BaseWordTest testChecker = this.createTestChecker(className);
+                
                 switch (this.Test.OfficeApp)
                 {
                     case "Word":
-                        Word.Application application = this.Application as Word.Application;
-                        Word.Document document = application.ActiveDocument;
+                        BaseWordTest wordTestChecker = this.CreateTestChecker(className) as BaseWordTest;
+                        Word.Application wordApp = this.Application as Word.Application;
+                        Word.Document document = wordApp.ActiveDocument;
                         document.Save();
 
-                        testChecker.Document = document;
-                        points = testChecker.Points;
-
-                        application.Quit(Word.Enums.WdSaveOptions.wdDoNotSaveChanges);
-                        application.Dispose();
+                        wordTestChecker.Document = document;
+                        points = wordTestChecker.Points;
 
                         break;
                     case "Excel":
+                        Excel.Application excelApp = this.Application as Excel.Application;
+                        Excel.Workbook workBook = excelApp.ActiveWorkbook;
+                        workBook.Save();
+
+                        BaseExcelTest excelTestChecker = this.CreateTestChecker(className) as BaseExcelTest;
+                        excelTestChecker.Workbook = workBook;
+                        points = excelTestChecker.Points;
                         break;
                     case "PowerPoint":
                         break;
@@ -239,7 +244,7 @@ namespace GUI
                 double score = Math.Min(Math.Ceiling((double)(correctedQuestions * (1000f / points.Count))), 1000f);
                 this.Task.Score = Convert.ToInt32(score);
                 Repository.updateTask(this.Task);
-                closeLoading();
+                CloseLoading();
                 MessageBox.Show($"Your Score: {this.Task.Score}\nCorrected Tasks: {correctedQuestions}/{points.Count}", "Your Result", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
             }
@@ -256,7 +261,7 @@ namespace GUI
             }
 
             this.ucTimer.Stop();
-            showLoading();
+            ShowLoading();
             try
             {
                 List<bool> markQuestions = new List<bool>();
@@ -264,31 +269,37 @@ namespace GUI
                 switch (this.Test.OfficeApp)
                 {
                     case "Word":
-                        Word.Application application = this.Application as Word.Application;
-                        application.Quit(Word.Enums.WdSaveOptions.wdSaveChanges);
-                        application.Dispose();
-
-                        int indexQuestion = 1;
-                        foreach (var group in this.Test.Questions)
-                            foreach (var question in group.Value)
-                            {
-                                if (((this.tablePanelQuestionTitle.Controls["labelQuestion" + indexQuestion.ToString()]) as Label).ForeColor == Color.Blue)
-                                {
-                                    markQuestions.Add(true);
-                                }
-                                else
-                                {
-                                    markQuestions.Add(false);
-                                }
-
-                                indexQuestion++;
-                            }
+                        Word.Application wordApp = this.Application as Word.Application;
+                        wordApp.Quit(Word.Enums.WdSaveOptions.wdSaveChanges);
+                        wordApp.Dispose();
 
                         break;
                     case "Excel":
+                        Excel.Application excelApp = this.Application as Excel.Application;
+                        excelApp.ActiveWorkbook.Close(true);
+                        excelApp.Quit();
+                        excelApp.Dispose();
                         break;
                     case "PowerPoint":
                         break;
+                }
+
+                int indexQuestion = 1;
+                foreach (var group in this.Test.Questions)
+                {
+                    foreach (var question in group.Value)
+                    {
+                        if (((this.tablePanelQuestionTitle.Controls["labelQuestion" + indexQuestion.ToString()]) as Label).ForeColor == Color.Blue)
+                        {
+                            markQuestions.Add(true);
+                        }
+                        else
+                        {
+                            markQuestions.Add(false);
+                        }
+
+                        indexQuestion++;
+                    }
                 }
 
                 this.Task.IsCompleted = false;
@@ -296,7 +307,7 @@ namespace GUI
                 this.Task.MarkCompletedQuestions.Clear();
                 this.Task.MarkCompletedQuestions.Add(markQuestions);
                 Repository.updateTask(this.Task);
-                closeLoading();
+                CloseLoading();
                 this.Close();
             }
             catch (Exception)
@@ -305,20 +316,20 @@ namespace GUI
 
         private void btnResetProject_Click(object sender, EventArgs e)
         {
-            base.resetProject(0);
+            base.ResetProject(0);
         }
 
         private void btnResize_Click(object sender, EventArgs e)
         {
-            this.resizeForm();
+            this.ResizeForm();
             if ((this.Application as NetOffice.COMObject).UnderlyingTypeName == "")
             {
-                loadApp();
-                loadFileOffice();
+                LoadApp();
+                LoadFileOffice();
             }
             else
             {
-                this.resizeOfficeWindow();
+                this.ResizeOfficeWindow();
             }
         }
     }

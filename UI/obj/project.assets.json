@@ -2,6 +2,81 @@
   "version": 3,
   "targets": {
     ".NETFramework,Version=v4.7.2": {
+      "Autoupdater.NET.Official/1.6.4": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "System.Runtime.Serialization",
+          "System.Xaml"
+        ],
+        "compile": {
+          "lib/net45/AutoUpdater.NET.dll": {}
+        },
+        "runtime": {
+          "lib/net45/AutoUpdater.NET.dll": {}
+        },
+        "resource": {
+          "lib/net35/ar/AutoUpdater.NET.resources.dll": {
+            "locale": "ar"
+          },
+          "lib/net35/cs/AutoUpdater.NET.resources.dll": {
+            "locale": "cs"
+          },
+          "lib/net35/da/AutoUpdater.NET.resources.dll": {
+            "locale": "da"
+          },
+          "lib/net35/de/AutoUpdater.NET.resources.dll": {
+            "locale": "de"
+          },
+          "lib/net35/es/AutoUpdater.NET.resources.dll": {
+            "locale": "es"
+          },
+          "lib/net35/fr/AutoUpdater.NET.resources.dll": {
+            "locale": "fr"
+          },
+          "lib/net35/it/AutoUpdater.NET.resources.dll": {
+            "locale": "it"
+          },
+          "lib/net35/ja-JP/AutoUpdater.NET.resources.dll": {
+            "locale": "ja-JP"
+          },
+          "lib/net35/ko/AutoUpdater.NET.resources.dll": {
+            "locale": "ko"
+          },
+          "lib/net35/nl/AutoUpdater.NET.resources.dll": {
+            "locale": "nl"
+          },
+          "lib/net35/pl/AutoUpdater.NET.resources.dll": {
+            "locale": "pl"
+          },
+          "lib/net35/pt-BR/AutoUpdater.NET.resources.dll": {
+            "locale": "pt-BR"
+          },
+          "lib/net35/pt/AutoUpdater.NET.resources.dll": {
+            "locale": "pt"
+          },
+          "lib/net35/ru/AutoUpdater.NET.resources.dll": {
+            "locale": "ru"
+          },
+          "lib/net35/sk/AutoUpdater.NET.resources.dll": {
+            "locale": "sk"
+          },
+          "lib/net35/sv/AutoUpdater.NET.resources.dll": {
+            "locale": "sv"
+          },
+          "lib/net35/th/AutoUpdater.NET.resources.dll": {
+            "locale": "th"
+          },
+          "lib/net35/tr/AutoUpdater.NET.resources.dll": {
+            "locale": "tr"
+          },
+          "lib/net35/zh-tw/AutoUpdater.NET.resources.dll": {
+            "locale": "zh-tw"
+          },
+          "lib/net35/zh/AutoUpdater.NET.resources.dll": {
+            "locale": "zh"
+          }
+        }
+      },
       "HtmlRenderer.Core/1.5.0.6": {
         "type": "package",
         "compile": {
@@ -40,7 +115,7 @@
           "lib/net45/log4net.dll": {}
         }
       },
-      "NetOfficeFw.Core/1.8.0": {
+      "NetOfficeFw.Core/1.8.1": {
         "type": "package",
         "compile": {
           "lib/net40/NetOffice.dll": {},
@@ -53,10 +128,22 @@
           "lib/net40/VBIDEApi.dll": {}
         }
       },
-      "NetOfficeFw.Word/1.8.0": {
+      "NetOfficeFw.Excel/1.8.1": {
         "type": "package",
         "dependencies": {
-          "NetOfficeFw.Core": "[1.8.0]"
+          "NetOfficeFw.Core": "[1.8.1]"
+        },
+        "compile": {
+          "lib/net40/ExcelApi.dll": {}
+        },
+        "runtime": {
+          "lib/net40/ExcelApi.dll": {}
+        }
+      },
+      "NetOfficeFw.Word/1.8.1": {
+        "type": "package",
+        "dependencies": {
+          "NetOfficeFw.Core": "[1.8.1]"
         },
         "compile": {
           "lib/net40/WordApi.dll": {}
@@ -85,6 +172,81 @@
       }
     },
     ".NETFramework,Version=v4.7.2/win": {
+      "Autoupdater.NET.Official/1.6.4": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "System.Runtime.Serialization",
+          "System.Xaml"
+        ],
+        "compile": {
+          "lib/net45/AutoUpdater.NET.dll": {}
+        },
+        "runtime": {
+          "lib/net45/AutoUpdater.NET.dll": {}
+        },
+        "resource": {
+          "lib/net35/ar/AutoUpdater.NET.resources.dll": {
+            "locale": "ar"
+          },
+          "lib/net35/cs/AutoUpdater.NET.resources.dll": {
+            "locale": "cs"
+          },
+          "lib/net35/da/AutoUpdater.NET.resources.dll": {
+            "locale": "da"
+          },
+          "lib/net35/de/AutoUpdater.NET.resources.dll": {
+            "locale": "de"
+          },
+          "lib/net35/es/AutoUpdater.NET.resources.dll": {
+            "locale": "es"
+          },
+          "lib/net35/fr/AutoUpdater.NET.resources.dll": {
+            "locale": "fr"
+          },
+          "lib/net35/it/AutoUpdater.NET.resources.dll": {
+            "locale": "it"
+          },
+          "lib/net35/ja-JP/AutoUpdater.NET.resources.dll": {
+            "locale": "ja-JP"
+          },
+          "lib/net35/ko/AutoUpdater.NET.resources.dll": {
+            "locale": "ko"
+          },
+          "lib/net35/nl/AutoUpdater.NET.resources.dll": {
+            "locale": "nl"
+          },
+          "lib/net35/pl/AutoUpdater.NET.resources.dll": {
+            "locale": "pl"
+          },
+          "lib/net35/pt-BR/AutoUpdater.NET.resources.dll": {
+            "locale": "pt-BR"
+          },
+          "lib/net35/pt/AutoUpdater.NET.resources.dll": {
+            "locale": "pt"
+          },
+          "lib/net35/ru/AutoUpdater.NET.resources.dll": {
+            "locale": "ru"
+          },
+          "lib/net35/sk/AutoUpdater.NET.resources.dll": {
+            "locale": "sk"
+          },
+          "lib/net35/sv/AutoUpdater.NET.resources.dll": {
+            "locale": "sv"
+          },
+          "lib/net35/th/AutoUpdater.NET.resources.dll": {
+            "locale": "th"
+          },
+          "lib/net35/tr/AutoUpdater.NET.resources.dll": {
+            "locale": "tr"
+          },
+          "lib/net35/zh-tw/AutoUpdater.NET.resources.dll": {
+            "locale": "zh-tw"
+          },
+          "lib/net35/zh/AutoUpdater.NET.resources.dll": {
+            "locale": "zh"
+          }
+        }
+      },
       "HtmlRenderer.Core/1.5.0.6": {
         "type": "package",
         "compile": {
@@ -123,7 +285,7 @@
           "lib/net45/log4net.dll": {}
         }
       },
-      "NetOfficeFw.Core/1.8.0": {
+      "NetOfficeFw.Core/1.8.1": {
         "type": "package",
         "compile": {
           "lib/net40/NetOffice.dll": {},
@@ -136,10 +298,22 @@
           "lib/net40/VBIDEApi.dll": {}
         }
       },
-      "NetOfficeFw.Word/1.8.0": {
+      "NetOfficeFw.Excel/1.8.1": {
         "type": "package",
         "dependencies": {
-          "NetOfficeFw.Core": "[1.8.0]"
+          "NetOfficeFw.Core": "[1.8.1]"
+        },
+        "compile": {
+          "lib/net40/ExcelApi.dll": {}
+        },
+        "runtime": {
+          "lib/net40/ExcelApi.dll": {}
+        }
+      },
+      "NetOfficeFw.Word/1.8.1": {
+        "type": "package",
+        "dependencies": {
+          "NetOfficeFw.Core": "[1.8.1]"
         },
         "compile": {
           "lib/net40/WordApi.dll": {}
@@ -168,6 +342,81 @@
       }
     },
     ".NETFramework,Version=v4.7.2/win-x64": {
+      "Autoupdater.NET.Official/1.6.4": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "System.Runtime.Serialization",
+          "System.Xaml"
+        ],
+        "compile": {
+          "lib/net45/AutoUpdater.NET.dll": {}
+        },
+        "runtime": {
+          "lib/net45/AutoUpdater.NET.dll": {}
+        },
+        "resource": {
+          "lib/net35/ar/AutoUpdater.NET.resources.dll": {
+            "locale": "ar"
+          },
+          "lib/net35/cs/AutoUpdater.NET.resources.dll": {
+            "locale": "cs"
+          },
+          "lib/net35/da/AutoUpdater.NET.resources.dll": {
+            "locale": "da"
+          },
+          "lib/net35/de/AutoUpdater.NET.resources.dll": {
+            "locale": "de"
+          },
+          "lib/net35/es/AutoUpdater.NET.resources.dll": {
+            "locale": "es"
+          },
+          "lib/net35/fr/AutoUpdater.NET.resources.dll": {
+            "locale": "fr"
+          },
+          "lib/net35/it/AutoUpdater.NET.resources.dll": {
+            "locale": "it"
+          },
+          "lib/net35/ja-JP/AutoUpdater.NET.resources.dll": {
+            "locale": "ja-JP"
+          },
+          "lib/net35/ko/AutoUpdater.NET.resources.dll": {
+            "locale": "ko"
+          },
+          "lib/net35/nl/AutoUpdater.NET.resources.dll": {
+            "locale": "nl"
+          },
+          "lib/net35/pl/AutoUpdater.NET.resources.dll": {
+            "locale": "pl"
+          },
+          "lib/net35/pt-BR/AutoUpdater.NET.resources.dll": {
+            "locale": "pt-BR"
+          },
+          "lib/net35/pt/AutoUpdater.NET.resources.dll": {
+            "locale": "pt"
+          },
+          "lib/net35/ru/AutoUpdater.NET.resources.dll": {
+            "locale": "ru"
+          },
+          "lib/net35/sk/AutoUpdater.NET.resources.dll": {
+            "locale": "sk"
+          },
+          "lib/net35/sv/AutoUpdater.NET.resources.dll": {
+            "locale": "sv"
+          },
+          "lib/net35/th/AutoUpdater.NET.resources.dll": {
+            "locale": "th"
+          },
+          "lib/net35/tr/AutoUpdater.NET.resources.dll": {
+            "locale": "tr"
+          },
+          "lib/net35/zh-tw/AutoUpdater.NET.resources.dll": {
+            "locale": "zh-tw"
+          },
+          "lib/net35/zh/AutoUpdater.NET.resources.dll": {
+            "locale": "zh"
+          }
+        }
+      },
       "HtmlRenderer.Core/1.5.0.6": {
         "type": "package",
         "compile": {
@@ -206,7 +455,7 @@
           "lib/net45/log4net.dll": {}
         }
       },
-      "NetOfficeFw.Core/1.8.0": {
+      "NetOfficeFw.Core/1.8.1": {
         "type": "package",
         "compile": {
           "lib/net40/NetOffice.dll": {},
@@ -219,10 +468,22 @@
           "lib/net40/VBIDEApi.dll": {}
         }
       },
-      "NetOfficeFw.Word/1.8.0": {
+      "NetOfficeFw.Excel/1.8.1": {
         "type": "package",
         "dependencies": {
-          "NetOfficeFw.Core": "[1.8.0]"
+          "NetOfficeFw.Core": "[1.8.1]"
+        },
+        "compile": {
+          "lib/net40/ExcelApi.dll": {}
+        },
+        "runtime": {
+          "lib/net40/ExcelApi.dll": {}
+        }
+      },
+      "NetOfficeFw.Word/1.8.1": {
+        "type": "package",
+        "dependencies": {
+          "NetOfficeFw.Core": "[1.8.1]"
         },
         "compile": {
           "lib/net40/WordApi.dll": {}
@@ -251,6 +512,81 @@
       }
     },
     ".NETFramework,Version=v4.7.2/win-x86": {
+      "Autoupdater.NET.Official/1.6.4": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "System.Runtime.Serialization",
+          "System.Xaml"
+        ],
+        "compile": {
+          "lib/net45/AutoUpdater.NET.dll": {}
+        },
+        "runtime": {
+          "lib/net45/AutoUpdater.NET.dll": {}
+        },
+        "resource": {
+          "lib/net35/ar/AutoUpdater.NET.resources.dll": {
+            "locale": "ar"
+          },
+          "lib/net35/cs/AutoUpdater.NET.resources.dll": {
+            "locale": "cs"
+          },
+          "lib/net35/da/AutoUpdater.NET.resources.dll": {
+            "locale": "da"
+          },
+          "lib/net35/de/AutoUpdater.NET.resources.dll": {
+            "locale": "de"
+          },
+          "lib/net35/es/AutoUpdater.NET.resources.dll": {
+            "locale": "es"
+          },
+          "lib/net35/fr/AutoUpdater.NET.resources.dll": {
+            "locale": "fr"
+          },
+          "lib/net35/it/AutoUpdater.NET.resources.dll": {
+            "locale": "it"
+          },
+          "lib/net35/ja-JP/AutoUpdater.NET.resources.dll": {
+            "locale": "ja-JP"
+          },
+          "lib/net35/ko/AutoUpdater.NET.resources.dll": {
+            "locale": "ko"
+          },
+          "lib/net35/nl/AutoUpdater.NET.resources.dll": {
+            "locale": "nl"
+          },
+          "lib/net35/pl/AutoUpdater.NET.resources.dll": {
+            "locale": "pl"
+          },
+          "lib/net35/pt-BR/AutoUpdater.NET.resources.dll": {
+            "locale": "pt-BR"
+          },
+          "lib/net35/pt/AutoUpdater.NET.resources.dll": {
+            "locale": "pt"
+          },
+          "lib/net35/ru/AutoUpdater.NET.resources.dll": {
+            "locale": "ru"
+          },
+          "lib/net35/sk/AutoUpdater.NET.resources.dll": {
+            "locale": "sk"
+          },
+          "lib/net35/sv/AutoUpdater.NET.resources.dll": {
+            "locale": "sv"
+          },
+          "lib/net35/th/AutoUpdater.NET.resources.dll": {
+            "locale": "th"
+          },
+          "lib/net35/tr/AutoUpdater.NET.resources.dll": {
+            "locale": "tr"
+          },
+          "lib/net35/zh-tw/AutoUpdater.NET.resources.dll": {
+            "locale": "zh-tw"
+          },
+          "lib/net35/zh/AutoUpdater.NET.resources.dll": {
+            "locale": "zh"
+          }
+        }
+      },
       "HtmlRenderer.Core/1.5.0.6": {
         "type": "package",
         "compile": {
@@ -289,7 +625,7 @@
           "lib/net45/log4net.dll": {}
         }
       },
-      "NetOfficeFw.Core/1.8.0": {
+      "NetOfficeFw.Core/1.8.1": {
         "type": "package",
         "compile": {
           "lib/net40/NetOffice.dll": {},
@@ -302,10 +638,22 @@
           "lib/net40/VBIDEApi.dll": {}
         }
       },
-      "NetOfficeFw.Word/1.8.0": {
+      "NetOfficeFw.Excel/1.8.1": {
         "type": "package",
         "dependencies": {
-          "NetOfficeFw.Core": "[1.8.0]"
+          "NetOfficeFw.Core": "[1.8.1]"
+        },
+        "compile": {
+          "lib/net40/ExcelApi.dll": {}
+        },
+        "runtime": {
+          "lib/net40/ExcelApi.dll": {}
+        }
+      },
+      "NetOfficeFw.Word/1.8.1": {
+        "type": "package",
+        "dependencies": {
+          "NetOfficeFw.Core": "[1.8.1]"
         },
         "compile": {
           "lib/net40/WordApi.dll": {}
@@ -335,6 +683,69 @@
     }
   },
   "libraries": {
+    "Autoupdater.NET.Official/1.6.4": {
+      "sha512": "XBolz4NgByGCmNT9ivBmA9uvBQxxESo3kCXImCzYQJddxn3oVFCaEuMfI1AiDvBvCFnVZ7c/2WnSmCUx7gI24g==",
+      "type": "package",
+      "path": "autoupdater.net.official/1.6.4",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "autoupdater.net.official.1.6.4.nupkg.sha512",
+        "autoupdater.net.official.nuspec",
+        "lib/net20/AutoUpdater.NET.dll",
+        "lib/net20/AutoUpdater.NET.pdb",
+        "lib/net20/AutoUpdater.NET.xml",
+        "lib/net20/ar/AutoUpdater.NET.resources.dll",
+        "lib/net20/cs/AutoUpdater.NET.resources.dll",
+        "lib/net20/da/AutoUpdater.NET.resources.dll",
+        "lib/net20/de/AutoUpdater.NET.resources.dll",
+        "lib/net20/es/AutoUpdater.NET.resources.dll",
+        "lib/net20/fr/AutoUpdater.NET.resources.dll",
+        "lib/net20/it/AutoUpdater.NET.resources.dll",
+        "lib/net20/ja-JP/AutoUpdater.NET.resources.dll",
+        "lib/net20/ko/AutoUpdater.NET.resources.dll",
+        "lib/net20/nl/AutoUpdater.NET.resources.dll",
+        "lib/net20/pl/AutoUpdater.NET.resources.dll",
+        "lib/net20/pt-BR/AutoUpdater.NET.resources.dll",
+        "lib/net20/pt/AutoUpdater.NET.resources.dll",
+        "lib/net20/ru/AutoUpdater.NET.resources.dll",
+        "lib/net20/sk/AutoUpdater.NET.resources.dll",
+        "lib/net20/sv/AutoUpdater.NET.resources.dll",
+        "lib/net20/th/AutoUpdater.NET.resources.dll",
+        "lib/net20/tr/AutoUpdater.NET.resources.dll",
+        "lib/net20/zh-tw/AutoUpdater.NET.resources.dll",
+        "lib/net20/zh/AutoUpdater.NET.resources.dll",
+        "lib/net35/AutoUpdater.NET.dll",
+        "lib/net35/AutoUpdater.NET.pdb",
+        "lib/net35/AutoUpdater.NET.xml",
+        "lib/net35/ar/AutoUpdater.NET.resources.dll",
+        "lib/net35/cs/AutoUpdater.NET.resources.dll",
+        "lib/net35/da/AutoUpdater.NET.resources.dll",
+        "lib/net35/de/AutoUpdater.NET.resources.dll",
+        "lib/net35/es/AutoUpdater.NET.resources.dll",
+        "lib/net35/fr/AutoUpdater.NET.resources.dll",
+        "lib/net35/it/AutoUpdater.NET.resources.dll",
+        "lib/net35/ja-JP/AutoUpdater.NET.resources.dll",
+        "lib/net35/ko/AutoUpdater.NET.resources.dll",
+        "lib/net35/nl/AutoUpdater.NET.resources.dll",
+        "lib/net35/pl/AutoUpdater.NET.resources.dll",
+        "lib/net35/pt-BR/AutoUpdater.NET.resources.dll",
+        "lib/net35/pt/AutoUpdater.NET.resources.dll",
+        "lib/net35/ru/AutoUpdater.NET.resources.dll",
+        "lib/net35/sk/AutoUpdater.NET.resources.dll",
+        "lib/net35/sv/AutoUpdater.NET.resources.dll",
+        "lib/net35/th/AutoUpdater.NET.resources.dll",
+        "lib/net35/tr/AutoUpdater.NET.resources.dll",
+        "lib/net35/zh-tw/AutoUpdater.NET.resources.dll",
+        "lib/net35/zh/AutoUpdater.NET.resources.dll",
+        "lib/net40/AutoUpdater.NET.dll",
+        "lib/net40/AutoUpdater.NET.pdb",
+        "lib/net40/AutoUpdater.NET.xml",
+        "lib/net45/AutoUpdater.NET.dll",
+        "lib/net45/AutoUpdater.NET.pdb",
+        "lib/net45/AutoUpdater.NET.xml"
+      ]
+    },
     "HtmlRenderer.Core/1.5.0.6": {
       "sha512": "/WPVhzNmILIOJ1vtoiQXP7y7MJirCpHn/jqFw38wU0vv1XXbSpR2bTStmaiI2Pb2JLjnPMrVGR/7T7zKlAaaHw==",
       "type": "package",
@@ -404,10 +815,10 @@
         "package-icon.png"
       ]
     },
-    "NetOfficeFw.Core/1.8.0": {
-      "sha512": "hKdgUFqUqJeCqzhrUAT65EVk+oROOlYWGsgpXa5AZzli8Qf9Jt0XfY6glHGGxyNa0BBifZr1YFagBV3PS+Hd0Q==",
+    "NetOfficeFw.Core/1.8.1": {
+      "sha512": "+ex3+3mS10lugArabiPRv4o7RGE3WNppARjnRkxPYP8QbC/eFxJl1iszlduJM1TfcqBKuRtpkwDxysO3hGGGaA==",
       "type": "package",
-      "path": "netofficefw.core/1.8.0",
+      "path": "netofficefw.core/1.8.1",
       "hasTools": true,
       "files": [
         ".nupkg.metadata",
@@ -420,15 +831,32 @@
         "lib/net40/OfficeApi.xml",
         "lib/net40/VBIDEApi.dll",
         "lib/net40/VBIDEApi.xml",
-        "netofficefw.core.1.8.0.nupkg.sha512",
+        "netofficefw.core.1.8.1.nupkg.sha512",
         "netofficefw.core.nuspec",
         "tools/install.ps1"
       ]
     },
-    "NetOfficeFw.Word/1.8.0": {
-      "sha512": "V+HJK4817Rm/+7lPRa85VnaYDgCi5kuCouqfJ6KNVIA6PLpcThJJ8J6E+RYqvlqefu1V1/EEeZFsoqjqOv9zhQ==",
+    "NetOfficeFw.Excel/1.8.1": {
+      "sha512": "ntN7+DiKXIhGNlXvES1OEgfbWa57x0mSCzK749CdiJ2K2ePwFdorBU7XGcGM0B2CJWLuaDP2WNv7PtjPgbjuDA==",
       "type": "package",
-      "path": "netofficefw.word/1.8.0",
+      "path": "netofficefw.excel/1.8.1",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "icon.png",
+        "lib/net40/ExcelApi.dll",
+        "lib/net40/ExcelApi.xml",
+        "netofficefw.excel.1.8.1.nupkg.sha512",
+        "netofficefw.excel.nuspec",
+        "tools/install.ps1"
+      ]
+    },
+    "NetOfficeFw.Word/1.8.1": {
+      "sha512": "LnstIpfeMdberSlS2eXgsfYOtWG0vLg9nv9lRi2RLUwE80xhsJn4yS/O2xr/NdN/7ggGgbzxm32Fpl9mEswzXw==",
+      "type": "package",
+      "path": "netofficefw.word/1.8.1",
       "hasTools": true,
       "files": [
         ".nupkg.metadata",
@@ -437,7 +865,7 @@
         "icon.png",
         "lib/net40/WordApi.dll",
         "lib/net40/WordApi.xml",
-        "netofficefw.word.1.8.0.nupkg.sha512",
+        "netofficefw.word.1.8.1.nupkg.sha512",
         "netofficefw.word.nuspec",
         "tools/install.ps1"
       ]
@@ -455,12 +883,14 @@
   },
   "projectFileDependencyGroups": {
     ".NETFramework,Version=v4.7.2": [
+      "Autoupdater.NET.Official >= 1.6.4",
       "Checker >= 1.0.0",
       "HtmlRenderer.Core >= 1.5.0.6",
       "HtmlRenderer.WinForms >= 1.5.0.6",
       "Models >= 1.0.0",
-      "NetOfficeFw.Core >= 1.8.0",
-      "NetOfficeFw.Word >= 1.8.0",
+      "NetOfficeFw.Core >= 1.8.1",
+      "NetOfficeFw.Excel >= 1.8.1",
+      "NetOfficeFw.Word >= 1.8.1",
       "log4net >= 2.0.12"
     ]
   },
@@ -504,6 +934,10 @@
     "frameworks": {
       "net472": {
         "dependencies": {
+          "Autoupdater.NET.Official": {
+            "target": "Package",
+            "version": "[1.6.4, )"
+          },
           "HtmlRenderer.Core": {
             "target": "Package",
             "version": "[1.5.0.6, )"
@@ -514,11 +948,15 @@
           },
           "NetOfficeFw.Core": {
             "target": "Package",
-            "version": "[1.8.0, )"
+            "version": "[1.8.1, )"
+          },
+          "NetOfficeFw.Excel": {
+            "target": "Package",
+            "version": "[1.8.1, )"
           },
           "NetOfficeFw.Word": {
             "target": "Package",
-            "version": "[1.8.0, )"
+            "version": "[1.8.1, )"
           },
           "log4net": {
             "target": "Package",

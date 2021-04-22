@@ -61,7 +61,7 @@ namespace ManageDb
             this.dataGridQuestions = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.keyComboBox = new System.Windows.Forms.ComboBox();
+            this.groupQuestionComboBox = new System.Windows.Forms.ComboBox();
             this.btnGDel = new System.Windows.Forms.Button();
             this.btnGAdd = new System.Windows.Forms.Button();
             this.contentTextBox = new System.Windows.Forms.TextBox();
@@ -438,7 +438,7 @@ namespace ManageDb
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.keyComboBox);
+            this.groupBox1.Controls.Add(this.groupQuestionComboBox);
             this.groupBox1.Controls.Add(this.btnGDel);
             this.groupBox1.Controls.Add(this.btnGAdd);
             this.groupBox1.Location = new System.Drawing.Point(21, 3);
@@ -448,14 +448,14 @@ namespace ManageDb
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Group";
             // 
-            // keyComboBox
+            // groupQuestionComboBox
             // 
-            this.keyComboBox.FormattingEnabled = true;
-            this.keyComboBox.Location = new System.Drawing.Point(12, 22);
-            this.keyComboBox.Name = "keyComboBox";
-            this.keyComboBox.Size = new System.Drawing.Size(139, 21);
-            this.keyComboBox.TabIndex = 3;
-            this.keyComboBox.SelectedIndexChanged += new System.EventHandler(this.keyComboBox_SelectedIndexChanged);
+            this.groupQuestionComboBox.FormattingEnabled = true;
+            this.groupQuestionComboBox.Location = new System.Drawing.Point(12, 22);
+            this.groupQuestionComboBox.Name = "groupQuestionComboBox";
+            this.groupQuestionComboBox.Size = new System.Drawing.Size(139, 21);
+            this.groupQuestionComboBox.TabIndex = 3;
+            this.groupQuestionComboBox.SelectedIndexChanged += new System.EventHandler(this.keyComboBox_SelectedIndexChanged);
             // 
             // btnGDel
             // 
@@ -639,7 +639,7 @@ namespace ManageDb
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnGDel;
         private System.Windows.Forms.Button btnGAdd;
-        private System.Windows.Forms.ComboBox keyComboBox;
+        private System.Windows.Forms.ComboBox groupQuestionComboBox;
     }
 }
 

@@ -47,6 +47,7 @@ namespace GUI
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.lblLimitTime = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
+            this.lblVer = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridTasks)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -254,11 +255,21 @@ namespace GUI
             this.label8.TabIndex = 15;
             this.label8.Text = "Limit Time:";
             // 
+            // lblVer
+            // 
+            this.lblVer.AutoSize = true;
+            this.lblVer.Location = new System.Drawing.Point(20, 356);
+            this.lblVer.Name = "lblVer";
+            this.lblVer.Size = new System.Drawing.Size(81, 13);
+            this.lblVer.TabIndex = 16;
+            this.lblVer.Text = "Version: 1.0.0.0";
+            // 
             // frmChooseTest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(794, 362);
+            this.ClientSize = new System.Drawing.Size(794, 383);
+            this.Controls.Add(this.lblVer);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.groupBox1);
@@ -304,6 +315,7 @@ namespace GUI
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label lblLimitTime;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label lblVer;
     }
 }
 

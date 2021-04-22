@@ -31,4 +31,3 @@ C:\Users\nguyentu\source\repos\MOS Checker\Checker\obj\Debug\Checker.csproj.Core
 C:\Users\nguyentu\source\repos\MOS Checker\Checker\obj\Debug\Checker.csproj.CopyComplete
 C:\Users\nguyentu\source\repos\MOS Checker\Checker\obj\Debug\Checker.dll
 C:\Users\nguyentu\source\repos\MOS Checker\Checker\obj\Debug\Checker.pdb
-C:\Users\nguyentu\source\repos\MOS Checker\Checker\obj\Debug\Checker.csprojAssemblyReference.cache

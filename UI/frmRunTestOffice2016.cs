@@ -19,7 +19,7 @@ namespace GUI
             InitializeComponent();
 
             this.groupQuestions();
-            this.loadApp();
+            this.LoadApp();
 
             if (resumeTask != null)
             {
@@ -38,13 +38,13 @@ namespace GUI
                     }
                     dict.Add(l);
                 }
-                this.createTask(dict);
+                this.CreateTask(dict);
             }
 
             this.SelectedProject = 0;
             this.loadProject();
-            this.createDirTemp();
-            this.resizeForm();
+            this.CreateDirTemp();
+            this.ResizeForm();
 
             if (mode == Models.Enums.TestMode.Testing)
             {
@@ -75,28 +75,28 @@ namespace GUI
             this.ucTimer.Current = this.Task.UsedTime;
         }
 
-        protected override void createTask(List<List<bool>> dict = null)
+        protected override void CreateTask(List<List<bool>> dict = null)
         {
-            base.createTask(dict);
+            base.CreateTask(dict);
             this.ucTimer.Current = 0;
         }
 
         private void btnResize_Click(object sender, EventArgs e)
         {
-            this.resizeForm();
+            this.ResizeForm();
             if (this.Application == null)
             {
-                this.loadApp();
-                this.loadFileOffice(this.SelectedProject);
+                this.LoadApp();
+                this.LoadFileOffice(this.SelectedProject);
             }
-            this.resizeOfficeWindow();
+            this.ResizeOfficeWindow();
         }
 
         private void frmRunTestOffice2016_FormClosed(object sender, FormClosedEventArgs e)
         {
             this.ucTimer.Current = 0;
             this.ucTimer.Stop();
-            base.formClosed();
+            base.FrmClosed();
         }
 
         private void btnSummary_Click(object sender, EventArgs e)
@@ -111,7 +111,7 @@ namespace GUI
         {
             int index = this.SelectedProject;
             this.lblSelectedProject.Text = $"Project {index + 1} of {this.Projects.Count}";
-            this.loadFileOffice(this.SelectedProject);
+            this.LoadFileOffice(this.SelectedProject);
             this.buildControlQuestions();
             this.btnQuestion_Click(this.panelQuestionTitle.Controls["btnQuestion0"], null);
             this.loadMarkQuestionFromSave();
@@ -171,7 +171,7 @@ namespace GUI
 
         private void btnReset_Click(object sender, EventArgs e)
         {
-            base.resetProject(this.SelectedProject);
+            base.ResetProject(this.SelectedProject);
         }
 
         private void btnHelp_Click(object sender, EventArgs e)
@@ -228,7 +228,7 @@ namespace GUI
             }
 
             this.ucTimer.Stop();
-            showLoading();
+            ShowLoading();
             try
             {
                 switch (this.Test.OfficeApp)
@@ -247,7 +247,7 @@ namespace GUI
                 this.Task.IsCompleted = false;
                 this.Task.UsedTime = this.ucTimer.Current;
                 Repository.updateTask(this.Task);
-                closeLoading();
+                CloseLoading();
                 this.Close();
             }
             catch (Exception)
@@ -265,8 +265,11 @@ namespace GUI
                 }
             }
 
-            showLoading();
+            ShowLoading();
             string correctedTasksPerProject = "";
+            float scorePerProject = 1000f / this.Projects.Count;
+            float score = 0;
+
             try
             {
                 switch (this.Test.OfficeApp)
@@ -278,43 +281,35 @@ namespace GUI
                             application.ActiveDocument.Close(Word.Enums.WdSaveOptions.wdSaveChanges);
                         }
 
-                        float scorePerProject = 1000f / this.Projects.Count;
-                        float score = 0;
-
                         for (int i = 1; i <= this.Projects.Count; ++i)
                         {
                             float scorePerTask = scorePerProject / (this.Projects[i - 1].Count - 1);
 
                             string className = ("Checker." + this.Test.OfficeApp + "." + "Project_" + i.ToString() + "_" + this.Test.Name + "_" + this.Test.OfficeVersion).Replace(" ", "_");
-                            BaseWordTest testChecker = this.createTestChecker(className);
+                            BaseWordTest testChecker = this.CreateTestChecker(className) as BaseWordTest;
 
                             Word.Document document = application.Documents.Open(this.WorkingFilePaths(i - 1));
                             testChecker.Document = document;
 
                             var points = testChecker.Points;
                             this.Task.Points.Add(points);
-                            document.Close(Word.Enums.WdSaveOptions.wdDoNotSaveChanges);
+
                             score += scorePerTask * points.FindAll(x => x == true).Count;
                             correctedTasksPerProject += "\nProject " + i.ToString() + ": " + points.FindAll(x => x == true).Count.ToString() + "/" + points.Count.ToString();
                         }
-
-                        this.Task.Score = Convert.ToInt32(Math.Min(Math.Ceiling(score), 1000f));
-
-                        application.Quit(Word.Enums.WdSaveOptions.wdDoNotSaveChanges);
-                        application.Dispose();
-
                         break;
                     case "Excel":
                         break;
                     case "PowerPoint":
                         break;
                 }
-
+                
+                this.Task.Score = Convert.ToInt32(Math.Min(Math.Ceiling(score), 1000f));
                 this.Task.IsCompleted = true;
                 this.Task.UsedTime = this.ucTimer.Current;
 
                 Repository.updateTask(this.Task);
-                closeLoading();
+                CloseLoading();
 
                 MessageBox.Show($"Your Score: {this.Task.Score}\n" + correctedTasksPerProject, "Your Result", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();

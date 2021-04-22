@@ -7739,6 +7739,29 @@
             <param name="text">The original string.</param>
             <param name="value">The string to seek.</param>
         </member>
+        <member name="T:NetOffice.Tools.DisabledItem">
+            <summary>
+            Represents information about a disabled add-in in a Microsoft Office application.
+            </summary>
+            <remarks>
+            Use the <see cref="!:OfficeResiliency.Parse()"/> method to convert the binary
+            data from the Resiliency\DisabledItems registry keys into the <see cref="T:NetOffice.Tools.DisabledItem"/> object.
+            </remarks>
+        </member>
+        <member name="T:NetOffice.Tools.DisabledItemType">
+            <summary>
+            Represents the type of structure stored in the Resiliency registry keys.
+            </summary>
+            <remarks>
+            The Resiliency registry key contains a list of DisabledItems. Information
+            about disabled items (eg. add-ins) is stored as binary data.
+            The first <see cref="T:System.Int32"/> value represents the type of the
+            data structure.
+            
+            For regular add-ins (COM, .NET, NetOffice or VSTO) the usual disabled item
+            type value would be either AddInByFilename (1) or AddInByDEPFilename (6).
+            </remarks>
+        </member>
         <member name="T:NetOffice.Tools.DontRegisterAddinAttribute">
             <summary>
             Don't register addin into the Microsoft Office application.
@@ -8070,6 +8093,20 @@
             <summary>
             Registry key is already created
             </summary>
+        </member>
+        <member name="M:NetOffice.Tools.OfficeResiliency.Parse(System.Byte[])">
+            <summary>
+            Method for converting the binary data from the Resiliency\DisabledItems
+            registry keys into the <see cref="T:NetOffice.Tools.DisabledItem"/> object.
+            </summary>
+            <param name="rawData">Binary data from the DisabledItems registry key.</param>
+            <returns></returns>
+            <remarks>
+            DisabledItems registry keys are stored at <c>HKEY_CURRENT_USER\Software\Microsoft\Office\[OfficeAppVersion]\[OfficeAppName]\Resiliency\DisabledItems</c>
+            as subkeys.
+            The [OfficeAppVersion] is MS Office release version like <c>15.0</c> or <c>16.0</c>.
+            The [OfficeAppName] is the name of a MS Office application like <c>Word</c>, <c>Excel</c>, <c>PowerPoint</c>, <c>Outlook</c> and others.
+            </remarks>
         </member>
         <member name="T:NetOffice.Tools.OfficeUnRegisterKeyState">
             <summary>

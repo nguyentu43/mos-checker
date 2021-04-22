@@ -61,6 +61,10 @@
       "frameworks": {
         "net472": {
           "dependencies": {
+            "Autoupdater.NET.Official": {
+              "target": "Package",
+              "version": "[1.6.4, )"
+            },
             "HtmlRenderer.Core": {
               "target": "Package",
               "version": "[1.5.0.6, )"
@@ -71,11 +75,15 @@
             },
             "NetOfficeFw.Core": {
               "target": "Package",
-              "version": "[1.8.0, )"
+              "version": "[1.8.1, )"
+            },
+            "NetOfficeFw.Excel": {
+              "target": "Package",
+              "version": "[1.8.1, )"
             },
             "NetOfficeFw.Word": {
               "target": "Package",
-              "version": "[1.8.0, )"
+              "version": "[1.8.1, )"
             },
             "log4net": {
               "target": "Package",

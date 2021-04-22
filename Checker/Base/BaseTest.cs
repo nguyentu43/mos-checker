@@ -22,9 +22,7 @@ namespace Checker.Base
                         result = ((bool)methodInfo.Invoke(this, null));
                     }
                     catch (Exception)
-                    {
-
-                    }
+                    {}
                     finally
                     {
                         points.Add(result);

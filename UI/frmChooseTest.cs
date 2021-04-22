@@ -4,15 +4,20 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading;
 using System.Windows.Forms;
+using AutoUpdaterDotNET;
 
 namespace GUI
 {
     public partial class frmChooseTest : Form
     {
-        protected Thread threadLoading;
+        protected Form frmLoading = new frmLoading();
         public frmChooseTest()
         {
             InitializeComponent();
+            AutoUpdater.Start("https://raw.githubusercontent.com/nguyentu43/mos-checker-updater/master/updater.xml");
+
+            string ver = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
+            lblVer.Text = string.Format("Version: {0}", ver);
         }
 
         private void RunTest(
@@ -43,11 +48,7 @@ namespace GUI
                 }
             }
 
-            threadLoading = new Thread(delegate ()
-            {
-                (new frmLoading()).ShowDialog();
-            });
-            threadLoading.Start();
+            frmLoading.Show();
 
             switch (test.OfficeVersion)
             {
@@ -151,8 +152,7 @@ namespace GUI
         {
             if (!this.Visible)
             {
-                threadLoading.Abort();
-                threadLoading = null;
+                frmLoading.Close();
             }
         }
 

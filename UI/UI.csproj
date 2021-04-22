@@ -145,6 +145,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Autoupdater.NET.Official">
+      <Version>1.6.4</Version>
+    </PackageReference>
     <PackageReference Include="HtmlRenderer.Core">
       <Version>1.5.0.6</Version>
     </PackageReference>
@@ -155,10 +158,13 @@
       <Version>2.0.12</Version>
     </PackageReference>
     <PackageReference Include="NetOfficeFw.Core">
-      <Version>1.8.0</Version>
+      <Version>1.8.1</Version>
+    </PackageReference>
+    <PackageReference Include="NetOfficeFw.Excel">
+      <Version>1.8.1</Version>
     </PackageReference>
     <PackageReference Include="NetOfficeFw.Word">
-      <Version>1.8.0</Version>
+      <Version>1.8.1</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>

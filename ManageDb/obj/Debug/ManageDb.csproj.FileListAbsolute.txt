@@ -16,3 +16,7 @@ C:\Users\nguyentu\source\repos\MOS Checker\ManageDb\obj\Debug\ManageDb.csproj.Co
 C:\Users\nguyentu\source\repos\MOS Checker\ManageDb\obj\Debug\ManageDb.csproj.CopyComplete
 C:\Users\nguyentu\source\repos\MOS Checker\ManageDb\obj\Debug\ManageDb.exe
 C:\Users\nguyentu\source\repos\MOS Checker\ManageDb\obj\Debug\ManageDb.pdb
+C:\Users\nguyentu\source\repos\MOS Checker\ManageDb\bin\Debug\HtmlRenderer.dll
+C:\Users\nguyentu\source\repos\MOS Checker\ManageDb\bin\Debug\HtmlRenderer.WinForms.dll
+C:\Users\nguyentu\source\repos\MOS Checker\ManageDb\bin\Debug\HtmlRenderer.pdb
+C:\Users\nguyentu\source\repos\MOS Checker\ManageDb\bin\Debug\HtmlRenderer.WinForms.pdb

@@ -1,14 +1,16 @@
 {
   "version": 2,
-  "dgSpecHash": "wRF5da2TANvWtnoQfdZqovFRjwfLcUOAdBpeAwbVgEKRNfoeu79G32BppsasMO3ponDe5Kp5hz79zATtTkB7Sw==",
+  "dgSpecHash": "g5AiN4/3iVsyEPE+BuVg43lbAZ4lkHw02wIJurUWg2pkMUH4ARC5ZnZ803E+lATM9csBAmYIODqPbHOOxk4Nig==",
   "success": true,
   "projectFilePath": "C:\\Users\\nguyentu\\source\\repos\\MOS Checker\\UI\\UI.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\nguyentu\\.nuget\\packages\\autoupdater.net.official\\1.6.4\\autoupdater.net.official.1.6.4.nupkg.sha512",
     "C:\\Users\\nguyentu\\.nuget\\packages\\htmlrenderer.core\\1.5.0.6\\htmlrenderer.core.1.5.0.6.nupkg.sha512",
     "C:\\Users\\nguyentu\\.nuget\\packages\\htmlrenderer.winforms\\1.5.0.6\\htmlrenderer.winforms.1.5.0.6.nupkg.sha512",
     "C:\\Users\\nguyentu\\.nuget\\packages\\log4net\\2.0.12\\log4net.2.0.12.nupkg.sha512",
-    "C:\\Users\\nguyentu\\.nuget\\packages\\netofficefw.core\\1.8.0\\netofficefw.core.1.8.0.nupkg.sha512",
-    "C:\\Users\\nguyentu\\.nuget\\packages\\netofficefw.word\\1.8.0\\netofficefw.word.1.8.0.nupkg.sha512"
+    "C:\\Users\\nguyentu\\.nuget\\packages\\netofficefw.core\\1.8.1\\netofficefw.core.1.8.1.nupkg.sha512",
+    "C:\\Users\\nguyentu\\.nuget\\packages\\netofficefw.excel\\1.8.1\\netofficefw.excel.1.8.1.nupkg.sha512",
+    "C:\\Users\\nguyentu\\.nuget\\packages\\netofficefw.word\\1.8.1\\netofficefw.word.1.8.1.nupkg.sha512"
   ],
   "logs": []
 }

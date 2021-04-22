@@ -1,9 +1,0 @@
-C:\Users\nguyentu\source\repos\MOS Checker\Models\bin\Release\Models.dll
-C:\Users\nguyentu\source\repos\MOS Checker\Models\bin\Release\Models.pdb
-C:\Users\nguyentu\source\repos\MOS Checker\Models\bin\Release\LiteDB.dll
-C:\Users\nguyentu\source\repos\MOS Checker\Models\bin\Release\LiteDB.xml
-C:\Users\nguyentu\source\repos\MOS Checker\Models\obj\Release\Models.csprojAssemblyReference.cache
-C:\Users\nguyentu\source\repos\MOS Checker\Models\obj\Release\Models.csproj.CoreCompileInputs.cache
-C:\Users\nguyentu\source\repos\MOS Checker\Models\obj\Release\Models.csproj.CopyComplete
-C:\Users\nguyentu\source\repos\MOS Checker\Models\obj\Release\Models.dll
-C:\Users\nguyentu\source\repos\MOS Checker\Models\obj\Release\Models.pdb

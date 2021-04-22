@@ -16,7 +16,8 @@
     <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
-    <PkgNetOfficeFw_Core Condition=" '$(PkgNetOfficeFw_Core)' == '' ">C:\Users\nguyentu\.nuget\packages\netofficefw.core\1.8.0</PkgNetOfficeFw_Core>
-    <PkgNetOfficeFw_Word Condition=" '$(PkgNetOfficeFw_Word)' == '' ">C:\Users\nguyentu\.nuget\packages\netofficefw.word\1.8.0</PkgNetOfficeFw_Word>
+    <PkgNetOfficeFw_Core Condition=" '$(PkgNetOfficeFw_Core)' == '' ">C:\Users\nguyentu\.nuget\packages\netofficefw.core\1.8.1</PkgNetOfficeFw_Core>
+    <PkgNetOfficeFw_Word Condition=" '$(PkgNetOfficeFw_Word)' == '' ">C:\Users\nguyentu\.nuget\packages\netofficefw.word\1.8.1</PkgNetOfficeFw_Word>
+    <PkgNetOfficeFw_Excel Condition=" '$(PkgNetOfficeFw_Excel)' == '' ">C:\Users\nguyentu\.nuget\packages\netofficefw.excel\1.8.1</PkgNetOfficeFw_Excel>
   </PropertyGroup>
 </Project>

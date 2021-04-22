@@ -11,7 +11,7 @@ namespace ManageDb
         public frmManageDb()
         {
             InitializeComponent();
-            string baseStyleSheet = ".title{padding: 5px;background-color:#96cbc7}.position{padding: 5px 5px 5px 30px; background-color: gray}.list{padding: 5px 5px 5px 50px; background-color: white}";
+            string baseStyleSheet = ".title{padding: 5px;background-color:#96cbc7}.position{padding: 5px 5px 5px 30px; background-color: #dadada}.list{padding: 5px 5px 5px 50px; background-color: white}.sublist{padding-left: 30px}";
             htmlPanel.BaseStylesheet = baseStyleSheet;
         }
 
@@ -29,12 +29,14 @@ namespace ManageDb
 
         private void loadData()
         {
+            string prev = groupQuestionComboBox.Text;
             List<Test> tests = Repository.getTests();
             testBindingSource.DataSource = tests;
             dataGridTests.DataSource = testBindingSource;
             dataGridTests.Columns["ResourcesPath"].Visible = false;
             dataGridTests.Columns["Questions"].Visible = false;
             dataGridTests.Refresh();
+            groupQuestionComboBox.Text = prev;
         }
 
         private void updateTest(object sender, System.EventArgs e)
@@ -68,18 +70,24 @@ namespace ManageDb
                 string content = "";
                 if (currentTest.OfficeVersion == "2013")
                 {
-                    content = @"<div class='title'>Title</div>
-<div class='position'>Position</div>
-<div class='list'>* List: 1</div>";
+                    content = @"<div class='title'>
+Title
+</div>
+<div class='position'>
+Position
+</div>
+<div class='list'>
+* List: 1
+</div>";
                 }
-                if (currentTest.Questions.Count > 0 && keyComboBox.Text != "")
+                if (currentTest.Questions.Count > 0 && groupQuestionComboBox.Text != "")
                 {
-                    if (!currentTest.Questions.ContainsKey(keyComboBox.Text))
+                    if (!currentTest.Questions.ContainsKey(groupQuestionComboBox.Text))
                     {
-                        currentTest.Questions.Add(keyComboBox.Text, new List<Question>());
+                        currentTest.Questions.Add(groupQuestionComboBox.Text, new List<Question>());
                     }
 
-                    currentTest.Questions[keyComboBox.Text].Add(new Question
+                    currentTest.Questions[groupQuestionComboBox.Text].Add(new Question
                     {
                         Content = content
                     });
@@ -124,7 +132,7 @@ namespace ManageDb
             {
                 if (dataGridQuestions.CurrentRow.DataBoundItem is Question question)
                 {
-                    string key = keyComboBox.Text.ToString();
+                    string key = groupQuestionComboBox.Text.ToString();
                     if (MessageBox.Show("Bạn có muốn xóa?", "Xóa", MessageBoxButtons.YesNo) == DialogResult.No) return;
                     currentTest.Questions[key]?.Remove(question);
                     Repository.updateTest(currentTest);
@@ -139,7 +147,12 @@ namespace ManageDb
             {
                 if (test?.Resources == null) return;
                 txtResources.Text = string.Join(",", test.Resources);
-                keyComboBox.DataSource = test.Questions.Keys.ToList<string>();
+                groupQuestionComboBox.SelectedItem = null;
+                titleTextBox.Text = "";
+                helpTextBox.Text = "";
+                contentTextBox.Text = "";
+                groupQuestionComboBox.DataSource = test.Questions.Keys.ToList<string>();
+                
             }
         }
 
@@ -171,7 +184,7 @@ namespace ManageDb
             if (testBindingSource.Current is Test test)
             {
                 dataGridQuestions.DataSource = null;
-                if (keyComboBox.SelectedItem is string key)
+                if (groupQuestionComboBox.SelectedItem is string key)
                 {
                     dataGridQuestions.DataSource = test.Questions[key];
                 }
@@ -180,19 +193,19 @@ namespace ManageDb
 
         private void btnGAdd_Click(object sender, EventArgs e)
         {
-            if(keyComboBox.Text.Trim() == "")
+            if(groupQuestionComboBox.Text.Trim() == "")
             {
                 MessageBox.Show("Group Name not empty!");
                 return;
             }    
             if (testBindingSource.Current is Test test)
             {
-                if (test.Questions.ContainsKey(keyComboBox.Text))
+                if (test.Questions.ContainsKey(groupQuestionComboBox.Text))
                 {
                     MessageBox.Show("Key Duplicated");
                     return;
                 }
-                test.Questions.Add(keyComboBox.Text, new List<Question>());
+                test.Questions.Add(groupQuestionComboBox.Text, new List<Question>());
                 Repository.updateTest(test);
                 loadData();
             }
@@ -200,9 +213,9 @@ namespace ManageDb
 
         private void btnGDel_Click(object sender, EventArgs e)
         {
-            if (testBindingSource.Current is Test test && keyComboBox.Text != "")
+            if (testBindingSource.Current is Test test && groupQuestionComboBox.Text != "")
             {
-                test.Questions.Remove(keyComboBox.Text);
+                test.Questions.Remove(groupQuestionComboBox.Text);
                 Repository.updateTest(test);
                 loadData();
             }
