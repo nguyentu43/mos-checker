@@ -153,7 +153,7 @@ namespace GUI
         {
             if (!this.Visible)
             {
-                frmLoading.Close();
+                frmLoading.Hide();
             }
         }
 

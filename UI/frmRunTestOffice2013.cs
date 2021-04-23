@@ -227,11 +227,16 @@ namespace GUI
                     case "Excel":
                         Excel.Application excelApp = this.Application as Excel.Application;
                         Excel.Workbook workBook = excelApp.ActiveWorkbook;
-                        workBook.Save();
+                        workBook.Close(true);
 
+                        string themeXmlContent = Checker.Utils.Excel.GetThemeXmlContent(WorkingFilePaths());
                         BaseExcelTest excelTestChecker = this.CreateTestChecker(className) as BaseExcelTest;
-                        excelTestChecker.Workbook = workBook;
+                        excelTestChecker.ThemeXmlContent = themeXmlContent;
+
+                        LoadFileOffice();
+                        excelTestChecker.Workbook = (Application as Excel.Application).ActiveWorkbook;
                         points = excelTestChecker.Points;
+
                         break;
                     case "PowerPoint":
                         break;

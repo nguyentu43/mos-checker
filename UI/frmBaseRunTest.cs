@@ -127,11 +127,11 @@ namespace GUI
 
         protected void ShowLoading()
         {
-            frmLoading.Show(this);
+            frmLoading.Show();
         }
         protected void CloseLoading()
         {
-            frmLoading.Close();
+            frmLoading.Hide();
         }
         protected virtual BaseTest CreateTestChecker(string className)
         {
@@ -271,18 +271,6 @@ namespace GUI
             }
             catch (Exception)
             { }
-        }
-
-        private void InitializeComponent()
-        {
-            this.SuspendLayout();
-            // 
-            // frmBaseRunTest
-            // 
-            this.ClientSize = new System.Drawing.Size(284, 261);
-            this.Name = "frmBaseRunTest";
-            this.ResumeLayout(false);
-
         }
     }
 }

@@ -293,7 +293,7 @@ namespace ManageDb
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(17, 153);
+            this.btnAdd.Location = new System.Drawing.Point(19, 191);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 23);
             this.btnAdd.TabIndex = 12;
@@ -303,7 +303,7 @@ namespace ManageDb
             // 
             // btnDel
             // 
-            this.btnDel.Location = new System.Drawing.Point(100, 153);
+            this.btnDel.Location = new System.Drawing.Point(100, 191);
             this.btnDel.Name = "btnDel";
             this.btnDel.Size = new System.Drawing.Size(75, 23);
             this.btnDel.TabIndex = 11;

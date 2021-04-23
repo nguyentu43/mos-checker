@@ -1,3 +1,5 @@
 /MigrationBackup
 /packages
 /ConsoleApp1
+**/bin
+**/obj

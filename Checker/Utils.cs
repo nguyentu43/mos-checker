@@ -6,14 +6,6 @@ namespace Checker
 {
     public static class Utils
     {
-        public static bool nearlyEqual(float a, float b, float epsilon = float.Epsilon)
-        {
-            File.AppendAllText(@"D:\test.txt", Convert.ToString(a) + " = " + Convert.ToString(b) + "\n");
-            //return Convert.ToString(a) == Convert.ToString(b);
-            float diff = Math.Abs(a - b);
-            return diff <= epsilon;
-        }
-
         public static class Excel
         {
             public static string RangeToString(NetOffice.ExcelApi.Range range)
@@ -40,6 +32,25 @@ namespace Checker
                 {
                     return null;
                 }
+            }
+
+            public static string GetThemeXmlContent(string filePath)
+            {
+                string xml = "";
+                using (var archive = ZipFile.Open(filePath, ZipArchiveMode.Update))
+                {
+                    foreach(var entry in archive.Entries)
+                    {
+                        if(entry.Name == "theme1.xml")
+                        {
+                            using (StreamReader reader = new StreamReader(entry.Open()))
+                            {
+                                xml = reader.ReadToEnd();
+                            }
+                        }
+                    }
+                }
+                return xml;
             }
         }
         

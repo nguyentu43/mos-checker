@@ -7,6 +7,7 @@ namespace Checker.Base
     public abstract class BaseExcelTest : BaseTest
     {
         public Workbook Workbook { get; set; }
+        public String ThemeXmlContent { get; set; }
 
         public override List<bool> Points
         {

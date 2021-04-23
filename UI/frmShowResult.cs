@@ -28,7 +28,7 @@ namespace GUI
             int indexQuestion = 1;
             switch (test.OfficeVersion)
             {
-                case "Office 2013":
+                case "2013":
 
                     foreach (var group in test.Questions.OrderBy(x => x.Key))
                     {
@@ -39,7 +39,7 @@ namespace GUI
                         }
                     }
                     break;
-                case "Office 2016":
+                case "2016":
                     int indexGroup = 0;
                     foreach (var group in test.Questions.OrderBy(x => x.Key))
                     {

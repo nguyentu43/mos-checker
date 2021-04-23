@@ -41,13 +41,14 @@ namespace Checker.Excel
         public bool Q3()
         {
             Regex regex = new Regex("<a:theme.*name=\"Office Theme\"><a:themeElements><a:clrScheme name=\"Green Yellow\">");
-            var path = Workbook.FullName;
-            return regex.IsMatch("");
+            return regex.IsMatch(ThemeXmlContent);
         }
 
         public bool Q4()
         {
-            foreach(var property in Workbook.BuiltinDocumentProperties as NetOffice.OfficeApi.DocumentProperties)
+            var properties = Workbook.BuiltinDocumentProperties as NetOffice.OfficeApi.DocumentProperties;
+            if (properties == null) return false;
+            foreach (var property in properties)
             {
                 if(property.Name == "Subject")
                 {
@@ -83,7 +84,7 @@ namespace Checker.Excel
 
         public bool Q8()
         {
-            return (sheets(1)?.Range("B2:F2").Style as NExcel.Style).NameLocal == "Accent3";
+            return (sheets(1)?.Range("B2:F2").Style as NExcel.Style)?.NameLocal == "Accent3";
         }
 
         public bool Q9()
@@ -91,7 +92,7 @@ namespace Checker.Excel
             try
             {
                 var name = sheets(1)?.Range("E3:E32").Name;
-                return (name as NExcel.Name).NameLocal == "Code";
+                return (name as NExcel.Name)?.NameLocal == "Code";
             }
             catch (Exception)
             {
@@ -102,7 +103,7 @@ namespace Checker.Excel
         public bool Q10()
         {
             var format = sheets(1)?.Range("B2:F2").DisplayFormat;
-            return format.IndentLevel.ToString() == "1" && Convert.ToInt32(format.HorizontalAlignment.ToString()) == (int) NExcel.Enums.XlHAlign.xlHAlignRight;
+            return format?.IndentLevel.ToString() == "1" && Convert.ToInt32(format?.HorizontalAlignment.ToString()) == (int) NExcel.Enums.XlHAlign.xlHAlignRight;
         }
 
         public bool Q11()
@@ -265,7 +266,8 @@ namespace Checker.Excel
             try
             {
                 var series = chart?.SeriesCollection(1) as NExcel.Series;
-                return series?.ChartType == NExcel.Enums.XlChartType.xl3DPie && series?.FormulaLocal == "=SERIES('Gold Top'!$C$2,'Gold Top'!$A$3:$A$8,'Gold Top'!$C$3:$C$8,1)";
+                return series?.ChartType == NExcel.Enums.XlChartType.xl3DPie 
+                    && series?.FormulaLocal == "=SERIES('Gold Top'!$C$2,'Gold Top'!$A$3:$A$8,'Gold Top'!$C$3:$C$8,1)";
             }
             catch (Exception)
             {
