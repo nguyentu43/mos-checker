@@ -25,5 +25,10 @@ namespace Models
         public int UsedTime { get; set; }
 
         public List<List<bool>> MarkCompletedQuestions { get; set; }
+
+        public override string ToString()
+        {
+            return string.Format("Task ID: {0} - Test ID: {0}", ID, TestID);
+        }
     }
 }

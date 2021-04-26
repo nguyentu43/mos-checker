@@ -13,6 +13,11 @@ namespace Models
         public List<string> Resources { get; set; }
         public int LimitTime { get; set; }
 
+        public override string ToString()
+        {
+            return string.Format("Test ID: {0} - Name: {1} - Ver: {2} - App: {3}", ID, Name, OfficeVersion, OfficeApp);
+        }
+
         public Test()
         {
             LimitTime = 50;

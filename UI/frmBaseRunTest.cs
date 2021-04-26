@@ -4,7 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
-using System.Threading;
 using System.Windows.Forms;
 using Word = NetOffice.WordApi;
 using Excel = NetOffice.ExcelApi;
@@ -13,6 +12,9 @@ namespace GUI
 {
     public abstract class frmBaseRunTest: Form
     {
+        protected static readonly log4net.ILog log = log4net.LogManager.GetLogger
+                (System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         protected const string dirTemp = "MyTemplates";
         public Test Test { get; }
         public Models.Enums.TestMode Mode { get; }
@@ -211,8 +213,11 @@ namespace GUI
                         break;
                 }
             }
-            catch (Exception)
-            { }
+            catch (Exception e)
+            {
+                log.Error(e.Message);
+                log.Error("Loading Project - " + Test.ToString());
+            }
         }
 
         protected void ResetProject(int indexProject)
@@ -243,8 +248,11 @@ namespace GUI
                         break;
                 }
             }
-            catch (Exception)
-            { }
+            catch (Exception e)
+            {
+                log.Error(e.Message);
+                log.Error("Reset Project - " + Test.ToString());
+            }
         }
 
         protected void FrmClosed()
@@ -271,6 +279,18 @@ namespace GUI
             }
             catch (Exception)
             { }
+        }
+
+        private void InitializeComponent()
+        {
+            this.SuspendLayout();
+            // 
+            // frmBaseRunTest
+            // 
+            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.Name = "frmBaseRunTest";
+            this.ResumeLayout(false);
+
         }
     }
 }

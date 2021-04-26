@@ -253,8 +253,11 @@ namespace GUI
                 MessageBox.Show($"Your Score: {this.Task.Score}\nCorrected Tasks: {correctedQuestions}/{points.Count}", "Your Result", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
             }
-            catch (Exception)
-            { }
+            catch (Exception ex)
+            {
+                log.Error(ex.Message);
+                log.Error("Grade - " + Test.ToString());
+            }
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -315,8 +318,11 @@ namespace GUI
                 CloseLoading();
                 this.Close();
             }
-            catch (Exception)
-            { }
+            catch (Exception ex)
+            {
+                log.Error(ex.Message);
+                log.Error("Save - " + Test.ToString());
+            }
         }
 
         private void btnResetProject_Click(object sender, EventArgs e)

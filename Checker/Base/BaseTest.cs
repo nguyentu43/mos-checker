@@ -8,6 +8,9 @@ namespace Checker.Base
     {
         public abstract int QuestionCount { get; }
 
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger
+                (System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         public virtual List<bool> Points
         {
             get
@@ -21,8 +24,10 @@ namespace Checker.Base
                     {
                         result = ((bool)methodInfo.Invoke(this, null));
                     }
-                    catch (Exception)
-                    {}
+                    catch (Exception ex)
+                    {
+                        log.Error(ex.Message);
+                    }
                     finally
                     {
                         points.Add(result);

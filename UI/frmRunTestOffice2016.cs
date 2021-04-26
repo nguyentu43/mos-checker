@@ -250,8 +250,11 @@ namespace GUI
                 CloseLoading();
                 this.Close();
             }
-            catch (Exception)
-            { }
+            catch (Exception ex)
+            {
+                log.Error(ex.Message);
+                log.Error("Save - " + Test.ToString());
+            }
         }
 
         private void btnGrade_Click(object sender, EventArgs e)
@@ -314,8 +317,11 @@ namespace GUI
                 MessageBox.Show($"Your Score: {this.Task.Score}\n" + correctedTasksPerProject, "Your Result", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
             }
-            catch (Exception)
-            { }
+            catch (Exception ex)
+            {
+                log.Error(ex.Message);
+                log.Error("Grade - " + Test.ToString());
+            }
         }
     }
 }
