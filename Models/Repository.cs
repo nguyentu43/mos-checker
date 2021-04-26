@@ -11,14 +11,8 @@ namespace Models
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger
                 (System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
-        const string password = "admin";
-        public static string getConnectionString(string path, string password)
-        {
-            return string.Format("Filename={0};Password={1}", path, password);
-        }
-
-        public static string DbPath = getConnectionString(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data.db"), password);
-        public static string TaskDbPath = getConnectionString(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "User.db"), password);
+        public static string DbPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data.db");
+        public static string TaskDbPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "User.db");
 
         public static List<Test> getTests()
         {
