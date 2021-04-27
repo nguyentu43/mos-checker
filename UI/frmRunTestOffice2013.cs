@@ -150,6 +150,7 @@ namespace GUI
                     htmlLabel.DoubleClick += delegate
                     {
                         if (this.Mode == Models.Enums.TestMode.Testing) return;
+                        if (question.Help == null || question.Help.Trim() == "") return;
                         MessageBox.Show(question.Help, "Help: Task " + indexQuestion.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
                     };
 
