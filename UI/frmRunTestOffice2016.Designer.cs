@@ -57,38 +57,38 @@ namespace GUI
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.labelTestName, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.tablePanelQuestions, 0, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 3;
+            this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(815, 305);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(991, 305);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.lblSelectedProject);
             this.panel1.Controls.Add(this.ucTimer);
+            this.panel1.Controls.Add(this.labelTestName);
             this.panel1.Controls.Add(this.btnResize);
             this.panel1.Controls.Add(this.btnSummary);
             this.panel1.Controls.Add(this.btnReset);
             this.panel1.Controls.Add(this.btnSave);
-            this.panel1.Controls.Add(this.lblSelectedProject);
             this.panel1.Controls.Add(this.btnGrade);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(809, 34);
+            this.panel1.Size = new System.Drawing.Size(985, 34);
             this.panel1.TabIndex = 2;
             // 
             // ucTimer
             // 
             this.ucTimer.Current = 0;
             this.ucTimer.Dock = System.Windows.Forms.DockStyle.Left;
-            this.ucTimer.Location = new System.Drawing.Point(186, 0);
+            this.ucTimer.Location = new System.Drawing.Point(200, 0);
             this.ucTimer.Max = -1;
             this.ucTimer.Name = "ucTimer";
             this.ucTimer.Size = new System.Drawing.Size(109, 34);
@@ -98,7 +98,7 @@ namespace GUI
             // 
             this.btnResize.Dock = System.Windows.Forms.DockStyle.Right;
             this.btnResize.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnResize.Location = new System.Drawing.Point(301, 0);
+            this.btnResize.Location = new System.Drawing.Point(477, 0);
             this.btnResize.Name = "btnResize";
             this.btnResize.Size = new System.Drawing.Size(111, 34);
             this.btnResize.TabIndex = 7;
@@ -110,7 +110,7 @@ namespace GUI
             // 
             this.btnSummary.Dock = System.Windows.Forms.DockStyle.Right;
             this.btnSummary.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSummary.Location = new System.Drawing.Point(412, 0);
+            this.btnSummary.Location = new System.Drawing.Point(588, 0);
             this.btnSummary.Name = "btnSummary";
             this.btnSummary.Size = new System.Drawing.Size(90, 34);
             this.btnSummary.TabIndex = 5;
@@ -122,7 +122,7 @@ namespace GUI
             // 
             this.btnReset.Dock = System.Windows.Forms.DockStyle.Right;
             this.btnReset.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReset.Location = new System.Drawing.Point(502, 0);
+            this.btnReset.Location = new System.Drawing.Point(678, 0);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(108, 34);
             this.btnReset.TabIndex = 4;
@@ -134,7 +134,7 @@ namespace GUI
             // 
             this.btnSave.Dock = System.Windows.Forms.DockStyle.Right;
             this.btnSave.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(610, 0);
+            this.btnSave.Location = new System.Drawing.Point(786, 0);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(96, 34);
             this.btnSave.TabIndex = 3;
@@ -145,8 +145,8 @@ namespace GUI
             // lblSelectedProject
             // 
             this.lblSelectedProject.Dock = System.Windows.Forms.DockStyle.Left;
-            this.lblSelectedProject.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSelectedProject.Location = new System.Drawing.Point(0, 0);
+            this.lblSelectedProject.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSelectedProject.Location = new System.Drawing.Point(309, 0);
             this.lblSelectedProject.Name = "lblSelectedProject";
             this.lblSelectedProject.Size = new System.Drawing.Size(186, 34);
             this.lblSelectedProject.TabIndex = 2;
@@ -156,7 +156,7 @@ namespace GUI
             // 
             this.btnGrade.Dock = System.Windows.Forms.DockStyle.Right;
             this.btnGrade.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGrade.Location = new System.Drawing.Point(706, 0);
+            this.btnGrade.Location = new System.Drawing.Point(882, 0);
             this.btnGrade.Name = "btnGrade";
             this.btnGrade.Size = new System.Drawing.Size(103, 34);
             this.btnGrade.TabIndex = 1;
@@ -167,11 +167,11 @@ namespace GUI
             // labelTestName
             // 
             this.labelTestName.AutoSize = true;
-            this.labelTestName.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelTestName.Dock = System.Windows.Forms.DockStyle.Left;
             this.labelTestName.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTestName.Location = new System.Drawing.Point(3, 275);
+            this.labelTestName.Location = new System.Drawing.Point(0, 0);
             this.labelTestName.Name = "labelTestName";
-            this.labelTestName.Size = new System.Drawing.Size(809, 30);
+            this.labelTestName.Size = new System.Drawing.Size(200, 25);
             this.labelTestName.TabIndex = 3;
             this.labelTestName.Text = "Test 1 - Testing Mode";
             // 
@@ -189,13 +189,13 @@ namespace GUI
             this.tablePanelQuestions.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tablePanelQuestions.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tablePanelQuestions.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tablePanelQuestions.Size = new System.Drawing.Size(809, 229);
+            this.tablePanelQuestions.Size = new System.Drawing.Size(985, 259);
             this.tablePanelQuestions.TabIndex = 4;
             // 
             // htmlPanelQuestionContent
             // 
             this.htmlPanelQuestionContent.AutoScroll = true;
-            this.htmlPanelQuestionContent.AutoScrollMinSize = new System.Drawing.Size(803, 20);
+            this.htmlPanelQuestionContent.AutoScrollMinSize = new System.Drawing.Size(979, 20);
             this.htmlPanelQuestionContent.BackColor = System.Drawing.SystemColors.Window;
             this.htmlPanelQuestionContent.BaseStylesheet = "";
             this.htmlPanelQuestionContent.Cursor = System.Windows.Forms.Cursors.Default;
@@ -203,7 +203,7 @@ namespace GUI
             this.htmlPanelQuestionContent.IsSelectionEnabled = false;
             this.htmlPanelQuestionContent.Location = new System.Drawing.Point(3, 33);
             this.htmlPanelQuestionContent.Name = "htmlPanelQuestionContent";
-            this.htmlPanelQuestionContent.Size = new System.Drawing.Size(803, 163);
+            this.htmlPanelQuestionContent.Size = new System.Drawing.Size(979, 193);
             this.htmlPanelQuestionContent.TabIndex = 0;
             this.htmlPanelQuestionContent.Text = "htmlPanel1";
             // 
@@ -212,9 +212,9 @@ namespace GUI
             this.panel2.Controls.Add(this.btnHelp);
             this.panel2.Controls.Add(this.btnMarkCompleted);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(3, 202);
+            this.panel2.Location = new System.Drawing.Point(3, 232);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(803, 24);
+            this.panel2.Size = new System.Drawing.Size(979, 24);
             this.panel2.TabIndex = 1;
             // 
             // btnHelp
@@ -246,14 +246,14 @@ namespace GUI
             this.panelQuestionTitle.Location = new System.Drawing.Point(3, 3);
             this.panelQuestionTitle.Name = "panelQuestionTitle";
             this.panelQuestionTitle.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.panelQuestionTitle.Size = new System.Drawing.Size(803, 24);
+            this.panelQuestionTitle.Size = new System.Drawing.Size(979, 24);
             this.panelQuestionTitle.TabIndex = 2;
             // 
             // frmRunTestOffice2016
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(815, 305);
+            this.ClientSize = new System.Drawing.Size(991, 305);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmRunTestOffice2016";
@@ -261,8 +261,8 @@ namespace GUI
             this.Text = "Run Test";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmRunTestOffice2016_FormClosed);
             this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.tablePanelQuestions.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
