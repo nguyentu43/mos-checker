@@ -32,14 +32,14 @@ namespace GUI
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmRunTestOffice2016));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblSelectedProject = new System.Windows.Forms.Label();
             this.ucTimer = new GUI.ucTimer();
+            this.labelTestName = new System.Windows.Forms.Label();
             this.btnResize = new System.Windows.Forms.Button();
             this.btnSummary = new System.Windows.Forms.Button();
             this.btnReset = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
-            this.lblSelectedProject = new System.Windows.Forms.Label();
             this.btnGrade = new System.Windows.Forms.Button();
-            this.labelTestName = new System.Windows.Forms.Label();
             this.tablePanelQuestions = new System.Windows.Forms.TableLayoutPanel();
             this.htmlPanelQuestionContent = new TheArtOfDev.HtmlRenderer.WinForms.HtmlPanel();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -84,6 +84,16 @@ namespace GUI
             this.panel1.Size = new System.Drawing.Size(985, 34);
             this.panel1.TabIndex = 2;
             // 
+            // lblSelectedProject
+            // 
+            this.lblSelectedProject.Dock = System.Windows.Forms.DockStyle.Left;
+            this.lblSelectedProject.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSelectedProject.Location = new System.Drawing.Point(309, 0);
+            this.lblSelectedProject.Name = "lblSelectedProject";
+            this.lblSelectedProject.Size = new System.Drawing.Size(186, 34);
+            this.lblSelectedProject.TabIndex = 2;
+            this.lblSelectedProject.Text = "Project 1 of 7";
+            // 
             // ucTimer
             // 
             this.ucTimer.Current = 0;
@@ -93,6 +103,17 @@ namespace GUI
             this.ucTimer.Name = "ucTimer";
             this.ucTimer.Size = new System.Drawing.Size(109, 34);
             this.ucTimer.TabIndex = 8;
+            // 
+            // labelTestName
+            // 
+            this.labelTestName.AutoSize = true;
+            this.labelTestName.Dock = System.Windows.Forms.DockStyle.Left;
+            this.labelTestName.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTestName.Location = new System.Drawing.Point(0, 0);
+            this.labelTestName.Name = "labelTestName";
+            this.labelTestName.Size = new System.Drawing.Size(200, 25);
+            this.labelTestName.TabIndex = 3;
+            this.labelTestName.Text = "Test 1 - Testing Mode";
             // 
             // btnResize
             // 
@@ -142,16 +163,6 @@ namespace GUI
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // lblSelectedProject
-            // 
-            this.lblSelectedProject.Dock = System.Windows.Forms.DockStyle.Left;
-            this.lblSelectedProject.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSelectedProject.Location = new System.Drawing.Point(309, 0);
-            this.lblSelectedProject.Name = "lblSelectedProject";
-            this.lblSelectedProject.Size = new System.Drawing.Size(186, 34);
-            this.lblSelectedProject.TabIndex = 2;
-            this.lblSelectedProject.Text = "Project 1 of 7";
-            // 
             // btnGrade
             // 
             this.btnGrade.Dock = System.Windows.Forms.DockStyle.Right;
@@ -163,17 +174,6 @@ namespace GUI
             this.btnGrade.Text = "Grade Project";
             this.btnGrade.UseVisualStyleBackColor = true;
             this.btnGrade.Click += new System.EventHandler(this.btnGrade_Click);
-            // 
-            // labelTestName
-            // 
-            this.labelTestName.AutoSize = true;
-            this.labelTestName.Dock = System.Windows.Forms.DockStyle.Left;
-            this.labelTestName.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTestName.Location = new System.Drawing.Point(0, 0);
-            this.labelTestName.Name = "labelTestName";
-            this.labelTestName.Size = new System.Drawing.Size(200, 25);
-            this.labelTestName.TabIndex = 3;
-            this.labelTestName.Text = "Test 1 - Testing Mode";
             // 
             // tablePanelQuestions
             // 
@@ -255,6 +255,7 @@ namespace GUI
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(991, 305);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmRunTestOffice2016";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;

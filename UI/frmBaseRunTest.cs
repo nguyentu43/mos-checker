@@ -64,15 +64,15 @@ namespace GUI
             this.WindowState = FormWindowState.Normal;
             this.Left = 0;
             this.Top = Convert.ToInt32(workingArea.Height * 0.66);
-            this.Height = Convert.ToInt32(workingArea.Height * 0.35);
+            this.Height = Convert.ToInt32(workingArea.Height * 0.34);
             this.Width = workingArea.Width;
         }
 
         protected virtual void ResizeOfficeWindow()
         {
             Rectangle workingArea = Screen.PrimaryScreen.WorkingArea;
-            int height = Convert.ToInt32(workingArea.Height * 0.49f);
-            int width = Convert.ToInt32(workingArea.Width * 0.75f);
+            int height = Convert.ToInt32(workingArea.Height * 0.5);
+            int width = Convert.ToInt32(workingArea.Width * 0.75);
             switch (this.Test.OfficeApp)
             {
                 case "Word":

@@ -118,7 +118,7 @@ namespace GUI
             this.tabPageRefImages.Location = new System.Drawing.Point(4, 27);
             this.tabPageRefImages.Name = "tabPageRefImages";
             this.tabPageRefImages.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageRefImages.Size = new System.Drawing.Size(725, 314);
+            this.tabPageRefImages.Size = new System.Drawing.Size(770, 314);
             this.tabPageRefImages.TabIndex = 1;
             this.tabPageRefImages.Text = "Resources";
             this.tabPageRefImages.UseVisualStyleBackColor = true;
@@ -131,7 +131,7 @@ namespace GUI
             this.panelRefImages.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelRefImages.Location = new System.Drawing.Point(3, 3);
             this.panelRefImages.Name = "panelRefImages";
-            this.panelRefImages.Size = new System.Drawing.Size(719, 308);
+            this.panelRefImages.Size = new System.Drawing.Size(764, 308);
             this.panelRefImages.TabIndex = 0;
             // 
             // tablePanelQuestionTitle
@@ -262,6 +262,7 @@ namespace GUI
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1119, 390);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmRunTestOffice2013";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
