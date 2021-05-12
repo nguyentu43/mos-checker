@@ -73,6 +73,8 @@ namespace ManageDb
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.btnRefresherDb = new System.Windows.Forms.Button();
+            this.btnMoveUp = new System.Windows.Forms.Button();
+            this.btnMoveDown = new System.Windows.Forms.Button();
             iDLabel = new System.Windows.Forms.Label();
             nameLabel = new System.Windows.Forms.Label();
             officeAppLabel = new System.Windows.Forms.Label();
@@ -420,6 +422,8 @@ namespace ManageDb
             // panel2
             // 
             this.panel2.AutoScroll = true;
+            this.panel2.Controls.Add(this.btnMoveDown);
+            this.panel2.Controls.Add(this.btnMoveUp);
             this.panel2.Controls.Add(this.groupBox1);
             this.panel2.Controls.Add(contentLabel);
             this.panel2.Controls.Add(this.contentTextBox);
@@ -574,6 +578,26 @@ namespace ManageDb
             this.btnRefresherDb.UseVisualStyleBackColor = true;
             this.btnRefresherDb.Click += new System.EventHandler(this.btnRefreshDb_Click);
             // 
+            // btnMoveUp
+            // 
+            this.btnMoveUp.Location = new System.Drawing.Point(215, 287);
+            this.btnMoveUp.Name = "btnMoveUp";
+            this.btnMoveUp.Size = new System.Drawing.Size(75, 23);
+            this.btnMoveUp.TabIndex = 23;
+            this.btnMoveUp.Text = "Chuyển lên";
+            this.btnMoveUp.UseVisualStyleBackColor = true;
+            this.btnMoveUp.Click += new System.EventHandler(this.btnMoveUp_Click);
+            // 
+            // btnMoveDown
+            // 
+            this.btnMoveDown.Location = new System.Drawing.Point(319, 287);
+            this.btnMoveDown.Name = "btnMoveDown";
+            this.btnMoveDown.Size = new System.Drawing.Size(89, 23);
+            this.btnMoveDown.TabIndex = 24;
+            this.btnMoveDown.Text = "Chuyển xuống";
+            this.btnMoveDown.UseVisualStyleBackColor = true;
+            this.btnMoveDown.Click += new System.EventHandler(this.btnMoveDown_Click);
+            // 
             // frmManageDb
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -640,6 +664,8 @@ namespace ManageDb
         private System.Windows.Forms.Button btnGDel;
         private System.Windows.Forms.Button btnGAdd;
         private System.Windows.Forms.ComboBox groupQuestionComboBox;
+        private System.Windows.Forms.Button btnMoveDown;
+        private System.Windows.Forms.Button btnMoveUp;
     }
 }
 

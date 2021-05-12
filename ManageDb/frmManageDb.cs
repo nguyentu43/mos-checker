@@ -8,6 +8,13 @@ namespace ManageDb
 {
     public partial class frmManageDb : Form
     {
+        public Test CurrentTest
+        {
+            get
+            {
+                return testBindingSource.Current as Test;
+            }
+        }
         public frmManageDb()
         {
             InitializeComponent();
@@ -29,6 +36,7 @@ namespace ManageDb
 
         private void loadData()
         {
+
             string prev = groupQuestionComboBox.Text;
             List<Test> tests = Repository.getTests();
             testBindingSource.DataSource = tests;
@@ -41,10 +49,10 @@ namespace ManageDb
 
         private void updateTest(object sender, System.EventArgs e)
         {
-            if (testBindingSource.Current is Test test)
+            if (CurrentTest != null)
             {
-                test.Resources = new List<string>(txtResources.Text.Split(','));
-                Repository.updateTest(test);
+                CurrentTest.Resources = new List<string>(txtResources.Text.Split(','));
+                Repository.updateTest(CurrentTest);
             }
         }
 
@@ -65,10 +73,10 @@ namespace ManageDb
 
         private void btnQAdd_Click(object sender, EventArgs e)
         {
-            if (testBindingSource.Current is Test currentTest)
+            if (CurrentTest != null)
             {
                 string content = "";
-                if (currentTest.OfficeVersion == "2013")
+                if (CurrentTest.OfficeVersion == "2013")
                 {
                     content = @"<div class='title'>
 Title
@@ -80,21 +88,21 @@ Position
 * List: 1
 </div>";
                 }
-                if (currentTest.Questions.Count > 0 && groupQuestionComboBox.Text != "")
+                if (CurrentTest.Questions.Count > 0 && groupQuestionComboBox.Text != "")
                 {
-                    if (!currentTest.Questions.ContainsKey(groupQuestionComboBox.Text))
+                    if (!CurrentTest.Questions.ContainsKey(groupQuestionComboBox.Text))
                     {
-                        currentTest.Questions.Add(groupQuestionComboBox.Text, new List<Question>());
+                        CurrentTest.Questions.Add(groupQuestionComboBox.Text, new List<Question>());
                     }
 
-                    currentTest.Questions[groupQuestionComboBox.Text].Add(new Question
+                    CurrentTest.Questions[groupQuestionComboBox.Text].Add(new Question
                     {
                         Content = content
                     });
                 }
                 else
                 {
-                    currentTest.Questions.Add("1", new List<Question> {
+                    CurrentTest.Questions.Add("1", new List<Question> {
                         new Question
                         {
                             Content = content,
@@ -102,7 +110,7 @@ Position
                     });
                 }
 
-                Repository.updateTest(currentTest);
+                Repository.updateTest(CurrentTest);
                 loadData();
                 if (dataGridQuestions.RowCount > 0)
                 {
@@ -113,12 +121,12 @@ Position
 
         private void btnQSave_Click(object sender, EventArgs e)
         {
-            if (testBindingSource.Current is Test currentTest)
+            if (CurrentTest != null)
             {
                 if (dataGridQuestions.CurrentRow != null)
                 {
                     int index = dataGridQuestions.CurrentRow.Index;
-                    Repository.updateTest(currentTest);
+                    Repository.updateTest(CurrentTest);
                     loadData();
                     dataGridQuestions.FirstDisplayedScrollingRowIndex = index;
                     MessageBox.Show("Data has updated");
@@ -128,14 +136,14 @@ Position
 
         private void btnQDel_Click(object sender, EventArgs e)
         {
-            if (testBindingSource.Current is Test currentTest)
+            if (CurrentTest != null)
             {
                 if (dataGridQuestions.CurrentRow.DataBoundItem is Question question)
                 {
                     string key = groupQuestionComboBox.Text.ToString();
                     if (MessageBox.Show("Bạn có muốn xóa?", "Xóa", MessageBoxButtons.YesNo) == DialogResult.No) return;
-                    currentTest.Questions[key]?.Remove(question);
-                    Repository.updateTest(currentTest);
+                    CurrentTest.Questions[key]?.Remove(question);
+                    Repository.updateTest(CurrentTest);
                     loadData();
                 }
             }
@@ -143,15 +151,15 @@ Position
 
         private void testBindingSource_CurrentChanged(object sender, EventArgs e)
         {
-            if (testBindingSource.Current is Test test)
+            if (CurrentTest != null)
             {
-                if (test?.Resources == null) return;
-                txtResources.Text = string.Join(",", test.Resources);
+                if (CurrentTest.Resources == null) return;
+                txtResources.Text = string.Join(",", CurrentTest.Resources);
                 groupQuestionComboBox.SelectedItem = null;
                 titleTextBox.Text = "";
                 helpTextBox.Text = "";
                 contentTextBox.Text = "";
-                groupQuestionComboBox.DataSource = test.Questions.Keys.ToList<string>();
+                groupQuestionComboBox.DataSource = CurrentTest.Questions.Keys.ToList<string>();
                 
             }
         }
@@ -174,19 +182,19 @@ Position
                 question.Title = titleTextBox.Text;
                 question.Content = contentTextBox.Text;
                 question.Help = helpTextBox.Text;
-                Repository.updateTest(testBindingSource.Current as Test);
+                Repository.updateTest(CurrentTest);
                 dataGridQuestions.Refresh();
             }
         }
 
         private void keyComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (testBindingSource.Current is Test test)
+            if (CurrentTest != null)
             {
                 dataGridQuestions.DataSource = null;
                 if (groupQuestionComboBox.SelectedItem is string key)
                 {
-                    dataGridQuestions.DataSource = test.Questions[key];
+                    dataGridQuestions.DataSource = CurrentTest.Questions[key];
                 }
             }
         }
@@ -198,38 +206,77 @@ Position
                 MessageBox.Show("Group Name not empty!");
                 return;
             }    
-            if (testBindingSource.Current is Test test)
+            if (CurrentTest != null)
             {
-                if (test.Questions.ContainsKey(groupQuestionComboBox.Text))
+                if (CurrentTest.Questions.ContainsKey(groupQuestionComboBox.Text))
                 {
                     MessageBox.Show("Key Duplicated");
                     return;
                 }
-                test.Questions.Add(groupQuestionComboBox.Text, new List<Question>());
-                Repository.updateTest(test);
+                CurrentTest.Questions.Add(groupQuestionComboBox.Text, new List<Question>());
+                Repository.updateTest(CurrentTest);
                 loadData();
             }
         }
 
         private void btnGDel_Click(object sender, EventArgs e)
         {
-            if (testBindingSource.Current is Test test && groupQuestionComboBox.Text != "")
+            if (CurrentTest != null && groupQuestionComboBox.Text != "")
             {
-                test.Questions.Remove(groupQuestionComboBox.Text);
-                Repository.updateTest(test);
+                CurrentTest.Questions.Remove(groupQuestionComboBox.Text);
+                Repository.updateTest(CurrentTest);
                 loadData();
             }
         }
 
         private void dataGridQuestions_SelectionChanged(object sender, EventArgs e)
         {
-            if (dataGridQuestions.CurrentRow.Index + 1 > (dataGridQuestions.DataSource as List<Question>).Count) return;
+            if (dataGridQuestions.CurrentRow?.Index + 1 > (dataGridQuestions.DataSource as List<Question>).Count) return;
             if (dataGridQuestions.CurrentRow?.DataBoundItem is Question question)
             {
                 contentTextBox.Text = question.Content;
                 titleTextBox.Text = question.Title;
                 helpTextBox.Text = question.Help;
                 htmlPanel.Text = question.Content;
+            }
+        }
+
+        public static void Swap<T>(IList<T> list, int indexA, int indexB)
+        {
+            T tmp = list[indexA];
+            list[indexA] = list[indexB];
+            list[indexB] = tmp;
+        }
+
+        private void btnMoveUp_Click(object sender, EventArgs e)
+        {
+            if(dataGridQuestions.CurrentRow != null)
+            {
+                List<Question> list = dataGridQuestions.DataSource as List<Question>;
+                int index = dataGridQuestions.CurrentRow.Index;
+                if(index > 0)
+                {
+                    Swap(list, index, index - 1);
+                }
+                CurrentTest.Questions[groupQuestionComboBox.Text] = list;
+                Repository.updateTest(CurrentTest);
+                loadData();
+            }
+        }
+
+        private void btnMoveDown_Click(object sender, EventArgs e)
+        {
+            if (dataGridQuestions.CurrentRow != null)
+            {
+                List<Question> list = dataGridQuestions.DataSource as List<Question>;
+                int index = dataGridQuestions.CurrentRow.Index;
+                if (index >= 0 && index < dataGridQuestions.Rows.Count)
+                {
+                    Swap(list, index , index + 1);
+                }
+                CurrentTest.Questions[groupQuestionComboBox.Text] = list;
+                Repository.updateTest(CurrentTest);
+                loadData();
             }
         }
     }

@@ -6,11 +6,11 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using TheArtOfDev.HtmlRenderer.WinForms;
-using Word = NetOffice.WordApi;
 using Excel = NetOffice.ExcelApi;
-using System.Text.RegularExpressions;
+using Word = NetOffice.WordApi;
 
 namespace GUI
 {
@@ -212,7 +212,7 @@ namespace GUI
             {
                 List<bool> points = null;
                 string className = ("Checker." + this.Test.OfficeApp + "." + this.Test.Name + "_" + this.Test.OfficeVersion).Replace(" ", "_");
-                
+
                 switch (this.Test.OfficeApp)
                 {
                     case "Word":
@@ -226,9 +226,8 @@ namespace GUI
 
                         break;
                     case "Excel":
-                        Excel.Application excelApp = this.Application as Excel.Application;
-                        Excel.Workbook workBook = excelApp.ActiveWorkbook;
-                        workBook.Close(true);
+                        Excel.Application excelApp = Application as Excel.Application;
+                        excelApp.ActiveWorkbook.Close(true);
 
                         string themeXmlContent = Checker.Utils.Excel.GetThemeXmlContent(WorkingFilePaths());
                         BaseExcelTest excelTestChecker = this.CreateTestChecker(className) as BaseExcelTest;

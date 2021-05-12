@@ -5,6 +5,7 @@ using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.IO;
 
 namespace Checker.Excel
 {
@@ -47,15 +48,7 @@ namespace Checker.Excel
         public bool Q4()
         {
             var properties = Workbook.BuiltinDocumentProperties as NetOffice.OfficeApi.DocumentProperties;
-            if (properties == null) return false;
-            foreach (var property in properties)
-            {
-                if(property.Name == "Subject")
-                {
-                    return property.Value?.ToString() == "Olympic";
-                }
-            }
-            return false;
+            return properties?["Subject"].Value?.ToString() == "Olympic";
         }
 
         public bool Q5()
@@ -267,7 +260,7 @@ namespace Checker.Excel
             {
                 var series = chart?.SeriesCollection(1) as NExcel.Series;
                 return series?.ChartType == NExcel.Enums.XlChartType.xl3DPie 
-                    && series?.FormulaLocal == "=SERIES('Gold Top'!$C$2,'Gold Top'!$A$3:$A$8,'Gold Top'!$C$3:$C$8,1)";
+                    && (series?.FormulaLocal == "=SERIES('Gold Top'!$C$2,'Gold Top'!$A$3:$A$8,'Gold Top'!$C$3:$C$8,1)" || series?.FormulaLocal == "=SERIES(,'Gold Top'!$A$3:$A$8,'Gold Top'!$C$3:$C$8,1)");
             }
             catch (Exception)
             {

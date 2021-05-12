@@ -5,12 +5,12 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
-using Word = NetOffice.WordApi;
 using Excel = NetOffice.ExcelApi;
+using Word = NetOffice.WordApi;
 
 namespace GUI
 {
-    public abstract class frmBaseRunTest: Form
+    public abstract class frmBaseRunTest : Form
     {
         protected static readonly log4net.ILog log = log4net.LogManager.GetLogger
                 (System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
@@ -167,18 +167,10 @@ namespace GUI
             switch (this.Test.OfficeApp)
             {
                 case "Word":
-                    Word.Application wordApp = new Word.Application
-                    {
-                        Visible = true
-                    };
-                    this.Application = wordApp;
+                    this.Application = new Word.Application { Visible = true };
                     break;
                 case "Excel":
-                    Excel.Application excelApp = new Excel.Application
-                    {
-                        Visible = true
-                    };
-                    this.Application = excelApp;
+                    this.Application = new Excel.Application { Visible = true, };
                     break;
                 case "PowerPoint":
                     break;
@@ -203,11 +195,11 @@ namespace GUI
                         break;
                     case "Excel":
                         Excel.Application excelApp = this.Application as Excel.Application;
-                        if(excelApp.Workbooks.Count > 0)
+                        if (excelApp.Workbooks.Count > 0)
                         {
                             excelApp.ActiveWorkbook.Close(true);
                         }
-                        excelApp.Workbooks.Open(this.WorkingFilePaths(indexProject));
+                        excelApp.Workbooks.Open(WorkingFilePaths(indexProject));
                         break;
                     case "PowerPoint":
                         break;
