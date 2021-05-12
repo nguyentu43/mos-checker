@@ -1,10 +1,9 @@
-﻿using Models;
+﻿using AutoUpdaterDotNET;
+using Models;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Threading;
 using System.Windows.Forms;
-using AutoUpdaterDotNET;
 
 namespace GUI
 {

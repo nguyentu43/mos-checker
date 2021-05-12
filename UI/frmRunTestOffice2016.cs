@@ -306,7 +306,7 @@ namespace GUI
                     case "PowerPoint":
                         break;
                 }
-                
+
                 this.Task.Score = Convert.ToInt32(Math.Min(Math.Ceiling(score), 1000f));
                 this.Task.IsCompleted = true;
                 this.Task.UsedTime = this.ucTimer.Current;

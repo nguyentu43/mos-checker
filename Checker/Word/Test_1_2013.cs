@@ -376,14 +376,8 @@ namespace Checker.Word
 
         public bool Q27()
         {
-            foreach (DocumentProperty property in this.Document.BuiltInDocumentProperties as DocumentProperties)
-            {
-                if (property.Name == "Title")
-                {
-                    return property.Value.ToString() == "Health Newsletter";
-                }
-            }
-            return false;
+            var properties = this.Document.BuiltInDocumentProperties as DocumentProperties;
+            return properties?["Title"].Value?.ToString() == "Health Newsletter";
         }
 
         public bool Q28()
