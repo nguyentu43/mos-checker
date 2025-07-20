@@ -84,12 +84,15 @@ namespace GUI
         private void btnResize_Click(object sender, EventArgs e)
         {
             this.ResizeForm();
-            if (this.Application == null)
+            if ((this.Application as NetOffice.COMObject).UnderlyingTypeName == "")
             {
-                this.LoadApp();
-                this.LoadFileOffice(this.SelectedProject);
+                LoadApp();
+                LoadFileOffice(this.SelectedProject);
             }
-            this.ResizeOfficeWindow();
+            else
+            {
+                this.ResizeOfficeWindow();
+            }
         }
 
         private void frmRunTestOffice2016_FormClosed(object sender, FormClosedEventArgs e)
@@ -171,6 +174,7 @@ namespace GUI
 
         private void btnReset_Click(object sender, EventArgs e)
         {
+            btnResize_Click(null, null);
             base.ResetProject(this.SelectedProject);
         }
 
@@ -222,10 +226,11 @@ namespace GUI
         {
 
             DialogResult dialogResult = MessageBox.Show("Do you want to exit and save this test?", "Save Test", MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.No)
+            if (dialogResult != DialogResult.Yes)
             {
                 return;
             }
+            btnResize_Click(null, null);
 
             this.ucTimer.Stop();
             ShowLoading();
@@ -259,14 +264,12 @@ namespace GUI
 
         private void btnGrade_Click(object sender, EventArgs e)
         {
-            if (sender != null)
+            DialogResult dialogResult = MessageBox.Show("Do you want to exit and submit this test?", "Submit Test", MessageBoxButtons.YesNo);
+            if (dialogResult != DialogResult.Yes)
             {
-                DialogResult dialogResult = MessageBox.Show("Do you want to exit and submit this test?", "Submit Test", MessageBoxButtons.YesNo);
-                if (dialogResult == DialogResult.No)
-                {
-                    return;
-                }
+                return;
             }
+            btnResize_Click(null, null);
 
             ShowLoading();
             string correctedTasksPerProject = "";

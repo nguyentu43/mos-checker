@@ -199,14 +199,12 @@ namespace GUI
 
         private void btnGrade_Click(object sender, EventArgs e)
         {
-            if (sender != null)
+            DialogResult dialogResult = MessageBox.Show("Do you want to exit and submit this test?", "Submit Test", MessageBoxButtons.YesNo);
+            if (dialogResult != DialogResult.Yes )
             {
-                DialogResult dialogResult = MessageBox.Show("Do you want to exit and submit this test?", "Submit Test", MessageBoxButtons.YesNo);
-                if (dialogResult == DialogResult.No)
-                {
-                    return;
-                }
+                return;
             }
+            btnResize_Click(null, null);
             ShowLoading();
             try
             {
@@ -263,10 +261,12 @@ namespace GUI
         private void btnSave_Click(object sender, EventArgs e)
         {
             DialogResult dialogResult = MessageBox.Show("Do you want to exit and save this test?", "Save Test", MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.No)
+            if (dialogResult != DialogResult.Yes)
             {
                 return;
             }
+
+            btnResize_Click(null, null);
 
             this.ucTimer.Stop();
             ShowLoading();
@@ -327,6 +327,7 @@ namespace GUI
 
         private void btnResetProject_Click(object sender, EventArgs e)
         {
+            btnResize_Click(null, null);
             base.ResetProject(0);
         }
 

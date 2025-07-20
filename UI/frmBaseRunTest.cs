@@ -214,8 +214,6 @@ namespace GUI
 
         protected void ResetProject(int indexProject)
         {
-            File.Copy(Path.Combine(this.AppResourcesPath, this.Test.Resources[indexProject]), this.WorkingFilePaths(indexProject), true);
-
             try
             {
                 switch (this.Test.OfficeApp)
@@ -226,6 +224,7 @@ namespace GUI
                         {
                             wordApp.ActiveDocument.Close(Word.Enums.WdSaveOptions.wdDoNotSaveChanges);
                         }
+                        File.Copy(Path.Combine(this.AppResourcesPath, this.Test.Resources[indexProject]), this.WorkingFilePaths(indexProject), true);
                         wordApp.Documents.Open(this.WorkingFilePaths(indexProject));
                         break;
                     case "Excel":
@@ -234,6 +233,7 @@ namespace GUI
                         {
                             excelApp.ActiveWorkbook.Close(false);
                         }
+                        File.Copy(Path.Combine(this.AppResourcesPath, this.Test.Resources[indexProject]), this.WorkingFilePaths(indexProject), true);
                         excelApp.Workbooks.Open(this.WorkingFilePaths(indexProject));
                         break;
                     case "PowerPoint":
